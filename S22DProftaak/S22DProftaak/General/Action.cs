@@ -10,7 +10,7 @@ namespace S22DProftaak.Action
     /// <summary>
     /// This class holds the information about all Clean and Repair actions
     /// </summary>
-    abstract class Action
+    public abstract class Action
     {
         public string Note { get; private set; }
         public DateTime DateStart { get; private set; }
