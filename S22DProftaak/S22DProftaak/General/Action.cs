@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.Action
 {
-    class Action
+    abstract class Action
     {
     }
 }
