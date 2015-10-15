@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.General
 {
-    enum UserTypeEnum
+    public enum UserTypeEnum
     {
         Driver,
         Admin,
