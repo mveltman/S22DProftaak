@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.General
 {
-    enum RailTypeEnum
+    enum RailType
     {
         Rotating,
         Reparation,
