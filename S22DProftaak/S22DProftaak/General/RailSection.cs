@@ -11,7 +11,7 @@ namespace S22DProftaak.General
     /// This class holds information such as the position relative to other sections on a rail
     /// And which train is on it(only one at the time)
     /// </summary>
-    class RailSection
+    public class RailSection
     {
         public int Position { get; private set; }
         public bool Blocked { get; private set; }
