@@ -8,5 +8,6 @@ namespace S22DProftaak.Database
 {
     class DatabaseConnection
     {
+        
     }
 }
