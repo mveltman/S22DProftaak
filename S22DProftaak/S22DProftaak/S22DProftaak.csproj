@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="General\Action.cs" />
     <Compile Include="General\Clean.cs" />
     <Compile Include="General\Rail.cs" />
