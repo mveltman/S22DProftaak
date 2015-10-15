@@ -25,7 +25,6 @@ namespace S22DProftaak.CleanSystem
         {
             // todo implementation
             throw new NotImplementedException();
-            return false;
         }
         public bool SetCleanTime(Train train, DateTime time)
         {

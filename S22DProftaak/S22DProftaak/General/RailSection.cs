@@ -20,25 +20,25 @@ namespace S22DProftaak.General
         public RailSection(int position)
         {
             throw new NotImplementedException();
-            this.Position = position;
+            //this.Position = position;
 
         }//Sets position on rail
         public bool RemoveTrain()
         {
             throw new NotImplementedException();
-            if(Train==null) return false;
-            else
-            {
-                Train = null;
-                return true;
-            }
+            //if(Train==null) return false;
+            //else
+            //{
+            //    Train = null;
+            //    return true;
+            //}
         }
         public bool UpdateTrain(Train train)
         {
             throw new NotImplementedException();
-            if (Train == null) return false;
-            Train = train;
-            return true;
+            //if (Train == null) return false;
+            //Train = train;
+            //return true;
         }
     }
 }

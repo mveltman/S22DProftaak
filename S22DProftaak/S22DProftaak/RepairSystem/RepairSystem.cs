@@ -9,11 +9,11 @@ using S22DProftaak.Action;
 
 namespace S22DProftaak.RepairSystem
 {
-    class RepairSystem
+    public class RepairSystem
     {
         public RepairSystem()
         {
-
+            throw new NotImplementedException();
         }
 
         public bool ApplyRepairSession(Repair repair)
