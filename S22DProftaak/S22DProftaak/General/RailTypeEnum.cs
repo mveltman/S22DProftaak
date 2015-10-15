@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S22DProftaak.General
+namespace S22DProftaak
 {
-    enum RailType
+    public enum RailType
     {
         Rotating,
         Reparation,

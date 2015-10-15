@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.General
 {
-    class Train
+    public class Train
     {
         /// <summary>
         /// This is the class of trains

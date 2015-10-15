@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.General
 {
-    class Rail
+    public class Rail
     {
         /// <summary>
         /// This is the class for rail
