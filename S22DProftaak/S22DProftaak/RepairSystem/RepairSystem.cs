@@ -20,5 +20,30 @@ namespace S22DProftaak.RepairSystem
         {
             throw new NotImplementedException();
         }
+
+        public bool GetRepairTasks(bool completed)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SetRepairTime(Train tram, DateTime time)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddRepairsman(Repair action, User cleaner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateRepaired(Repair action)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateUser(User user, bool active)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
