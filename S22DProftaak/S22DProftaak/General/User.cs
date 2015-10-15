@@ -10,7 +10,7 @@ namespace S22DProftaak.General
     /// This is the class for all users
     /// This class holds all information about the user and their permissions
     /// </summary>
-    class User
+    public class User
     {
         public UserTypeEnum Type { get; private set; }
         public string UserName { get; private set; }

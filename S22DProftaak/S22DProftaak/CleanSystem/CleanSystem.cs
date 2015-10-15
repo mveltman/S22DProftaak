@@ -32,16 +32,16 @@ namespace S22DProftaak.CleanSystem
             // todo implementation
             throw new NotImplementedException();
         }
-        public bool AddCleaner(Action action, User cleaner)
-        {
-            // todo implementation
-            throw new NotImplementedException();
-        }
-        public bool Update(Action action)
-        {
-            // todo implementation
-            throw new NotImplementedException();
-        }
+        //public bool AddCleaner(Action action, User cleaner)
+        //{
+        //    // todo implementation
+        //    throw new NotImplementedException();
+        //}
+        //public bool Update(Action action)
+        //{
+        //    // todo implementation
+        //    throw new NotImplementedException();
+        //}
         public bool ApplyTrainwash(Train train, RailSection rail)
         {
             // todo implementation
