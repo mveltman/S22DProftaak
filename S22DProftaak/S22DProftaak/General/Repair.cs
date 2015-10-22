@@ -13,7 +13,7 @@ namespace S22DProftaak.Action
     public class Repair : Action
     {
             public Repair(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
-                : base(note, dateStart, dateEnd, rail)
+                : base(note, dateStart, rail)
             {
 
             }
