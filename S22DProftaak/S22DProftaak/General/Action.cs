@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
 
-namespace S22DProftaak.Action // the references don't work for action, but do for clean/repair.
+namespace S22DProftaak.Action // the references don't work for action, but do for clean/repair. This is ultimately strange.
 {
     /// <summary>
     /// This class holds the information about all Clean and Repair actions
@@ -45,5 +45,11 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         {
             throw new NotImplementedException();
         }
+
+
+        public bool AddUser(User user)
+        {
+            throw new NotImplementedException();
+        } // Adds User to the action
     }
 }
