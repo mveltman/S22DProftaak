@@ -13,7 +13,7 @@ namespace S22DProftaak.Action
     public class Clean : Action
     {
         public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
-            : base(note, dateStart, dateEnd, rail)
+            : base(note, dateStart, rail)
         {
 
         }
