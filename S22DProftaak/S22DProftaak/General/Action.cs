@@ -18,13 +18,19 @@ namespace S22DProftaak.Action
         public RailSection Rail { get; private set; }
 
 
-        public Action(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
+        
+        public Action(string note, DateTime dateStart,  RailSection rail)
         {
             Note = note;
             DateStart = dateStart;
-            DateEnd = dateEnd;
+           
             Rail = rail;
         }
+        public void AddDateEnd(DateTime dateEnd)
+        {
+            DateEnd = dateEnd;
+        }
+
 
         /// <summary>
         /// This method sets the enddate from an action when the action has finished
