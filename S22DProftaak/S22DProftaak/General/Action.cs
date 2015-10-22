@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
 
-namespace S22DProftaak.Action
+namespace S22DProftaak.Action // the references don't work for action, but do for clean/repair.
 {
     /// <summary>
     /// This class holds the information about all Clean and Repair actions
