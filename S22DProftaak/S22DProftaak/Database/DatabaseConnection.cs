@@ -17,6 +17,7 @@ namespace S22DProftaak.Database
         private string pw = ""; // password of the database
         private string dataSource = "//";
 
+        // boa constructor
         public DatabaseConnection()
         {
             conn = new OracleConnection();
@@ -86,5 +87,6 @@ namespace S22DProftaak.Database
             }
         }
         #endregion
+
     }
 }

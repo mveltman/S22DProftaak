@@ -24,7 +24,7 @@ namespace S22DProftaak
             if (CheckPassword(tbLogin.Text, tbPassword.Text))
             {
                 throw new NotImplementedException();
-                this.Hide();
+                //this.Hide();
             }
         }
         private bool CheckPassword(string userName, string password)
