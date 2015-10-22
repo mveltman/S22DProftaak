@@ -38,7 +38,7 @@
             // DoneButton
             // 
             this.DoneButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.DoneButton.Location = new System.Drawing.Point(811, 68);
+            this.DoneButton.Location = new System.Drawing.Point(654, 12);
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.Size = new System.Drawing.Size(122, 42);
             this.DoneButton.TabIndex = 9;
@@ -48,7 +48,7 @@
             // RepairButton
             // 
             this.RepairButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.RepairButton.Location = new System.Drawing.Point(326, 271);
+            this.RepairButton.Location = new System.Drawing.Point(268, 192);
             this.RepairButton.Name = "RepairButton";
             this.RepairButton.Size = new System.Drawing.Size(122, 42);
             this.RepairButton.TabIndex = 8;
@@ -58,7 +58,7 @@
             // RepairInProgress
             // 
             this.RepairInProgress.FormattingEnabled = true;
-            this.RepairInProgress.Location = new System.Drawing.Point(566, 52);
+            this.RepairInProgress.Location = new System.Drawing.Point(444, 12);
             this.RepairInProgress.Name = "RepairInProgress";
             this.RepairInProgress.Size = new System.Drawing.Size(204, 537);
             this.RepairInProgress.TabIndex = 7;
@@ -66,30 +66,30 @@
             // RepairAssignments
             // 
             this.RepairAssignments.FormattingEnabled = true;
-            this.RepairAssignments.Location = new System.Drawing.Point(60, 52);
+            this.RepairAssignments.Location = new System.Drawing.Point(12, 12);
             this.RepairAssignments.Name = "RepairAssignments";
             this.RepairAssignments.Size = new System.Drawing.Size(204, 537);
             this.RepairAssignments.TabIndex = 6;
             // 
             // RepairDescription
             // 
-            this.RepairDescription.Location = new System.Drawing.Point(299, 52);
+            this.RepairDescription.Location = new System.Drawing.Point(222, 12);
             this.RepairDescription.Name = "RepairDescription";
             this.RepairDescription.Size = new System.Drawing.Size(216, 174);
             this.RepairDescription.TabIndex = 5;
             this.RepairDescription.Text = "";
             // 
-            // RepairSystem
+            // RepairSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 640);
+            this.ClientSize = new System.Drawing.Size(792, 562);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.RepairButton);
             this.Controls.Add(this.RepairInProgress);
             this.Controls.Add(this.RepairAssignments);
             this.Controls.Add(this.RepairDescription);
-            this.Name = "RepairSystem";
+            this.Name = "RepairSystemForm";
             this.Text = "RepairSystem";
             this.ResumeLayout(false);
 
