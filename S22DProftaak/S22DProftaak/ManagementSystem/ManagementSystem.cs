@@ -7,6 +7,9 @@ using S22DProftaak.General;
 
 namespace S22DProftaak.BeheerSysteem
 {
+    /// <summary>
+    /// management class
+    /// </summary>
     class ManagementSystem
     {
         public ManagementSystem()
