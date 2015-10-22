@@ -18,14 +18,14 @@ namespace S22DProftaak.Action
 
         }
 
-        /// <summary>
-        /// This method adds a cleaner to this action
-        /// </summary>
-        /// <param name="cleaner"></param>
-        /// <returns></returns>
-        public bool AddCleaner(User cleaner)
-        {
-            throw new NotImplementedException();
-        }
+        ///// <summary>
+        ///// This method adds a cleaner to this action
+        ///// </summary>
+        ///// <param name="cleaner"></param>
+        ///// <returns></returns>
+        //public bool AddCleaner(User cleaner)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

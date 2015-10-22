@@ -18,14 +18,14 @@ namespace S22DProftaak.Action
 
             }
 
-            /// <summary>
-            /// This method adds a repairsman to this action
-            /// </summary>
-            /// <param name="repairsman"></param>
-            /// <returns></returns>
-            public bool AddRepairsman(User repairsman)
-            {
-                throw new NotImplementedException();
-            }
+            ///// <summary>
+            ///// This method adds a repairsman to this action
+            ///// </summary>
+            ///// <param name="repairsman"></param>
+            ///// <returns></returns>
+            //public bool AddRepairsman(User repairsman)
+            //{
+            //    throw new NotImplementedException();
+            //}
     }
 }
