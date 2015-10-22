@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace S22DProftaak.General
 {
-    class UserTypeEnum
+    public enum UserTypeEnum
     {
+        Driver,
+        Admin,
+        Cleaner,
+        Repairsman
     }
 }

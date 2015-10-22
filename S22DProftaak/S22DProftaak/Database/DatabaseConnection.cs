@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S22DProftaak
+namespace S22DProftaak.Database
 {
-    public enum RailType
+    class DatabaseConnection
     {
-        Rotating,
-        Reparation,
-        Washing
+        
     }
 }
