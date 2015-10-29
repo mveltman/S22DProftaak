@@ -37,7 +37,7 @@
             // 
             // CleanDescription
             // 
-            this.CleanDescription.Location = new System.Drawing.Point(251, 30);
+            this.CleanDescription.Location = new System.Drawing.Point(222, 12);
             this.CleanDescription.Name = "CleanDescription";
             this.CleanDescription.Size = new System.Drawing.Size(216, 174);
             this.CleanDescription.TabIndex = 0;
@@ -46,7 +46,7 @@
             // CleanAssignments
             // 
             this.CleanAssignments.FormattingEnabled = true;
-            this.CleanAssignments.Location = new System.Drawing.Point(12, 30);
+            this.CleanAssignments.Location = new System.Drawing.Point(12, 12);
             this.CleanAssignments.Name = "CleanAssignments";
             this.CleanAssignments.Size = new System.Drawing.Size(204, 537);
             this.CleanAssignments.TabIndex = 1;
@@ -54,7 +54,7 @@
             // CleanInProgress
             // 
             this.CleanInProgress.FormattingEnabled = true;
-            this.CleanInProgress.Location = new System.Drawing.Point(518, 30);
+            this.CleanInProgress.Location = new System.Drawing.Point(444, 12);
             this.CleanInProgress.Name = "CleanInProgress";
             this.CleanInProgress.Size = new System.Drawing.Size(204, 537);
             this.CleanInProgress.TabIndex = 2;
@@ -62,7 +62,7 @@
             // CleanButton
             // 
             this.CleanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.CleanButton.Location = new System.Drawing.Point(278, 249);
+            this.CleanButton.Location = new System.Drawing.Point(267, 192);
             this.CleanButton.Name = "CleanButton";
             this.CleanButton.Size = new System.Drawing.Size(122, 42);
             this.CleanButton.TabIndex = 3;
@@ -72,24 +72,24 @@
             // DoneButton
             // 
             this.DoneButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.DoneButton.Location = new System.Drawing.Point(763, 46);
+            this.DoneButton.Location = new System.Drawing.Point(654, 12);
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.Size = new System.Drawing.Size(122, 42);
             this.DoneButton.TabIndex = 4;
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = true;
             // 
-            // CleanSystem
+            // CleanSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 619);
+            this.ClientSize = new System.Drawing.Size(789, 561);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.CleanButton);
             this.Controls.Add(this.CleanInProgress);
             this.Controls.Add(this.CleanAssignments);
             this.Controls.Add(this.CleanDescription);
-            this.Name = "CleanSystem";
+            this.Name = "CleanSystemForm";
             this.Text = "CleanSystem";
             this.ResumeLayout(false);
 

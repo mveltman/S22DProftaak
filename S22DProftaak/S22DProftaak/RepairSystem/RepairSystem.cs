@@ -31,7 +31,7 @@ namespace S22DProftaak//.RepairSystem // commented because the references don't 
             throw new NotImplementedException();
         }
 
-        public bool AddRepairsman(Repair action, User cleaner)
+        public bool AddRepairsman(Repair action, User Repairsman)
         {
             throw new NotImplementedException();
         }
