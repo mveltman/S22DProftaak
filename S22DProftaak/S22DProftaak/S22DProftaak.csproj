@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,11 +48,11 @@
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="General\Action.cs" />
     <Compile Include="General\Clean.cs" />
+    <Compile Include="General\GeneralSystem.cs" />
     <Compile Include="General\Rail.cs" />
     <Compile Include="General\RailSection.cs" />
     <Compile Include="General\RailTypeEnum.cs" />
     <Compile Include="General\Repair.cs" />
-    <Compile Include="General\System.cs" />
     <Compile Include="General\Train.cs" />
     <Compile Include="General\User.cs" />
     <Compile Include="General\UserTypeEnum.cs" />
@@ -89,7 +90,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

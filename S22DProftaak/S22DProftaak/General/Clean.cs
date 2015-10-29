@@ -23,9 +23,9 @@ namespace S22DProftaak.Action
         /// </summary>
         /// <param name="cleaner"></param>
         /// <returns></returns>
-        public bool AddCleaner(User cleaner)
-        {
-            throw new NotImplementedException();
-        }
+       // public bool AddCleaner(User cleaner)
+       // {
+        //    throw new NotImplementedException();
+        //}
     }
 }
