@@ -23,9 +23,9 @@ namespace S22DProftaak.Action
             /// </summary>
             /// <param name="repairsman"></param>
             /// <returns></returns>
-            public bool AddRepairsman(User repairsman)
-            {
-                throw new NotImplementedException();
-            }
+           // public bool AddRepairsman(User repairsman)
+            //{
+           //     throw new NotImplementedException();
+           // }
     }
 }
