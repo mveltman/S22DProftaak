@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
 
-namespace S22DProftaak.Action
+namespace S22DProftaak.Action // the references don't work for action, but do for clean/repair.
 {
     /// <summary>
     /// This class holds the information about all Clean and Repair actions
@@ -18,13 +18,19 @@ namespace S22DProftaak.Action
         public RailSection Rail { get; private set; }
 
 
-        public Action(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
+        
+        public Action(string note, DateTime dateStart,  RailSection rail)
         {
             Note = note;
             DateStart = dateStart;
-            DateEnd = dateEnd;
+           
             Rail = rail;
         }
+        public void AddDateEnd(DateTime dateEnd)
+        {
+            DateEnd = dateEnd;
+        }
+
 
         /// <summary>
         /// This method sets the enddate from an action when the action has finished

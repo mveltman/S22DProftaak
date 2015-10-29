@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
-using S22DProftaak.RepairSystem;
+using S22DProftaak.RepairSystemForm;
 
 namespace S22DProftaak.InUitRijSysteem
 {
@@ -29,7 +29,7 @@ namespace S22DProftaak.InUitRijSysteem
             throw new NotImplementedException();
         }
 
-        public bool ApplyRepairSession(RepairSystem repairsystem)
+        public bool ApplyRepairSession(RepairSystemForm repairsystem)
         {
             throw new NotImplementedException();
         }
