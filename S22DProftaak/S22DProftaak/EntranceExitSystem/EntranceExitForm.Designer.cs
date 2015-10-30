@@ -35,7 +35,6 @@
             this.cbClean = new System.Windows.Forms.CheckBox();
             this.cbRepair = new System.Windows.Forms.CheckBox();
             this.tbRail = new System.Windows.Forms.TextBox();
-            this.cbxTram = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,21 +97,11 @@
             this.tbRail.Size = new System.Drawing.Size(156, 20);
             this.tbRail.TabIndex = 3;
             // 
-            // cbxTram
-            // 
-            this.cbxTram.FormattingEnabled = true;
-            this.cbxTram.Location = new System.Drawing.Point(118, 2);
-            this.cbxTram.Name = "cbxTram";
-            this.cbxTram.Size = new System.Drawing.Size(121, 21);
-            this.cbxTram.TabIndex = 4;
-            this.cbxTram.SelectedIndexChanged += new System.EventHandler(this.cbxTram_SelectedIndexChanged);
-            // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 91);
-            this.Controls.Add(this.cbxTram);
             this.Controls.Add(this.tbRail);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btbDescription);
@@ -135,6 +124,5 @@
         private System.Windows.Forms.CheckBox cbClean;
         private System.Windows.Forms.CheckBox cbRepair;
         private System.Windows.Forms.TextBox tbRail;
-        private System.Windows.Forms.ComboBox cbxTram;
     }
 }
