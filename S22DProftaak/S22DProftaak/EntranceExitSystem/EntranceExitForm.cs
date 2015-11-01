@@ -40,13 +40,13 @@ namespace S22DProftaak.EntranceExitSystem
             else
             {
                 // here the program checks what cb was checked and opens forms accordingly.
-                if (cbClean.Checked)
+                if (chkClean.Checked)
                 {
 
                     // open clean form forced popup.
                     enExSys.ApplyCleanSession("Todo: repair");
                 }
-                if (cbRepair.Checked)
+                if (chkRepair.Checked)
                 {
 
                     // open Repair form forced popup.
@@ -55,10 +55,10 @@ namespace S22DProftaak.EntranceExitSystem
             }
         }
 
-        private void btbDescription_Click(object sender, EventArgs e)
+        private void btnDescription_Click(object sender, EventArgs e)
         {
             string promptValue;
-            if (cbClean.Checked)
+            if (chkClean.Checked)
             {
                 promptValue = Prompt.ShowDialog("Reason:", "Clean Description");
                 // open clean form forced popup.
@@ -66,7 +66,7 @@ namespace S22DProftaak.EntranceExitSystem
                 enExSys.ApplyCleanSession("Todo: repair");
                 // TODO: description
             }
-            if (cbRepair.Checked)
+            if (chkRepair.Checked)
             {
                 promptValue = Prompt.ShowDialog("Reason:", "Repair Description");
                 // open Repair form forced popup.
