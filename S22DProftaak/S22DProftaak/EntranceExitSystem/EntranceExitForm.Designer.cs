@@ -1,4 +1,4 @@
-﻿namespace S22DProftaak.EntranceExitSystem
+﻿namespace S22DProftaak.General
 {
     partial class EntranceExitForm
     {
@@ -115,12 +115,6 @@
             this.PerformLayout();
 
         }
-
-        private void btnDescription_Click(object sender, System.EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
         #endregion
 
         private System.Windows.Forms.Button btnArrived;

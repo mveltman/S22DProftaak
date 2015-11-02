@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace S22DProftaak.EntranceExitSystem
+namespace S22DProftaak.General
 {
     public static class Prompt
     {

@@ -60,7 +60,8 @@ namespace S22DProftaak.EntranceExit
         public bool MoveTram()
         {
             // use this.CurrentTram TODO: movetrain in database class!
-            return (db.MoveTrain(this.currentTram, out error));
+            // -- return (db.MoveTrain(this.currentTram, out error));
+            throw new NotImplementedException();
         }
 
         public bool UpdateAllTrams()

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using S22DProftaak.General;
 
-namespace S22DProftaak.EntranceExitSystem
+namespace S22DProftaak.General
 {
     public partial class EntranceExitForm : Form
     {
@@ -61,8 +61,8 @@ namespace S22DProftaak.EntranceExitSystem
             if (chkClean.Checked)
             {
                 promptValue = Prompt.ShowDialog("Reason:", "Clean Description");
-                // open clean form forced popup.
-                Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
+                // open clean form forced popup. todo implement this in actions
+                // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
                 enExSys.ApplyCleanSession("Todo: repair");
                 // TODO: description
             }

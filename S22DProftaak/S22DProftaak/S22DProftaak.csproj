@@ -52,7 +52,7 @@
     <Compile Include="EntranceExitSystem\EntranceExitForm.Designer.cs">
       <DependentUpon>EntranceExitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntranceExitSystem\Prompt.cs" />
+    <Compile Include="General\Prompt.cs" />
     <Compile Include="General\Action.cs" />
     <Compile Include="General\Clean.cs" />
     <Compile Include="General\GeneralSystem.cs" />
