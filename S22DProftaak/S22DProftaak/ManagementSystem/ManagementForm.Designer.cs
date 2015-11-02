@@ -717,7 +717,6 @@
             this.Rail37Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail37Pos5rtf.TabIndex = 25;
             this.Rail37Pos5rtf.Text = "";
-            this.Rail37Pos5rtf.TextChanged += new System.EventHandler(this.Rail37Pos5rtf_TextChanged);
             this.Rail37Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos1rtf
