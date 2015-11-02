@@ -10,8 +10,24 @@ namespace S22DProftaak.EntranceExit
 {
     class EntranceExitSystem
     {
+        private Train currentTram;// { get; private set; }
+        private Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private GeneralSystem Sys = new GeneralSystem();
+        private string error = "";
+        public Train CurrenTrain { get { return currentTram; } }
+        public string Error { get { return error; } }
+
         public EntranceExitSystem()
         {
+            if (!Sys.GetTrainLoggedUser(out currentTram, out this.error))
+            {
+                // error is written. Must be shown in the form.
+            }
+            else
+            {
+                // we know the logged user and the tram used.
+            }
+            //CurrentTram = //Sys.GetLoggedUser();
             throw new NotImplementedException();
         }
         public bool EnterTrain(Train train, RailSection railsection)
@@ -41,8 +57,10 @@ namespace S22DProftaak.EntranceExit
             throw new NotImplementedException();
         }
 
-        public bool MoveTram(Train train, RailSection railsection)
+        public bool MoveTram()
         {
+            // use this.CurrentTram TODO: movetrain in database class!
+            // -- return (db.MoveTrain(this.currentTram, out error));
             throw new NotImplementedException();
         }
 
