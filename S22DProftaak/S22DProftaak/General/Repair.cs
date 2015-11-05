@@ -12,8 +12,25 @@ namespace S22DProftaak.Action
     /// </summary>
     public class Repair : Action
     {
-            public Repair(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
-                : base(note, dateStart, rail)
+            public Repair(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, Train tram)
+            : base(note, dateStart, rail, estimatedDateEnd, tram)
+            {
+
+            }
+            public Repair(string note, RailSection rail, Train tram)
+                : base(note, rail, tram)
+            {
+                
+            }
+
+            public Repair(string note, RailSection rail, int id, Train tram)
+                : base(note, rail, id, tram)
+            {
+
+            }
+
+            public Repair(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, int id, Train tram)
+                : base(note, dateStart, rail, estimatedDateEnd, id, tram)
             {
 
             }
