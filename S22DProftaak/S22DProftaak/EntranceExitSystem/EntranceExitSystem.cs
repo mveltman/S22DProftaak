@@ -4,11 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
-<<<<<<< HEAD
 
-=======
 using S22DProftaak.RepairSystem;
->>>>>>> refs/remotes/origin/Update
 
 namespace S22DProftaak.EntranceExit
 {
