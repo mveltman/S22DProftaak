@@ -45,10 +45,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddWorkerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddWorkerForm.Designer.cs">
+      <DependentUpon>AddWorkerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeForm.Designer.cs">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateActionForm.Designer.cs">
+      <DependentUpon>CreateActionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="EntranceExitSystem\EntranceExitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntranceExitSystem\EntranceExitForm.Designer.cs">
+      <DependentUpon>EntranceExitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="General\Action.cs" />
     <Compile Include="General\Clean.cs" />
     <Compile Include="General\GeneralSystem.cs" />
+    <Compile Include="General\Prompt.cs" />
     <Compile Include="General\Rail.cs" />
     <Compile Include="General\RailSection.cs" />
     <Compile Include="General\RailTypeEnum.cs" />
@@ -74,6 +99,24 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepairSystem\RepairSystem.cs" />
+    <Compile Include="WorkerInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerInformationForm.Designer.cs">
+      <DependentUpon>WorkerInformationForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddWorkerForm.resx">
+      <DependentUpon>AddWorkerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeForm.resx">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateActionForm.resx">
+      <DependentUpon>CreateActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntranceExitSystem\EntranceExitForm.resx">
+      <DependentUpon>EntranceExitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagementSystem\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WorkerInformationForm.resx">
+      <DependentUpon>WorkerInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

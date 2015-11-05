@@ -36,7 +36,7 @@ namespace S22DProftaak.EntranceExit
         }
         public bool EnterTrain(Train train, RailSection railsection)
         {
-            return db.EnterTrain(train, railsection);
+            return db.EnterTrain(train, railsection, out this._error);
             throw new NotImplementedException();
         }
 
