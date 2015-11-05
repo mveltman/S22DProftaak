@@ -21,10 +21,7 @@ namespace S22DProftaak.General
             this.RailType = railType;
             this.RailNumber = railNumber;
             this.Length = length;
-            for (int i = 0; 1 < length; i++)
-            {
-                RailSections.Add(new RailSection(i));
-            }
+           
         } // sets railtype,number,lenght,section
     }
 }

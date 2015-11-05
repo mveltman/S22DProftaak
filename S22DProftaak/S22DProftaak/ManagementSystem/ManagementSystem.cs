@@ -26,11 +26,15 @@ namespace S22DProftaak.BeheerSysteem
         {
             throw new NotImplementedException();
         }
+<<<<<<< HEAD
+        public bool OpenAction(Action.Repair action)// action action aanpassen
+=======
         public bool OpenAction(Repair action)// action action aanpassen
         {
             throw new NotImplementedException();
         }
         public bool OpenAction(Clean action)// action action aanpassen
+>>>>>>> refs/remotes/origin/Update
         {
             throw new NotImplementedException();
         }
@@ -43,7 +47,11 @@ namespace S22DProftaak.BeheerSysteem
         {
             throw new NotImplementedException();
         }
+<<<<<<< HEAD
+        public bool ApplyForAction(Action.Repair action) //aanpassen
+=======
         public bool ApplyForAction(Clean action) //aanpassen
+>>>>>>> refs/remotes/origin/Update
         {
             throw new NotImplementedException();
         }
