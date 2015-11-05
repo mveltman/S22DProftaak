@@ -289,7 +289,6 @@
             this.Rail21Pos1rtf = new System.Windows.Forms.RichTextBox();
             this.ReserveringenGbx = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.MainClickablepnl = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.TramInfoGbx.SuspendLayout();
             this.ReserveringenGbx.SuspendLayout();
@@ -717,6 +716,7 @@
             this.Rail37Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail37Pos5rtf.TabIndex = 25;
             this.Rail37Pos5rtf.Text = "";
+            this.Rail37Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail37Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos1rtf
@@ -728,6 +728,7 @@
             this.Rail36Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos1rtf.TabIndex = 26;
             this.Rail36Pos1rtf.Text = "";
+            this.Rail36Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos2rtf
@@ -739,6 +740,7 @@
             this.Rail36Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos2rtf.TabIndex = 27;
             this.Rail36Pos2rtf.Text = "";
+            this.Rail36Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos3rtf
@@ -750,6 +752,7 @@
             this.Rail36Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos3rtf.TabIndex = 28;
             this.Rail36Pos3rtf.Text = "";
+            this.Rail36Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos4rtf
@@ -761,6 +764,7 @@
             this.Rail36Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos4rtf.TabIndex = 29;
             this.Rail36Pos4rtf.Text = "";
+            this.Rail36Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail36Pos5rtf
@@ -772,6 +776,7 @@
             this.Rail36Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos5rtf.TabIndex = 30;
             this.Rail36Pos5rtf.Text = "";
+            this.Rail36Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail35Pos1rtf
@@ -783,6 +788,7 @@
             this.Rail35Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos1rtf.TabIndex = 31;
             this.Rail35Pos1rtf.Text = "";
+            this.Rail35Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail35Pos2rtf
@@ -794,6 +800,7 @@
             this.Rail35Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos2rtf.TabIndex = 32;
             this.Rail35Pos2rtf.Text = "";
+            this.Rail35Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail35Pos3rtf
@@ -805,6 +812,7 @@
             this.Rail35Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos3rtf.TabIndex = 33;
             this.Rail35Pos3rtf.Text = "";
+            this.Rail35Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail35Pos4rtf
@@ -816,6 +824,7 @@
             this.Rail35Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos4rtf.TabIndex = 34;
             this.Rail35Pos4rtf.Text = "";
+            this.Rail35Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail32Pos1rtf
@@ -827,6 +836,7 @@
             this.Rail32Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos1rtf.TabIndex = 35;
             this.Rail32Pos1rtf.Text = "";
+            this.Rail32Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail32Pos2rtf
@@ -838,6 +848,7 @@
             this.Rail32Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos2rtf.TabIndex = 36;
             this.Rail32Pos2rtf.Text = "";
+            this.Rail32Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail33Pos1rtf
@@ -849,6 +860,7 @@
             this.Rail33Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos1rtf.TabIndex = 37;
             this.Rail33Pos1rtf.Text = "";
+            this.Rail33Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail34Pos1rtf
@@ -860,6 +872,7 @@
             this.Rail34Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos1rtf.TabIndex = 38;
             this.Rail34Pos1rtf.Text = "";
+            this.Rail34Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail34Pos2rtf
@@ -871,6 +884,7 @@
             this.Rail34Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos2rtf.TabIndex = 39;
             this.Rail34Pos2rtf.Text = "";
+            this.Rail34Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail33Pos2rtf
@@ -882,6 +896,7 @@
             this.Rail33Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos2rtf.TabIndex = 40;
             this.Rail33Pos2rtf.Text = "";
+            this.Rail33Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail34Pos3rtf
@@ -893,6 +908,7 @@
             this.Rail34Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos3rtf.TabIndex = 41;
             this.Rail34Pos3rtf.Text = "";
+            this.Rail34Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail35Pos5rtf
@@ -904,6 +920,7 @@
             this.Rail35Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos5rtf.TabIndex = 42;
             this.Rail35Pos5rtf.Text = "";
+            this.Rail35Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail34Pos4rtf
@@ -915,6 +932,7 @@
             this.Rail34Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos4rtf.TabIndex = 43;
             this.Rail34Pos4rtf.Text = "";
+            this.Rail34Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail33Pos3rtf
@@ -926,6 +944,7 @@
             this.Rail33Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos3rtf.TabIndex = 44;
             this.Rail33Pos3rtf.Text = "";
+            this.Rail33Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail34Pos5rtf
@@ -937,6 +956,7 @@
             this.Rail34Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos5rtf.TabIndex = 45;
             this.Rail34Pos5rtf.Text = "";
+            this.Rail34Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail33Pos4rtf
@@ -948,6 +968,7 @@
             this.Rail33Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos4rtf.TabIndex = 46;
             this.Rail33Pos4rtf.Text = "";
+            this.Rail33Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail33Pos5rtf
@@ -959,6 +980,7 @@
             this.Rail33Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos5rtf.TabIndex = 47;
             this.Rail33Pos5rtf.Text = "";
+            this.Rail33Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail32Pos3rtf
@@ -970,6 +992,7 @@
             this.Rail32Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos3rtf.TabIndex = 48;
             this.Rail32Pos3rtf.Text = "";
+            this.Rail32Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail32Pos4rtf
@@ -981,6 +1004,7 @@
             this.Rail32Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos4rtf.TabIndex = 49;
             this.Rail32Pos4rtf.Text = "";
+            this.Rail32Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail32Pos5rtf
@@ -992,6 +1016,7 @@
             this.Rail32Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos5rtf.TabIndex = 50;
             this.Rail32Pos5rtf.Text = "";
+            this.Rail32Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail31Pos1rtf
@@ -1003,6 +1028,7 @@
             this.Rail31Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail31Pos1rtf.TabIndex = 51;
             this.Rail31Pos1rtf.Text = "";
+            this.Rail31Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail31Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail30Pos1rtf
@@ -1014,6 +1040,7 @@
             this.Rail30Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail30Pos1rtf.TabIndex = 52;
             this.Rail30Pos1rtf.Text = "";
+            this.Rail30Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail30Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail31Pos2rtf
@@ -1025,6 +1052,7 @@
             this.Rail31Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail31Pos2rtf.TabIndex = 53;
             this.Rail31Pos2rtf.Text = "";
+            this.Rail31Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail31Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail30Pos2rtf
@@ -1036,6 +1064,7 @@
             this.Rail30Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail30Pos2rtf.TabIndex = 54;
             this.Rail30Pos2rtf.Text = "";
+            this.Rail30Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail30Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail31Pos3rtf
@@ -1047,6 +1076,7 @@
             this.Rail31Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail31Pos3rtf.TabIndex = 55;
             this.Rail31Pos3rtf.Text = "";
+            this.Rail31Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail31Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail30Pos3rtf
@@ -1058,6 +1088,7 @@
             this.Rail30Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail30Pos3rtf.TabIndex = 56;
             this.Rail30Pos3rtf.Text = "";
+            this.Rail30Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail30Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail31Pos4rtf
@@ -1069,6 +1100,7 @@
             this.Rail31Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail31Pos4rtf.TabIndex = 57;
             this.Rail31Pos4rtf.Text = "";
+            this.Rail31Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail31Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail30Pos4rtf
@@ -1080,6 +1112,7 @@
             this.Rail30Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail30Pos4rtf.TabIndex = 58;
             this.Rail30Pos4rtf.Text = "";
+            this.Rail30Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail30Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40rtf
@@ -1102,6 +1135,7 @@
             this.Rail40Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos1rtf.TabIndex = 60;
             this.Rail40Pos1rtf.Text = "";
+            this.Rail40Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos2rtf
@@ -1113,6 +1147,7 @@
             this.Rail40Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos2rtf.TabIndex = 61;
             this.Rail40Pos2rtf.Text = "";
+            this.Rail40Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos3rtf
@@ -1124,6 +1159,7 @@
             this.Rail40Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos3rtf.TabIndex = 62;
             this.Rail40Pos3rtf.Text = "";
+            this.Rail40Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos4rtf
@@ -1135,6 +1171,7 @@
             this.Rail40Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos4rtf.TabIndex = 63;
             this.Rail40Pos4rtf.Text = "";
+            this.Rail40Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos5rtf
@@ -1146,6 +1183,7 @@
             this.Rail40Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos5rtf.TabIndex = 64;
             this.Rail40Pos5rtf.Text = "";
+            this.Rail40Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos6rtf
@@ -1157,6 +1195,7 @@
             this.Rail40Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos6rtf.TabIndex = 65;
             this.Rail40Pos6rtf.Text = "";
+            this.Rail40Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos7rtf
@@ -1168,6 +1207,7 @@
             this.Rail40Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos7rtf.TabIndex = 66;
             this.Rail40Pos7rtf.Text = "";
+            this.Rail40Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail40Pos8rtf
@@ -1179,6 +1219,7 @@
             this.Rail40Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos8rtf.TabIndex = 67;
             this.Rail40Pos8rtf.Text = "";
+            this.Rail40Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail41rtf
@@ -1201,6 +1242,7 @@
             this.Rail41Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos1rtf.TabIndex = 69;
             this.Rail41Pos1rtf.Text = "";
+            this.Rail41Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail41Pos2rtf
@@ -1212,6 +1254,7 @@
             this.Rail41Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos2rtf.TabIndex = 70;
             this.Rail41Pos2rtf.Text = "";
+            this.Rail41Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail41Pos3rtf
@@ -1223,6 +1266,7 @@
             this.Rail41Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos3rtf.TabIndex = 71;
             this.Rail41Pos3rtf.Text = "";
+            this.Rail41Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail41Pos4rtf
@@ -1234,6 +1278,7 @@
             this.Rail41Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos4rtf.TabIndex = 72;
             this.Rail41Pos4rtf.Text = "";
+            this.Rail41Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail41Pos5rtf
@@ -1245,6 +1290,7 @@
             this.Rail41Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos5rtf.TabIndex = 73;
             this.Rail41Pos5rtf.Text = "";
+            this.Rail41Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail42rtf
@@ -1267,6 +1313,7 @@
             this.Rail42Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos1rtf.TabIndex = 75;
             this.Rail42Pos1rtf.Text = "";
+            this.Rail42Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail42Pos2rtf
@@ -1278,6 +1325,7 @@
             this.Rail42Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos2rtf.TabIndex = 76;
             this.Rail42Pos2rtf.Text = "";
+            this.Rail42Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail42Pos3rtf
@@ -1289,6 +1337,7 @@
             this.Rail42Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos3rtf.TabIndex = 77;
             this.Rail42Pos3rtf.Text = "";
+            this.Rail42Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail42Pos4rtf
@@ -1300,6 +1349,7 @@
             this.Rail42Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos4rtf.TabIndex = 78;
             this.Rail42Pos4rtf.Text = "";
+            this.Rail42Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail42Pos5rtf
@@ -1311,6 +1361,7 @@
             this.Rail42Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos5rtf.TabIndex = 79;
             this.Rail42Pos5rtf.Text = "";
+            this.Rail42Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail43rtf
@@ -1333,6 +1384,7 @@
             this.Rail43Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos1rtf.TabIndex = 81;
             this.Rail43Pos1rtf.Text = "";
+            this.Rail43Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail43Pos2rtf
@@ -1344,6 +1396,7 @@
             this.Rail43Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos2rtf.TabIndex = 82;
             this.Rail43Pos2rtf.Text = "";
+            this.Rail43Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail43Pos3rtf
@@ -1355,6 +1408,7 @@
             this.Rail43Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos3rtf.TabIndex = 83;
             this.Rail43Pos3rtf.Text = "";
+            this.Rail43Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail43Pos4rtf
@@ -1366,6 +1420,7 @@
             this.Rail43Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos4rtf.TabIndex = 84;
             this.Rail43Pos4rtf.Text = "";
+            this.Rail43Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail43Pos5rtf
@@ -1377,6 +1432,7 @@
             this.Rail43Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos5rtf.TabIndex = 85;
             this.Rail43Pos5rtf.Text = "";
+            this.Rail43Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail44rtf
@@ -1399,6 +1455,7 @@
             this.Rail44Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos1rtf.TabIndex = 87;
             this.Rail44Pos1rtf.Text = "";
+            this.Rail44Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail44Pos2rtf
@@ -1410,6 +1467,7 @@
             this.Rail44Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos2rtf.TabIndex = 88;
             this.Rail44Pos2rtf.Text = "";
+            this.Rail44Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail44Pos3rtf
@@ -1421,6 +1479,7 @@
             this.Rail44Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos3rtf.TabIndex = 89;
             this.Rail44Pos3rtf.Text = "";
+            this.Rail44Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail44Pos4rtf
@@ -1432,6 +1491,7 @@
             this.Rail44Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos4rtf.TabIndex = 90;
             this.Rail44Pos4rtf.Text = "";
+            this.Rail44Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail44Pos5rtf
@@ -1443,6 +1503,7 @@
             this.Rail44Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos5rtf.TabIndex = 91;
             this.Rail44Pos5rtf.Text = "";
+            this.Rail44Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45rtf
@@ -1465,6 +1526,7 @@
             this.Rail45Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos1rtf.TabIndex = 93;
             this.Rail45Pos1rtf.Text = "";
+            this.Rail45Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos2rtf
@@ -1476,6 +1538,7 @@
             this.Rail45Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos2rtf.TabIndex = 94;
             this.Rail45Pos2rtf.Text = "";
+            this.Rail45Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos3rtf
@@ -1487,6 +1550,7 @@
             this.Rail45Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos3rtf.TabIndex = 95;
             this.Rail45Pos3rtf.Text = "";
+            this.Rail45Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos4rtf
@@ -1498,6 +1562,7 @@
             this.Rail45Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos4rtf.TabIndex = 96;
             this.Rail45Pos4rtf.Text = "";
+            this.Rail45Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos5rtf
@@ -1509,6 +1574,7 @@
             this.Rail45Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos5rtf.TabIndex = 97;
             this.Rail45Pos5rtf.Text = "";
+            this.Rail45Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos6rtf
@@ -1520,6 +1586,7 @@
             this.Rail45Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos6rtf.TabIndex = 98;
             this.Rail45Pos6rtf.Text = "";
+            this.Rail45Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos7rtf
@@ -1531,6 +1598,7 @@
             this.Rail45Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos7rtf.TabIndex = 99;
             this.Rail45Pos7rtf.Text = "";
+            this.Rail45Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos8rtf
@@ -1542,6 +1610,7 @@
             this.Rail45Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos8rtf.TabIndex = 100;
             this.Rail45Pos8rtf.Text = "";
+            this.Rail45Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos9rtf
@@ -1553,6 +1622,7 @@
             this.Rail45Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos9rtf.TabIndex = 101;
             this.Rail45Pos9rtf.Text = "";
+            this.Rail45Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail45Pos10rtf
@@ -1564,6 +1634,7 @@
             this.Rail45Pos10rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos10rtf.TabIndex = 102;
             this.Rail45Pos10rtf.Text = "";
+            this.Rail45Pos10rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos10rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58rtf
@@ -1586,6 +1657,7 @@
             this.Rail58Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos1rtf.TabIndex = 105;
             this.Rail58Pos1rtf.Text = "";
+            this.Rail58Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58Pos2rtf
@@ -1597,6 +1669,7 @@
             this.Rail58Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos2rtf.TabIndex = 106;
             this.Rail58Pos2rtf.Text = "";
+            this.Rail58Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58Pos3rtf
@@ -1608,6 +1681,7 @@
             this.Rail58Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos3rtf.TabIndex = 107;
             this.Rail58Pos3rtf.Text = "";
+            this.Rail58Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58Pos4rtf
@@ -1619,6 +1693,7 @@
             this.Rail58Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos4rtf.TabIndex = 108;
             this.Rail58Pos4rtf.Text = "";
+            this.Rail58Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58Pos5rtf
@@ -1630,6 +1705,7 @@
             this.Rail58Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos5rtf.TabIndex = 109;
             this.Rail58Pos5rtf.Text = "";
+            this.Rail58Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail58Pos6rtf
@@ -1641,6 +1717,7 @@
             this.Rail58Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos6rtf.TabIndex = 110;
             this.Rail58Pos6rtf.Text = "";
+            this.Rail58Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57rtf
@@ -1663,6 +1740,7 @@
             this.Rail57Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos1rtf.TabIndex = 112;
             this.Rail57Pos1rtf.Text = "";
+            this.Rail57Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56rtf
@@ -1938,6 +2016,7 @@
             this.Rail57Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos2rtf.TabIndex = 138;
             this.Rail57Pos2rtf.Text = "";
+            this.Rail57Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos3rtf
@@ -1949,6 +2028,7 @@
             this.Rail57Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos3rtf.TabIndex = 139;
             this.Rail57Pos3rtf.Text = "";
+            this.Rail57Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos4rtf
@@ -1960,6 +2040,7 @@
             this.Rail57Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos4rtf.TabIndex = 140;
             this.Rail57Pos4rtf.Text = "";
+            this.Rail57Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos8rtf
@@ -1971,6 +2052,7 @@
             this.Rail57Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos8rtf.TabIndex = 144;
             this.Rail57Pos8rtf.Text = "";
+            this.Rail57Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos7rtf
@@ -1982,6 +2064,7 @@
             this.Rail57Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos7rtf.TabIndex = 143;
             this.Rail57Pos7rtf.Text = "";
+            this.Rail57Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos6rtf
@@ -1993,6 +2076,7 @@
             this.Rail57Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos6rtf.TabIndex = 142;
             this.Rail57Pos6rtf.Text = "";
+            this.Rail57Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos5rtf
@@ -2004,6 +2088,7 @@
             this.Rail57Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos5rtf.TabIndex = 141;
             this.Rail57Pos5rtf.Text = "";
+            this.Rail57Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail57Pos9rtf
@@ -2015,6 +2100,7 @@
             this.Rail57Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos9rtf.TabIndex = 145;
             this.Rail57Pos9rtf.Text = "";
+            this.Rail57Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos9rtf
@@ -2026,6 +2112,7 @@
             this.Rail56Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos9rtf.TabIndex = 154;
             this.Rail56Pos9rtf.Text = "";
+            this.Rail56Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos8rtf
@@ -2037,6 +2124,7 @@
             this.Rail56Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos8rtf.TabIndex = 153;
             this.Rail56Pos8rtf.Text = "";
+            this.Rail56Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos7rtf
@@ -2048,6 +2136,7 @@
             this.Rail56Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos7rtf.TabIndex = 152;
             this.Rail56Pos7rtf.Text = "";
+            this.Rail56Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos6rtf
@@ -2059,6 +2148,7 @@
             this.Rail56Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos6rtf.TabIndex = 151;
             this.Rail56Pos6rtf.Text = "";
+            this.Rail56Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos5rtf
@@ -2070,6 +2160,7 @@
             this.Rail56Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos5rtf.TabIndex = 150;
             this.Rail56Pos5rtf.Text = "";
+            this.Rail56Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos4rtf
@@ -2081,6 +2172,7 @@
             this.Rail56Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos4rtf.TabIndex = 149;
             this.Rail56Pos4rtf.Text = "";
+            this.Rail56Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos3rtf
@@ -2092,6 +2184,7 @@
             this.Rail56Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos3rtf.TabIndex = 148;
             this.Rail56Pos3rtf.Text = "";
+            this.Rail56Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos2rtf
@@ -2103,6 +2196,7 @@
             this.Rail56Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos2rtf.TabIndex = 147;
             this.Rail56Pos2rtf.Text = "";
+            this.Rail56Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail56Pos1rtf
@@ -2114,6 +2208,7 @@
             this.Rail56Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos1rtf.TabIndex = 146;
             this.Rail56Pos1rtf.Text = "";
+            this.Rail56Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos9rtf
@@ -2125,6 +2220,7 @@
             this.Rail55Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos9rtf.TabIndex = 163;
             this.Rail55Pos9rtf.Text = "";
+            this.Rail55Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos8rtf
@@ -2136,6 +2232,7 @@
             this.Rail55Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos8rtf.TabIndex = 162;
             this.Rail55Pos8rtf.Text = "";
+            this.Rail55Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos7rtf
@@ -2147,6 +2244,7 @@
             this.Rail55Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos7rtf.TabIndex = 161;
             this.Rail55Pos7rtf.Text = "";
+            this.Rail55Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos6rtf
@@ -2158,6 +2256,7 @@
             this.Rail55Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos6rtf.TabIndex = 160;
             this.Rail55Pos6rtf.Text = "";
+            this.Rail55Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos5rtf
@@ -2169,6 +2268,7 @@
             this.Rail55Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos5rtf.TabIndex = 159;
             this.Rail55Pos5rtf.Text = "";
+            this.Rail55Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos4rtf
@@ -2180,6 +2280,7 @@
             this.Rail55Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos4rtf.TabIndex = 158;
             this.Rail55Pos4rtf.Text = "";
+            this.Rail55Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos3rtf
@@ -2191,6 +2292,7 @@
             this.Rail55Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos3rtf.TabIndex = 157;
             this.Rail55Pos3rtf.Text = "";
+            this.Rail55Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos2rtf
@@ -2202,6 +2304,7 @@
             this.Rail55Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos2rtf.TabIndex = 156;
             this.Rail55Pos2rtf.Text = "";
+            this.Rail55Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail55Pos1rtf
@@ -2213,6 +2316,7 @@
             this.Rail55Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos1rtf.TabIndex = 155;
             this.Rail55Pos1rtf.Text = "";
+            this.Rail55Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos8rtf
@@ -2224,6 +2328,7 @@
             this.Rail54Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos8rtf.TabIndex = 171;
             this.Rail54Pos8rtf.Text = "";
+            this.Rail54Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos7rtf
@@ -2235,6 +2340,7 @@
             this.Rail54Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos7rtf.TabIndex = 170;
             this.Rail54Pos7rtf.Text = "";
+            this.Rail54Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos6rtf
@@ -2246,6 +2352,7 @@
             this.Rail54Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos6rtf.TabIndex = 169;
             this.Rail54Pos6rtf.Text = "";
+            this.Rail54Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos5rtf
@@ -2257,6 +2364,7 @@
             this.Rail54Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos5rtf.TabIndex = 168;
             this.Rail54Pos5rtf.Text = "";
+            this.Rail54Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos4rtf
@@ -2268,6 +2376,7 @@
             this.Rail54Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos4rtf.TabIndex = 167;
             this.Rail54Pos4rtf.Text = "";
+            this.Rail54Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos3rtf
@@ -2279,6 +2388,7 @@
             this.Rail54Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos3rtf.TabIndex = 166;
             this.Rail54Pos3rtf.Text = "";
+            this.Rail54Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos2rtf
@@ -2290,6 +2400,7 @@
             this.Rail54Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos2rtf.TabIndex = 165;
             this.Rail54Pos2rtf.Text = "";
+            this.Rail54Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail54Pos1rtf
@@ -2301,6 +2412,7 @@
             this.Rail54Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos1rtf.TabIndex = 164;
             this.Rail54Pos1rtf.Text = "";
+            this.Rail54Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos8rtf
@@ -2312,6 +2424,7 @@
             this.Rail53Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos8rtf.TabIndex = 179;
             this.Rail53Pos8rtf.Text = "";
+            this.Rail53Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos7rtf
@@ -2323,6 +2436,7 @@
             this.Rail53Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos7rtf.TabIndex = 178;
             this.Rail53Pos7rtf.Text = "";
+            this.Rail53Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos6rtf
@@ -2334,6 +2448,7 @@
             this.Rail53Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos6rtf.TabIndex = 177;
             this.Rail53Pos6rtf.Text = "";
+            this.Rail53Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos5rtf
@@ -2345,6 +2460,7 @@
             this.Rail53Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos5rtf.TabIndex = 176;
             this.Rail53Pos5rtf.Text = "";
+            this.Rail53Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos4rtf
@@ -2356,6 +2472,7 @@
             this.Rail53Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos4rtf.TabIndex = 175;
             this.Rail53Pos4rtf.Text = "";
+            this.Rail53Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos3rtf
@@ -2367,6 +2484,7 @@
             this.Rail53Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos3rtf.TabIndex = 174;
             this.Rail53Pos3rtf.Text = "";
+            this.Rail53Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos2rtf
@@ -2378,6 +2496,7 @@
             this.Rail53Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos2rtf.TabIndex = 173;
             this.Rail53Pos2rtf.Text = "";
+            this.Rail53Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail53Pos1rtf
@@ -2389,6 +2508,7 @@
             this.Rail53Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos1rtf.TabIndex = 172;
             this.Rail53Pos1rtf.Text = "";
+            this.Rail53Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos8rtf
@@ -2400,6 +2520,7 @@
             this.Rail52Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos8rtf.TabIndex = 187;
             this.Rail52Pos8rtf.Text = "";
+            this.Rail52Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos7rtf
@@ -2411,6 +2532,7 @@
             this.Rail52Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos7rtf.TabIndex = 186;
             this.Rail52Pos7rtf.Text = "";
+            this.Rail52Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos6rtf
@@ -2422,6 +2544,7 @@
             this.Rail52Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos6rtf.TabIndex = 185;
             this.Rail52Pos6rtf.Text = "";
+            this.Rail52Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos5rtf
@@ -2433,6 +2556,7 @@
             this.Rail52Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos5rtf.TabIndex = 184;
             this.Rail52Pos5rtf.Text = "";
+            this.Rail52Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos4rtf
@@ -2444,6 +2568,7 @@
             this.Rail52Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos4rtf.TabIndex = 183;
             this.Rail52Pos4rtf.Text = "";
+            this.Rail52Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos3rtf
@@ -2455,6 +2580,7 @@
             this.Rail52Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos3rtf.TabIndex = 182;
             this.Rail52Pos3rtf.Text = "";
+            this.Rail52Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos2rtf
@@ -2466,6 +2592,7 @@
             this.Rail52Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos2rtf.TabIndex = 181;
             this.Rail52Pos2rtf.Text = "";
+            this.Rail52Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail52Pos1rtf
@@ -2477,6 +2604,7 @@
             this.Rail52Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos1rtf.TabIndex = 180;
             this.Rail52Pos1rtf.Text = "";
+            this.Rail52Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos7rtf
@@ -2488,6 +2616,7 @@
             this.Rail51Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos7rtf.TabIndex = 194;
             this.Rail51Pos7rtf.Text = "";
+            this.Rail51Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos6rtf
@@ -2499,6 +2628,7 @@
             this.Rail51Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos6rtf.TabIndex = 193;
             this.Rail51Pos6rtf.Text = "";
+            this.Rail51Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos5rtf
@@ -2510,6 +2640,7 @@
             this.Rail51Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos5rtf.TabIndex = 192;
             this.Rail51Pos5rtf.Text = "";
+            this.Rail51Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos4rtf
@@ -2521,6 +2652,7 @@
             this.Rail51Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos4rtf.TabIndex = 191;
             this.Rail51Pos4rtf.Text = "";
+            this.Rail51Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos3rtf
@@ -2532,6 +2664,7 @@
             this.Rail51Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos3rtf.TabIndex = 190;
             this.Rail51Pos3rtf.Text = "";
+            this.Rail51Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos2rtf
@@ -2543,6 +2676,7 @@
             this.Rail51Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos2rtf.TabIndex = 189;
             this.Rail51Pos2rtf.Text = "";
+            this.Rail51Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail51Pos1rtf
@@ -2554,6 +2688,7 @@
             this.Rail51Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos1rtf.TabIndex = 188;
             this.Rail51Pos1rtf.Text = "";
+            this.Rail51Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos6rtf
@@ -2565,6 +2700,7 @@
             this.Rail64Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos6rtf.TabIndex = 200;
             this.Rail64Pos6rtf.Text = "";
+            this.Rail64Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos5rtf
@@ -2576,6 +2712,7 @@
             this.Rail64Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos5rtf.TabIndex = 199;
             this.Rail64Pos5rtf.Text = "";
+            this.Rail64Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos4rtf
@@ -2587,6 +2724,7 @@
             this.Rail64Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos4rtf.TabIndex = 198;
             this.Rail64Pos4rtf.Text = "";
+            this.Rail64Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos3rtf
@@ -2598,6 +2736,7 @@
             this.Rail64Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos3rtf.TabIndex = 197;
             this.Rail64Pos3rtf.Text = "";
+            this.Rail64Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos2rtf
@@ -2609,6 +2748,7 @@
             this.Rail64Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos2rtf.TabIndex = 196;
             this.Rail64Pos2rtf.Text = "";
+            this.Rail64Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail64Pos1rtf
@@ -2620,6 +2760,7 @@
             this.Rail64Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos1rtf.TabIndex = 195;
             this.Rail64Pos1rtf.Text = "";
+            this.Rail64Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail63Pos5rtf
@@ -2631,6 +2772,7 @@
             this.Rail63Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos5rtf.TabIndex = 205;
             this.Rail63Pos5rtf.Text = "";
+            this.Rail63Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail63Pos4rtf
@@ -2642,6 +2784,7 @@
             this.Rail63Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos4rtf.TabIndex = 204;
             this.Rail63Pos4rtf.Text = "";
+            this.Rail63Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail63Pos3rtf
@@ -2653,6 +2796,7 @@
             this.Rail63Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos3rtf.TabIndex = 203;
             this.Rail63Pos3rtf.Text = "";
+            this.Rail63Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail63Pos2rtf
@@ -2664,6 +2808,7 @@
             this.Rail63Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos2rtf.TabIndex = 202;
             this.Rail63Pos2rtf.Text = "";
+            this.Rail63Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail63Pos1rtf
@@ -2675,6 +2820,7 @@
             this.Rail63Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos1rtf.TabIndex = 201;
             this.Rail63Pos1rtf.Text = "";
+            this.Rail63Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail62Pos4rtf
@@ -2686,6 +2832,7 @@
             this.Rail62Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail62Pos4rtf.TabIndex = 209;
             this.Rail62Pos4rtf.Text = "";
+            this.Rail62Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail62Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail62Pos3rtf
@@ -2697,6 +2844,7 @@
             this.Rail62Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail62Pos3rtf.TabIndex = 208;
             this.Rail62Pos3rtf.Text = "";
+            this.Rail62Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail62Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail62Pos2rtf
@@ -2708,6 +2856,7 @@
             this.Rail62Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail62Pos2rtf.TabIndex = 207;
             this.Rail62Pos2rtf.Text = "";
+            this.Rail62Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail62Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail62Pos1rtf
@@ -2719,6 +2868,7 @@
             this.Rail62Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail62Pos1rtf.TabIndex = 206;
             this.Rail62Pos1rtf.Text = "";
+            this.Rail62Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail62Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail61Pos4rtf
@@ -2730,6 +2880,7 @@
             this.Rail61Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail61Pos4rtf.TabIndex = 213;
             this.Rail61Pos4rtf.Text = "";
+            this.Rail61Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail61Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail61Pos3rtf
@@ -2741,6 +2892,7 @@
             this.Rail61Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail61Pos3rtf.TabIndex = 212;
             this.Rail61Pos3rtf.Text = "";
+            this.Rail61Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail61Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail61Pos2rtf
@@ -2752,6 +2904,7 @@
             this.Rail61Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail61Pos2rtf.TabIndex = 211;
             this.Rail61Pos2rtf.Text = "";
+            this.Rail61Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail61Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail61Pos1rtf
@@ -2763,6 +2916,7 @@
             this.Rail61Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail61Pos1rtf.TabIndex = 210;
             this.Rail61Pos1rtf.Text = "";
+            this.Rail61Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail61Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail75Pos4rtf
@@ -2774,6 +2928,7 @@
             this.Rail75Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail75Pos4rtf.TabIndex = 217;
             this.Rail75Pos4rtf.Text = "";
+            this.Rail75Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail75Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail75Pos3rtf
@@ -2785,6 +2940,7 @@
             this.Rail75Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail75Pos3rtf.TabIndex = 216;
             this.Rail75Pos3rtf.Text = "";
+            this.Rail75Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail75Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail75Pos2rtf
@@ -2796,6 +2952,7 @@
             this.Rail75Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail75Pos2rtf.TabIndex = 215;
             this.Rail75Pos2rtf.Text = "";
+            this.Rail75Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail75Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail75Pos1rtf
@@ -2807,6 +2964,7 @@
             this.Rail75Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail75Pos1rtf.TabIndex = 214;
             this.Rail75Pos1rtf.Text = "";
+            this.Rail75Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail75Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail74Pos5rtf
@@ -2818,6 +2976,7 @@
             this.Rail74Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos5rtf.TabIndex = 222;
             this.Rail74Pos5rtf.Text = "";
+            this.Rail74Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail74Pos4rtf
@@ -2829,6 +2988,7 @@
             this.Rail74Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos4rtf.TabIndex = 221;
             this.Rail74Pos4rtf.Text = "";
+            this.Rail74Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail74Pos3rtf
@@ -2840,6 +3000,7 @@
             this.Rail74Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos3rtf.TabIndex = 220;
             this.Rail74Pos3rtf.Text = "";
+            this.Rail74Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail74Pos2rtf
@@ -2851,6 +3012,7 @@
             this.Rail74Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos2rtf.TabIndex = 219;
             this.Rail74Pos2rtf.Text = "";
+            this.Rail74Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail74Pos1rtf
@@ -2862,6 +3024,7 @@
             this.Rail74Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos1rtf.TabIndex = 218;
             this.Rail74Pos1rtf.Text = "";
+            this.Rail74Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail76Pos5rtf
@@ -2873,6 +3036,7 @@
             this.Rail76Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos5rtf.TabIndex = 227;
             this.Rail76Pos5rtf.Text = "";
+            this.Rail76Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail76Pos4rtf
@@ -2884,6 +3048,7 @@
             this.Rail76Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos4rtf.TabIndex = 226;
             this.Rail76Pos4rtf.Text = "";
+            this.Rail76Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail76Pos3rtf
@@ -2895,6 +3060,7 @@
             this.Rail76Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos3rtf.TabIndex = 225;
             this.Rail76Pos3rtf.Text = "";
+            this.Rail76Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail76Pos2rtf
@@ -2906,6 +3072,7 @@
             this.Rail76Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos2rtf.TabIndex = 224;
             this.Rail76Pos2rtf.Text = "";
+            this.Rail76Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail76Pos1rtf
@@ -2917,6 +3084,7 @@
             this.Rail76Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos1rtf.TabIndex = 223;
             this.Rail76Pos1rtf.Text = "";
+            this.Rail76Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail77Pos5rtf
@@ -2928,6 +3096,7 @@
             this.Rail77Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos5rtf.TabIndex = 232;
             this.Rail77Pos5rtf.Text = "";
+            this.Rail77Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail77Pos4rtf
@@ -2939,6 +3108,7 @@
             this.Rail77Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos4rtf.TabIndex = 231;
             this.Rail77Pos4rtf.Text = "";
+            this.Rail77Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail77Pos3rtf
@@ -2950,6 +3120,7 @@
             this.Rail77Pos3rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos3rtf.TabIndex = 230;
             this.Rail77Pos3rtf.Text = "";
+            this.Rail77Pos3rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos3rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail77Pos2rtf
@@ -2961,6 +3132,7 @@
             this.Rail77Pos2rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos2rtf.TabIndex = 229;
             this.Rail77Pos2rtf.Text = "";
+            this.Rail77Pos2rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos2rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail77Pos1rtf
@@ -2972,6 +3144,7 @@
             this.Rail77Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos1rtf.TabIndex = 228;
             this.Rail77Pos1rtf.Text = "";
+            this.Rail77Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail20Pos1rtf
@@ -2983,6 +3156,7 @@
             this.Rail20Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail20Pos1rtf.TabIndex = 241;
             this.Rail20Pos1rtf.Text = "";
+            this.Rail20Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail20Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail19Pos1rtf
@@ -2994,6 +3168,7 @@
             this.Rail19Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail19Pos1rtf.TabIndex = 240;
             this.Rail19Pos1rtf.Text = "";
+            this.Rail19Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail19Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail18Pos1rtf
@@ -3005,6 +3180,7 @@
             this.Rail18Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail18Pos1rtf.TabIndex = 239;
             this.Rail18Pos1rtf.Text = "";
+            this.Rail18Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail18Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail17Pos1rtf
@@ -3016,6 +3192,7 @@
             this.Rail17Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail17Pos1rtf.TabIndex = 238;
             this.Rail17Pos1rtf.Text = "";
+            this.Rail17Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail17Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail16Pos1rtf
@@ -3027,6 +3204,7 @@
             this.Rail16Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail16Pos1rtf.TabIndex = 237;
             this.Rail16Pos1rtf.Text = "";
+            this.Rail16Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail16Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail15Pos1rtf
@@ -3038,6 +3216,7 @@
             this.Rail15Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail15Pos1rtf.TabIndex = 236;
             this.Rail15Pos1rtf.Text = "";
+            this.Rail15Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail15Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail14Pos1rtf
@@ -3049,6 +3228,7 @@
             this.Rail14Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail14Pos1rtf.TabIndex = 235;
             this.Rail14Pos1rtf.Text = "";
+            this.Rail14Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail14Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail13Pos1rtf
@@ -3060,6 +3240,7 @@
             this.Rail13Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail13Pos1rtf.TabIndex = 234;
             this.Rail13Pos1rtf.Text = "";
+            this.Rail13Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail13Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail12Pos1rtf
@@ -3071,6 +3252,7 @@
             this.Rail12Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail12Pos1rtf.TabIndex = 233;
             this.Rail12Pos1rtf.Text = "";
+            this.Rail12Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail12Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // Rail21Pos1rtf
@@ -3082,6 +3264,7 @@
             this.Rail21Pos1rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail21Pos1rtf.TabIndex = 242;
             this.Rail21Pos1rtf.Text = "";
+            this.Rail21Pos1rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail21Pos1rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // ReserveringenGbx
@@ -3101,14 +3284,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(159, 277);
             this.listBox1.TabIndex = 244;
-            // 
-            // MainClickablepnl
-            // 
-            this.MainClickablepnl.Location = new System.Drawing.Point(220, 52);
-            this.MainClickablepnl.Name = "MainClickablepnl";
-            this.MainClickablepnl.Size = new System.Drawing.Size(1267, 978);
-            this.MainClickablepnl.TabIndex = 244;
-            this.MainClickablepnl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
             // ManagementForm
             // 
@@ -3353,7 +3528,6 @@
             this.Controls.Add(this.TramInfoGbx);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.OptionsGbx);
-            this.Controls.Add(this.MainClickablepnl);
             this.Name = "ManagementForm";
             this.Text = "ManagementForm";
             this.Load += new System.EventHandler(this.ManagementForm_Load);
@@ -3629,6 +3803,5 @@
         private System.Windows.Forms.ToolStripMenuItem voerGegevensInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem repairToolStripMenuItem;
-        private System.Windows.Forms.Panel MainClickablepnl;
     }
 }

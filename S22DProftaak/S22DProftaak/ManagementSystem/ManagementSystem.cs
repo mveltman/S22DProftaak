@@ -5,32 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
 using System.Windows.Forms;
+using S22DProftaak.Database;
+using S22DProftaak.Action;
 
-namespace S22DProftaak.BeheerSysteem
+namespace S22DProftaak.ManagementSystem
 {
     /// <summary>
     /// management class
     /// </summary>
-    class ManagementSystem
+    public class ManagementSystem
     {
-        private List<Train> trains;
+        private List<Train> trains = new List<Train>();
+        private DatabaseConnection db = new DatabaseConnection();
+        
         public ManagementSystem()
         {
-            throw new NotImplementedException();
+            
         }
         public bool GetTrains()
         {
-            throw new NotImplementedException();
+            this.trains = db.GetTrains();
         }
         public bool OpenRemise()
         {
-            throw new NotImplementedException();
+            db
         }
         public bool OpenRails()
         {
-            throw new NotImplementedException();
+            db.
         }
-        public bool OpenAction(Action action)// action action aanpassen
+        public bool OpenAction(Action.Action action)// action action aanpassen
         {
             throw new NotImplementedException();
         }
@@ -38,11 +42,11 @@ namespace S22DProftaak.BeheerSysteem
         {
             throw new NotImplementedException();
         }
-        public bool ApplyForAction(Action action) //aanpassen
+        public bool ApplyForAction(Action.Action action) //aanpassen
         {
             throw new NotImplementedException();
         }
-        public bool ValidateNewInput(object sender, EventArgs e)
+        public bool ValidateNewInput(object sender)
         {
             GetTrains();
             RichTextBox currentbox = sender as RichTextBox;

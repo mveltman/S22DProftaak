@@ -16,10 +16,10 @@ namespace S22DProftaak.ManagementSystem
     public partial class ManagementForm : Form
     {
         private string oldtext;
+        private ManagementSystem mg = new ManagementSystem();
         public ManagementForm()
         {
-            InitializeComponent();
-            
+            InitializeComponent();  
         }
         
 
@@ -38,6 +38,9 @@ namespace S22DProftaak.ManagementSystem
             if(e.Button == MouseButtons.Right)
             {
                 //create new prompt here.
+                ContextMenuStrip cms = new ContextMenuStrip();
+                ToolStripMenuItem cmsBlock = new ToolStripMenuItem("Block");
+                cmsBlock.Click += new EventHandler(cmsBlock_Click);
 
             }
             else if(e.Button == MouseButtons.Left)
@@ -52,13 +55,31 @@ namespace S22DProftaak.ManagementSystem
 
         private void TextChanged(object sender, EventArgs e)
         {
-          
+            if (mg.ValidateNewInput(sender))
+            {
+
+            }
+            else
+            {
+                RichTextBox currentbox = sender as RichTextBox;
+                
+            }
+
+        } 
+  
+        private void cmsBlock_Click(object sender, EventArgs e)
+        {
+            //Rail57Pos1rtf
+            RichTextBox selectedbox = sender as RichTextBox;
+            string fullrailname = selectedbox.Name;
+            string railnumber = Convert.ToString(fullrailname[4]) + Convert.ToString(fullrailname[5]);
+            string railPosition = Convert.ToString(fullrailname[9]);
+            if(Convert.ToString(fullrailname[10]) != "r")
+            {
+                railPosition += Convert.ToString(fullrailname[10]);
+            }
+            RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber));
+            mg.BlockRail(deconstructedNameString);
         }
-
-
-
-        
-       
-
     }
 }
