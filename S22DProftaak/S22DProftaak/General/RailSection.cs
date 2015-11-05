@@ -13,9 +13,11 @@ namespace S22DProftaak.General
     /// </summary>
     public class RailSection
     {
+
         public int Position { get; private set; }
         public bool Blocked { get; private set; }
         public Train Train { get; private set; }
+        public string RailNumber { get; private set; } 
 
         public RailSection(int position)
         {

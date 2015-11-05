@@ -24,7 +24,7 @@ namespace S22DProftaak.BeheerSysteem
         {
             throw new NotImplementedException();
         }
-        public bool OpenAction(Action action)// action action aanpassen
+        public bool OpenAction(Action.Repair action)// action action aanpassen
         {
             throw new NotImplementedException();
         }
@@ -32,7 +32,7 @@ namespace S22DProftaak.BeheerSysteem
         {
             throw new NotImplementedException();
         }
-        public bool ApplyForAction(Action action) //aanpassen
+        public bool ApplyForAction(Action.Repair action) //aanpassen
         {
             throw new NotImplementedException();
         }

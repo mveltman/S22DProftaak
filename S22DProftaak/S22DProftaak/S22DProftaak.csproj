@@ -45,17 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddWorker.cs">
+    <Compile Include="AddWorkerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddWorker.Designer.cs">
-      <DependentUpon>AddWorker.cs</DependentUpon>
+    <Compile Include="AddWorkerForm.Designer.cs">
+      <DependentUpon>AddWorkerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeForm.Designer.cs">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CleanSystem\CleanSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CleanSystem\CleanSystemForm.Designer.cs">
       <DependentUpon>CleanSystemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateActionForm.Designer.cs">
+      <DependentUpon>CreateActionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="General\Action.cs" />
@@ -86,17 +98,23 @@
     <Compile Include="RepairSystem\RepairSystemForm.Designer.cs">
       <DependentUpon>RepairSystemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerInformation.cs">
+    <Compile Include="WorkerInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerInformation.Designer.cs">
-      <DependentUpon>WorkerInformation.cs</DependentUpon>
+    <Compile Include="WorkerInformationForm.Designer.cs">
+      <DependentUpon>WorkerInformationForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddWorker.resx">
-      <DependentUpon>AddWorker.cs</DependentUpon>
+    <EmbeddedResource Include="AddWorkerForm.resx">
+      <DependentUpon>AddWorkerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeForm.resx">
+      <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CleanSystem\CleanSystemForm.resx">
       <DependentUpon>CleanSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateActionForm.resx">
+      <DependentUpon>CreateActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,8 +128,8 @@
     <EmbeddedResource Include="RepairSystem\RepairSystemForm.resx">
       <DependentUpon>RepairSystemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerInformation.resx">
-      <DependentUpon>WorkerInformation.cs</DependentUpon>
+    <EmbeddedResource Include="WorkerInformationForm.resx">
+      <DependentUpon>WorkerInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
