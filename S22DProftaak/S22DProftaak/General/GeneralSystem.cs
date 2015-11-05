@@ -10,18 +10,16 @@ namespace S22DProftaak.General
     {
         public static User LoggedUser;
         private Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private string _error = "";
+        public string Error { get { return _error; } }
         public GeneralSystem()
         {
             throw new NotImplementedException();
         }
 
-        public bool Login(string userName, string Password, out string error)
+        public bool Login(string userName, string Password)
         {
-            error = "";
-            User tempusr = new User(UserTypeEnum.Cleaner, "Henk", "Henk", "De Boer");
-            if (!db.Login(out tempusr, userName, Password)) error = "Could not login user";
-            else return true;
-            return false;
+            return (!db.Login(out LoggedUser, userName, Password, out _error));
         }
 
         public User GetLoggedUser()

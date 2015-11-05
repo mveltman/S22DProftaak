@@ -17,6 +17,7 @@ namespace S22DProftaak
         public Form1()
         {
             sys = new GeneralSystem();
+            System.Diagnostics.Process.Start("osk.exe");
             InitializeComponent();
         }
 
@@ -33,13 +34,9 @@ namespace S22DProftaak
 
         private bool Login(string name, string password)
         {
-            string error = "";
-            if (!sys.Login(name, password, out error))
-            {
-                MessageBox.Show(error);
-                return false;
-            }
-            return true;
+            if (sys.Login(name, password)) return true;
+            MessageBox.Show(sys.Error);
+            return false;
         }
     }
 }

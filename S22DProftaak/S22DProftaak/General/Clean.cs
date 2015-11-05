@@ -12,10 +12,11 @@ namespace S22DProftaak.Action
     /// </summary>
     public class Clean : Action
     {
-        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd)
-            : base(note, dateStart, rail, estimatedDateEnd)
+        public Clean(string note, DateTime dateStart, DateTime dateEnd, 
+            RailSection rail, DateTime estimatedDateEnd, Train train)
+            : base(note, rail, train)
         {
-
+            throw new NotImplementedException();
         }
 
         /// <summary>
