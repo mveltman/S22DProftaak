@@ -48,7 +48,9 @@ namespace S22DProftaak
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ChangeForm Change = new ChangeForm((Action.Action) RepairInProgress.SelectedItem); 
+            Change.ShowDialog();
+            
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -67,7 +69,7 @@ namespace S22DProftaak
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-
+            repair.SetEndTime((Action.Action)RepairInProgress.SelectedItem);
         }
 
         private void RepairButton_Click(object sender, EventArgs e)

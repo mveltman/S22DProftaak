@@ -15,15 +15,54 @@ namespace S22DProftaak.RepairSystem
 {
     public class RepairSystem
     {
+        public List<General.RailSection> RailList;
+        Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public RepairSystem()
         {
             throw new NotImplementedException();
         }
 
+        public bool GetWorkers(out List<User> Use)
+        {
+            Use = new List<User>();
+            return true;// To implement : 
+        }
+
+        public bool SetEndTime(Action.Action act)
+        {
+
+            act.AddEndDate(DateTime.Now);
+            return true;
+        }
         public bool ApplyRepairSession(Repair repair, List<User> Repairsman, DateTime time)
         {
-            // koppel Action Id met Repairs shit
-            throw new NotImplementedException();
+            repair.ActivateRepair(time); 
+            return true;
+        }
+
+        public bool CreateRepair(int spoor, int sector, string Desc)
+        {
+            RailList = new List<General.RailSection>();
+            foreach (General.RailSection rail in RailList)
+            {
+                if ((Int32)rail.RailNumber == spoor && rail.Position == Convert.ToInt16(sector))
+                {
+                    General.Train train;
+                    if (GetTramSpoor(out train, spoor, sector))
+                    {
+                        Action.Repair action = new Action.Repair(Desc, rail, train); // Get tram on specified rail
+                        return true;
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    // To database
+                }
+                // koppel Action Id met Repairs shit
+
+            } return true;
         }
 
         public bool GetRepairTasks(out List<Action.Repair> Repairs ,bool completed)
@@ -57,13 +96,7 @@ namespace S22DProftaak.RepairSystem
         {
             throw new NotImplementedException();
         }
-        public bool ActivateRepair(Repair action)
-        {
-            action.ActivateRepair(); 
-            // throw action into database
-            return true;
-
-        }
+     
         
 
         public bool GetTramSpoor(out Train train, int spoor, int sector)

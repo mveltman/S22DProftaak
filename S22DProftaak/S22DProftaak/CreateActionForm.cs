@@ -20,50 +20,37 @@ namespace S22DProftaak
             InitializeComponent();
             Repair = new RepairSystem.RepairSystem();
             status = check;
+            // When you create the Form give 1 for repair and 2 for clean
 
         }
         
 
         private void CreateActionForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-           
+            
       
 
             switch (status)
             {
                 case 1: 
-                        RailList = new List<General.RailSection>();
-            foreach (General.RailSection rail in RailList)
-            {
-                if (rail.RailNumber == RailTb.Text && rail.Position == Convert.ToInt16( SectorTb.Text)) 
-                {  
-                    General.Train train;
-                    if (Repair.GetTramSpoor(out train, Convert.ToInt32(RailTb.Text), Convert.ToInt32(SectorTb.Text)))
-                    {
-                        Action.Repair action = new Action.Repair(Description.Text, rail, train); // Get tram on specified rail
-                        this.Close(); 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Not a valid Place");
-                    }
-                    // In de database zetten
-                }
+                    Repair.CreateRepair(Convert.ToInt32(RailTb.Text),Convert.ToInt32(SectorTb.Text), Description.Text);
+             this.Close();
+                 break;
                
                 
  
-            }
-                    break;
+            
+                    
                 case 2: 
                         RailList = new List<General.RailSection>();
             foreach (General.RailSection rail in RailList)
             {
-                if (rail.RailNumber == RailTb.Text && rail.Position == Convert.ToInt16( SectorTb.Text)) 
+                if (rail.RailNumber == Convert.ToInt32(RailTb.Text) && rail.Position == Convert.ToInt16( SectorTb.Text)) 
                 {  
                     General.Train train;
                     if (Repair.GetTramSpoor(out train, Convert.ToInt32(RailTb.Text), Convert.ToInt32(SectorTb.Text)))
@@ -75,17 +62,23 @@ namespace S22DProftaak
                     {
                         MessageBox.Show("Not a valid Place");
                     }
-                    // In de database zetten
+                    // To Database
                 }
                
                 
  
             }
                     break;
+                    
             }
-            
-            
+            this.Close();
         }
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+            
+        
 
         private void CancelButton_Click(object sender, EventArgs e)
         {

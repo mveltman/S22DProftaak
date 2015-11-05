@@ -12,14 +12,12 @@ namespace S22DProftaak
 {
     public partial class AddWorkerForm : Form
     {
+        List<General.User> List;
         public bool GetIformation(out List<General.User> list)
         {
-            list = new List<General.User>();
-            foreach (var item in listBox2.Items)
-            {
-                list.Add((General.User)item);
-            }
-            if (list.Count != 0)
+            list = List;
+           
+            if (List.Count != 0)
             {
                 return true;
             }else
@@ -33,8 +31,13 @@ namespace S22DProftaak
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            ChangeForm Change = new ChangeForm((Action.Action)listBox2.SelectedItem);
-            Change.ShowDialog();
+           foreach (var item in listBox2.Items)
+            {
+                List.Add((General.User)item);
+            }
+           this.Close();
+           
+           
 
         }
 

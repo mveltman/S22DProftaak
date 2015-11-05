@@ -103,9 +103,9 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
             return true;
         }// Changing EndTime
 
-        public bool ActivateRepair()
+        public bool ActivateRepair(DateTime time)
         {
-
+            DateStart = time;
             InProgress = true;
             return true; 
         }// TO get them acticated

@@ -39,7 +39,7 @@
             // 
             // Description
             // 
-            this.Description.Location = new System.Drawing.Point(13, 13);
+            this.Description.Location = new System.Drawing.Point(31, 19);
             this.Description.Name = "Description";
             this.Description.Size = new System.Drawing.Size(181, 171);
             this.Description.TabIndex = 0;
