@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
+<<<<<<< HEAD
 
+=======
+using S22DProftaak.RepairSystem;
+>>>>>>> refs/remotes/origin/Update
 
-namespace S22DProftaak.InUitRijSysteem
+namespace S22DProftaak.EntranceExit
 {
     class EntranceExitSystem
     {
@@ -24,13 +28,20 @@ namespace S22DProftaak.InUitRijSysteem
             throw new NotImplementedException();
         }
 
-        public bool GetTrams()
+        public bool GetTrams(out List<Train> trains)
         {
+            // fill the Trains list with the database
+            // return the trams in the out
             throw new NotImplementedException();
         }
 
-        public bool ApplyRepairSession(RepairSystemForm repairsystem)
-        {
+        public bool ApplyRepairSession(string repairsystem)
+        {//todo : this might not be necessary if repair form is used!
+            throw new NotImplementedException();
+        }
+
+        public bool ApplyCleanSession(string repairsystem)
+        {//todo : this might not be necessary if clean form is used!
             throw new NotImplementedException();
         }
 

@@ -7,7 +7,11 @@ using S22DProftaak.General;
 using S22DProftaak.Database;
 using S22DProftaak.Action;
 
+<<<<<<< HEAD
 namespace S22DProftaak.RepairSystem // commented because the references don't work.
+=======
+namespace S22DProftaak.RepairSystem
+>>>>>>> refs/remotes/origin/Update
 {
     public class RepairSystem
     {
