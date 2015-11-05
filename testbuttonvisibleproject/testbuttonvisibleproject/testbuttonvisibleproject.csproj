@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5D17D9E-9220-4018-ACF6-A95983EA502D}</ProjectGuid>
+    <ProjectGuid>{4189AED4-A2F2-4BD9-8E7E-8AB46827DF96}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>S22DProftaak</RootNamespace>
-    <AssemblyName>S22DProftaak</AssemblyName>
+    <RootNamespace>testbuttonvisibleproject</RootNamespace>
+    <AssemblyName>testbuttonvisibleproject</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,37 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\DatabaseConnection.cs" />
-    <Compile Include="General\Action.cs" />
-    <Compile Include="General\Clean.cs" />
-    <Compile Include="General\GeneralSystem.cs" />
-    <Compile Include="General\Rail.cs" />
-    <Compile Include="General\RailSection.cs" />
-    <Compile Include="General\RailTypeEnum.cs" />
-    <Compile Include="General\Repair.cs" />
-    <Compile Include="General\Train.cs" />
-    <Compile Include="General\User.cs" />
-    <Compile Include="General\UserTypeEnum.cs" />
-    <Compile Include="ManagementSystem\ManagementForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManagementSystem\ManagementForm.Designer.cs">
-      <DependentUpon>ManagementForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManagementSystem\ManagementSystem.cs" />
-    <Compile Include="CleanSystem\CleanSystem.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntranceExitSystem\EntranceExitSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepairSystem\RepairSystem.cs" />
-    <EmbeddedResource Include="ManagementSystem\ManagementForm.resx">
-      <DependentUpon>ManagementForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,9 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

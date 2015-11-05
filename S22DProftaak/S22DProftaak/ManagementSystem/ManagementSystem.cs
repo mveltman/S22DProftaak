@@ -4,56 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
+using System.Windows.Forms;
+using S22DProftaak.Database;
 using S22DProftaak.Action;
 
-namespace S22DProftaak.BeheerSysteem
+namespace S22DProftaak.ManagementSystem
 {
     /// <summary>
     /// management class
     /// </summary>
-    class ManagementSystem
+    public class ManagementSystem
     {
-        Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private List<Train> trains = new List<Train>();
+        private DatabaseConnection db = new DatabaseConnection();
+        
         public ManagementSystem()
         {
-            throw new NotImplementedException();
+            
+        }
+        public bool GetTrains()
+        {
+            this.trains = db.GetTrains();
         }
         public bool OpenRemise()
         {
-            throw new NotImplementedException();
+            db
         }
         public bool OpenRails()
         {
-            throw new NotImplementedException();
+            db.
         }
-<<<<<<< HEAD
-        public bool OpenAction(Action.Repair action)// action action aanpassen
-=======
-        public bool OpenAction(Repair action)// action action aanpassen
-        {
-            throw new NotImplementedException();
-        }
-        public bool OpenAction(Clean action)// action action aanpassen
->>>>>>> refs/remotes/origin/Update
+        public bool OpenAction(Action.Action action)// action action aanpassen
         {
             throw new NotImplementedException();
         }
         public bool BlockRail(RailSection railsection)
         {
             throw new NotImplementedException();
-            // todo: return db.ToggleRailsectStatus(railsection));
         }
-        public bool ApplyForAction(Repair action) //aanpassen
+        public bool ApplyForAction(Action.Action action) //aanpassen
         {
             throw new NotImplementedException();
         }
-<<<<<<< HEAD
-        public bool ApplyForAction(Action.Repair action) //aanpassen
-=======
-        public bool ApplyForAction(Clean action) //aanpassen
->>>>>>> refs/remotes/origin/Update
+        public bool ValidateNewInput(object sender)
         {
-            throw new NotImplementedException();
+            GetTrains();
+            RichTextBox currentbox = sender as RichTextBox;
+            foreach(Train t in trains)
+            {
+                //need to add trainnumber property to train. wait until sure nobody else did.
+               if(currentbox.Text == Convert.ToString(/*t.number*/))
+               {
+                   return true;
+               }
+
+            }
+            return false;
         }
     }
 }
