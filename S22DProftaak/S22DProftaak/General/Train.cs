@@ -15,10 +15,13 @@ namespace S22DProftaak.General
         /// </summary>
         public int BuildYear { get; private set; }
         public string Model { get; private set; }
-        public Train(int buildYear, string model)
+        public User TrainUser { get; private set; }
+        public int TramNumber { get; private set; }
+        public Train(int buildYear, string model, int tramNumber)
         {
             this.BuildYear = buildYear;
             this.Model = model;
-        }//sets BuildYear and Model.
+            this.TramNumber = tramNumber;
+        } //sets BuildYear and Model.
     }
 }

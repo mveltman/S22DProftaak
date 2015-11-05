@@ -12,8 +12,8 @@ namespace S22DProftaak.Action
     /// </summary>
     public class Clean : Action
     {
-        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail)
-            : base(note, dateStart, dateEnd, rail)
+        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd)
+            : base(note, dateStart, rail, estimatedDateEnd)
         {
 
         }
@@ -23,9 +23,9 @@ namespace S22DProftaak.Action
         /// </summary>
         /// <param name="cleaner"></param>
         /// <returns></returns>
-        public bool AddCleaner(User cleaner)
-        {
-            throw new NotImplementedException();
-        }
+       // public bool AddCleaner(User cleaner)
+       // {
+        //    throw new NotImplementedException();
+        //}
     }
 }
