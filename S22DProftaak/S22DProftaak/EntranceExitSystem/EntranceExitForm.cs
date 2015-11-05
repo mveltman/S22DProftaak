@@ -9,62 +9,70 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using S22DProftaak.General;
 
-namespace S22DProftaak.EntranceExitSystem
+namespace S22DProftaak.General
 {
     public partial class EntranceExitForm : Form
     {
-        EntranceExit.EntranceExitSystem enExSys = new EntranceExit.EntranceExitSystem();
+        EntranceExit.EntranceExitSystem enExSys;
+        GeneralSystem sys = new GeneralSystem();
         List<Train> trains = new List<Train>();
         public EntranceExitForm()
         {
-            if (!enExSys.GetTrams(out trains)) UpdateCombobox();
+            enExSys = new EntranceExit.EntranceExitSystem();
             InitializeComponent();
+            if (enExSys.Error != "")
+            {
+                MessageBox.Show(enExSys.Error);
+                this.Close();
+            }
+            else
+            {
+                this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
+            }
         }
         private void btnArrived_Click(object sender, EventArgs e)
         {
-            enExSys.MoveTram()
-
-            // here the program checks what cb was checked and opens forms accordingly.
-            if (cbClean.Checked)
+            if (!enExSys.MoveTram())
             {
-
-                // open clean form forced popup.
-                enExSys.ApplyCleanSession("Todo: repair");
+                MessageBox.Show(enExSys.Error);
+                this.Close();
             }
-            if (cbRepair.Checked)
+            else
             {
-                
+                // here the program checks what cb was checked and opens forms accordingly.
+                if (chkClean.Checked)
+                {
+
+                    // open clean form forced popup.
+                    enExSys.ApplyCleanSession("Todo: repair");
+                }
+                if (chkRepair.Checked)
+                {
+
+                    // open Repair form forced popup.
+                    enExSys.ApplyRepairSession("Todo: repair");
+                }
+            }
+        }
+
+        private void btnDescription_Click(object sender, EventArgs e)
+        {
+            string promptValue;
+            if (chkClean.Checked)
+            {
+                promptValue = Prompt.ShowDialog("Reason:", "Clean Description");
+                // open clean form forced popup. todo implement this in actions
+                // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
+                enExSys.ApplyCleanSession("Todo: repair");
+                // TODO: description
+            }
+            if (chkRepair.Checked)
+            {
+                promptValue = Prompt.ShowDialog("Reason:", "Repair Description");
                 // open Repair form forced popup.
                 enExSys.ApplyRepairSession("Todo: repair");
             }
         }
-
-        private void btbDescription_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void UpdateCombobox()
-        {
-            cbxTram.Items.Clear();
-            foreach (Train tr in trains)
-            {
-                cbxTram.Items.Add(tr);
-            }
-        } // updates cbxtram 
-
-        private void cbxTram_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxTram.SelectedIndex < 0)
-            {
-
-            }
-            else
-            {
-                if (cbxTram.SelectedItem is Train)
-                {
-
-                }
-            }
-        } 
+        
     }
 }

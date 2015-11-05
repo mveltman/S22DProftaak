@@ -33,6 +33,8 @@
             this.RepairInProgress = new System.Windows.Forms.ListBox();
             this.RepairAssignments = new System.Windows.Forms.ListBox();
             this.RepairDescription = new System.Windows.Forms.RichTextBox();
+            this.ChangeButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DoneButton
@@ -44,6 +46,7 @@
             this.DoneButton.TabIndex = 9;
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = true;
+            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
             // RepairButton
             // 
@@ -54,6 +57,7 @@
             this.RepairButton.TabIndex = 8;
             this.RepairButton.Text = "Repair";
             this.RepairButton.UseVisualStyleBackColor = true;
+            this.RepairButton.Click += new System.EventHandler(this.RepairButton_Click);
             // 
             // RepairInProgress
             // 
@@ -70,6 +74,7 @@
             this.RepairAssignments.Name = "RepairAssignments";
             this.RepairAssignments.Size = new System.Drawing.Size(204, 537);
             this.RepairAssignments.TabIndex = 6;
+            this.RepairAssignments.SelectedIndexChanged += new System.EventHandler(this.RepairAssignments_SelectedIndexChanged);
             // 
             // RepairDescription
             // 
@@ -79,11 +84,35 @@
             this.RepairDescription.TabIndex = 5;
             this.RepairDescription.Text = "";
             // 
+            // ChangeButton
+            // 
+            this.ChangeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.ChangeButton.Location = new System.Drawing.Point(654, 72);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(122, 42);
+            this.ChangeButton.TabIndex = 10;
+            this.ChangeButton.Text = "Change";
+            this.ChangeButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.CreateButton.Location = new System.Drawing.Point(268, 251);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(122, 42);
+            this.CreateButton.TabIndex = 11;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
             // RepairSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 562);
+            this.Controls.Add(this.CreateButton);
+            this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.RepairButton);
             this.Controls.Add(this.RepairInProgress);
@@ -102,5 +131,7 @@
         private System.Windows.Forms.ListBox RepairInProgress;
         private System.Windows.Forms.ListBox RepairAssignments;
         private System.Windows.Forms.RichTextBox RepairDescription;
+        private System.Windows.Forms.Button ChangeButton;
+        private System.Windows.Forms.Button CreateButton;
     }
 }
