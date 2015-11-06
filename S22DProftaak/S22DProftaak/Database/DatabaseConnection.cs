@@ -133,75 +133,6 @@ namespace S22DProftaak.Database
 
             return false;
         }
-        public bool MoveTrain(Train train, User usr, out string error)
-        {
-            error = "";
-
-            try
-            {
-                string query = "INSERT INTO TIMETABLE(ID, TRAM_ID, TUSER_USERNAME, TIME)" +
-                    "VALUES(0, :tramID, :usrnam, :time)";//"UPDATE TABLE TIMETABLE SET TIME = :time WHERE TRAM_ID = :tramID AND TIME IS NULL;";
-                OracleCommand command = CreateOracleCommand(query);
-                command.Parameters.Add("tramid", train.TramNumber);
-                command.Parameters.Add("usrnam", train.TramNumber);
-                command.Parameters.Add("time", DateTime.Now);
-                command.ExecuteNonQuery();
-
-                query = "UPDATE TABLE TRAM SET RAILSECTION_ID = (SELECT railposition FROM REQUESTING WHERE TRAMNUMBER= :tramID) WHERE ID = :tramID ;";
-                command = CreateOracleCommand(query);
-                command.Parameters.Add("railsect", train.TramNumber);
-
-                command.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception e)
-            {
-                error = e.ToString();
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        public bool GetRails(out List<Rail> rails, out string error)
-        {
-            error = "Not implemented";
-            rails = new List<Rail>();
-            return false;
-            
-        }
-        #endregion
-        public bool GetTrains(out List<Train> trains, out string error)
-        {
-            trains = null;
-            error = "";
-            try
-            {
-                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
-                OracleCommand command = CreateOracleCommand(query);
-                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
-                foreach (OracleDataReader o in datareaders)
-                {
-                    int buildyear = (int)o["BUILDYEAR"];
-                    string model = (string)o["TMODEL"];
-                    int number = (int)o["TRAMNUMBER"];
-
-                    trains.Add(new Train(buildyear, model, number));
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                error = e.ToString();
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-        }
 
         public bool AddRequest(Train train, out string error)
         {
@@ -269,7 +200,76 @@ namespace S22DProftaak.Database
                 conn.Close();
             }
         }
+        #endregion
+        public bool MoveTrain(Train train, User usr, out string error)
+        {
+            error = "";
 
+            try
+            {
+                string query = "INSERT INTO TIMETABLE(ID, TRAM_ID, TUSER_USERNAME, TIME)" +
+                    "VALUES(0, :tramID, :usrnam, :time)";//"UPDATE TABLE TIMETABLE SET TIME = :time WHERE TRAM_ID = :tramID AND TIME IS NULL;";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramid", train.TramNumber);
+                command.Parameters.Add("usrnam", train.TramNumber);
+                command.Parameters.Add("time", DateTime.Now);
+                command.ExecuteNonQuery();
+
+                query = "UPDATE TABLE TRAM SET RAILSECTION_ID = (SELECT railposition FROM REQUESTING WHERE TRAMNUMBER= :tramID) WHERE ID = :tramID ;";
+                command = CreateOracleCommand(query);
+                command.Parameters.Add("railsect", train.TramNumber);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetRails(out List<Rail> rails, out string error)
+        {
+            error = "Not implemented";
+            rails = new List<Rail>();
+            return false;
+
+        }
+        public bool GetTrains(out List<Train> trains, out string error)
+        {
+            trains = null;
+            error = "";
+            try
+            {
+                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
+                OracleCommand command = CreateOracleCommand(query);
+                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
+                foreach (OracleDataReader o in datareaders)
+                {
+                    int buildyear = (int)o["BUILDYEAR"];
+                    string model = (string)o["TMODEL"];
+                    int number = (int)o["TRAMNUMBER"];
+
+                    trains.Add(new Train(buildyear, model, number));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
         
+
     }
 }
