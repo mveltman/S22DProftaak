@@ -35,24 +35,25 @@
             this.chkClean = new System.Windows.Forms.CheckBox();
             this.chkRepair = new System.Windows.Forms.CheckBox();
             this.txtRail = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnArrived
             // 
-            this.btnArrived.Location = new System.Drawing.Point(117, 55);
+            this.btnArrived.Location = new System.Drawing.Point(117, 107);
             this.btnArrived.Name = "btnArrived";
-            this.btnArrived.Size = new System.Drawing.Size(75, 27);
+            this.btnArrived.Size = new System.Drawing.Size(75, 50);
             this.btnArrived.TabIndex = 1;
             this.btnArrived.Text = "Arrived";
             this.btnArrived.UseVisualStyleBackColor = true;
             this.btnArrived.Click += new System.EventHandler(this.btnArrived_Click);
             // 
-            // btbDescription
+            // btnDescription
             // 
-            this.btnDescription.Location = new System.Drawing.Point(198, 55);
+            this.btnDescription.Location = new System.Drawing.Point(198, 107);
             this.btnDescription.Name = "btnDescription";
-            this.btnDescription.Size = new System.Drawing.Size(75, 27);
+            this.btnDescription.Size = new System.Drawing.Size(75, 50);
             this.btnDescription.TabIndex = 1;
             this.btnDescription.Text = "Description";
             this.btnDescription.UseVisualStyleBackColor = true;
@@ -62,46 +63,54 @@
             // 
             this.groupBox1.Controls.Add(this.chkClean);
             this.groupBox1.Controls.Add(this.chkRepair);
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Location = new System.Drawing.Point(12, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(99, 69);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Action";
             // 
-            // cbClean
+            // chkClean
             // 
             this.chkClean.AutoSize = true;
             this.chkClean.Location = new System.Drawing.Point(6, 42);
-            this.chkClean.Name = "cbClean";
+            this.chkClean.Name = "chkClean";
             this.chkClean.Size = new System.Drawing.Size(53, 17);
             this.chkClean.TabIndex = 0;
             this.chkClean.Text = "Clean";
             this.chkClean.UseVisualStyleBackColor = true;
             // 
-            // cbRepair
+            // chkRepair
             // 
             this.chkRepair.AutoSize = true;
             this.chkRepair.Location = new System.Drawing.Point(6, 19);
-            this.chkRepair.Name = "cbRepair";
+            this.chkRepair.Name = "chkRepair";
             this.chkRepair.Size = new System.Drawing.Size(57, 17);
             this.chkRepair.TabIndex = 0;
             this.chkRepair.Text = "Repair";
             this.chkRepair.UseVisualStyleBackColor = true;
             // 
-            // tbRail
+            // txtRail
             // 
-            this.txtRail.Location = new System.Drawing.Point(117, 29);
-            this.txtRail.Name = "tbRail";
+            this.txtRail.Location = new System.Drawing.Point(12, 29);
+            this.txtRail.Name = "txtRail";
             this.txtRail.ReadOnly = true;
-            this.txtRail.Size = new System.Drawing.Size(156, 20);
+            this.txtRail.Size = new System.Drawing.Size(261, 20);
             this.txtRail.TabIndex = 3;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 91);
+            this.ClientSize = new System.Drawing.Size(285, 169);
             this.Controls.Add(this.txtRail);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDescription);
@@ -123,5 +132,6 @@
         private System.Windows.Forms.CheckBox chkClean;
         private System.Windows.Forms.CheckBox chkRepair;
         private System.Windows.Forms.TextBox txtRail;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

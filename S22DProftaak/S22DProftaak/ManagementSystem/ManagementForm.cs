@@ -78,7 +78,7 @@ namespace S22DProftaak.ManagementSystem
             {
                 railPosition += Convert.ToString(fullrailname[10]);
             }
-            RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber));
+            RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition)/*, Convert.ToInt32(railnumber)*/);
             mg.BlockRail(deconstructedNameString);
         }
     }
