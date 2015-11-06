@@ -8,45 +8,87 @@ using S22DProftaak.Database;
 using S22DProftaak.Action;
 
 
+<<<<<<< HEAD
 namespace S22DProftaak.RepairSystem
+=======
+
+
+namespace S22DProftaak.RepairSystem
+
+>>>>>>> refs/remotes/origin/Update
 {
     public class RepairSystem
     {
+        public List<General.RailSection> RailList;
+        Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public RepairSystem()
         {
             throw new NotImplementedException();
         }
 
+        public bool GetWorkers(out List<User> Use)
+        {
+            Use = new List<User>();
+            if (SQL.GetAllUsers("Repair", out Use))
+            {
+                return true;
+            }
+            return false;
+        }// Gets Alle workers who can Repair
+
+        public bool SetEndTime(Action.Action act)
+        {
+
+            act.AddEndDate(DateTime.Now);
+            if (SQL.FinishAction(act))
+            {
+                    return true;
+            }
+            return false;
+           
+        }
         public bool ApplyRepairSession(Repair repair, List<User> Repairsman, DateTime time)
         {
-            // koppel Action Id met Repairs shit
-            throw new NotImplementedException();
+            repair.ActivateAction(time);
+            SQL.ActivateAction(Repairsman, repair);
+            return true;
         }
 
-        public bool GetRepairTasks(out List<Action.Repair> Repairs ,bool completed)
+        public bool CreateRepair(int number, string Desc)
         {
-            throw new NotImplementedException();
+            Train tram = null;
+            if (SQL.GetTram(out tram, number))
+            {
+                Action.Repair action = new Action.Repair(Desc,tram);
+                SQL.CreateAction(action); // creates a new action based on the the given information
+            }
+                        
+                        return false;
+
+               
+        }
+
+        public bool GetRepairTasks(out List<Action.Action> Repairs)
+        {
+            Repairs = null;
+            if (SQL.GetActions("Repair",out Repairs))
+            {
+                return true;
+            }
+            return false;
         }
 
     
 
        
 
-        public bool UpdateRepaired(Repair action, string Descrition, DateTime EstimatedEndTime)
+        public bool UpdateRepaired(Action.Action action, string Descrition, DateTime EstimatedEndTime)
         {
-            if (Descrition == "")
-            {
-                Descrition = action.Note;
-            } 
-            if(EstimatedEndTime ==  Convert.ToDateTime("5-11-2015 0:09"))
-            {
-                EstimatedEndTime = action.EstimatedDateEnd;
-            }
-            else
-            {
-                EstimatedEndTime = Convert.ToDateTime("5-11-2015 0:09");
-            }
+            
+            
             action.ChangeInfo(Descrition, EstimatedEndTime);
+            SQL.ChangeAction(action);
+            
             return true;
         }
 
@@ -54,18 +96,9 @@ namespace S22DProftaak.RepairSystem
         {
             throw new NotImplementedException();
         }
-        public bool ActivateRepair(Repair action)
-        {
-            action.ActivateRepair(); 
-            // throw action into database
-            return true;
-
-        }
+     
         
 
-        public bool GetTramSpoor(out Train train, int spoor, int sector)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

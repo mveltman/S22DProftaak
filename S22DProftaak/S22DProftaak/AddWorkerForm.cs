@@ -12,29 +12,60 @@ namespace S22DProftaak
 {
     public partial class AddWorkerForm : Form
     {
-        public bool GetIformation(out List<General.User> list)
+        List<General.User> List;
+        DateTime time;
+        public bool GetIformation(out List<General.User> list,out DateTime Time)
         {
-            list = new List<General.User>();
-            foreach (var item in listBox2.Items)
-            {
-                list.Add((General.User)item);
-            }
-            if (list.Count != 0)
+            list = List;
+            Time = time;
+           
+            if (List.Count != 0)
             {
                 return true;
             }else
                return false;
             
-        }
-        public AddWorkerForm()
+        }// If the list is empty the action will not go through
+        public AddWorkerForm(string status)
         {
             InitializeComponent();
+            RepairSystem.RepairSystem repair = new RepairSystem.RepairSystem();
+            CleanSystem.CleanSystem clean = new CleanSystem.CleanSystem();
+            List = null;
+            if (status == "Repair")
+            {
+                if (repair.GetWorkers(out List))
+                {
+                    foreach (var item in List)
+                    {
+                        listBox1.Items.Add(item);
+                    }
+                }
+            }
+            else if (status == "Clean")
+            {
+                if (clean.GetWorkers(out List))
+                {
+                    foreach (var item in List)
+                    {
+                        listBox1.Items.Add(item);
+                    }
+                }
+            }
+            
         }
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            ChangeForm Change = new ChangeForm((Action.Action)listBox2.SelectedItem);
-            Change.ShowDialog();
+           foreach (var item in listBox2.Items)
+            {
+                List.Add((General.User)item);
+
+            }
+           time = dateTimePicker1.Value;
+           this.Close();
+           
+           
 
         }
 
@@ -53,6 +84,11 @@ namespace S22DProftaak
             {
                 MessageBox.Show("Select worker please");
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
