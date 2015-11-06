@@ -12,39 +12,81 @@ namespace S22DProftaak.CleanSystem
 {
     public class CleanSystem
     {
+       public List<General.RailSection> RailList;
+        Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public CleanSystem()
         {
-            // todo implementation
             throw new NotImplementedException();
         }
-        public bool ApplyCleanSession(Clean clean)
+
+        public bool GetWorkers(out List<User> Use)
         {
-            // todo implementation
-            throw new NotImplementedException();
+            Use = new List<User>();
+            if (SQL.GetAllUsers("Clean", out Use))
+            {
+                return true;
+            }
+            return false;
+        }// Gets Alle workers who can clean
+
+        public bool SetEndTime(Action.Action act)
+        {
+
+            act.AddEndDate(DateTime.Now);
+            if (SQL.FinishAction(act))
+            {
+                    return true;
+            }
+            return false;
+           
         }
-        public bool GetCleanTasks(bool completed)
+        public bool ApplyCleanSession(Clean clean, List<User> Cleansman, DateTime time)
         {
-            // todo implementation
-            throw new NotImplementedException();
+            clean.ActivateAction(time);
+            SQL.ActivateAction(Cleansman, clean);
+            return true;
         }
-        public bool SetCleanTime(Train train, DateTime time)
+
+        public bool CreateClean(int number, string Desc)
         {
-            // todo implementation
-            throw new NotImplementedException();
+            Train tram = null;
+            if (SQL.GetTram(out tram, number))
+            {
+                Action.Clean action = new Action.Clean(Desc,tram);
+                SQL.CreateAction(action); // creates a new action based on the the given information
+            }
+                        
+                        return false;
+
+               
         }
-        public bool AddCleaner(Clean action, User cleaner)
+
+        public bool GetCleanTasks(out List<Action.Action> Cleans)
         {
-            // todo implementation
-            throw new NotImplementedException();
+            Cleans = null;
+            if (SQL.GetActions("Clean", out Cleans))
+            {
+                return true;
+            }
+            return false;
         }
-        public bool Update(Clean action)
+
+    
+
+       
+
+        public bool UpdateCleaned(Action.Action action, string Descrition, DateTime EstimatedEndTime)
         {
-            // todo implementation
-            throw new NotImplementedException();
+            
+            
+            action.ChangeInfo(Descrition, EstimatedEndTime);
+            SQL.ChangeAction(action);
+            
+            return true;
         }
-        public bool ApplyTrainwash(Train train, RailSection rail)
+
+        public bool UpdateUser(User user, bool active)
         {
-            // todo implementation
             throw new NotImplementedException();
         }
     }

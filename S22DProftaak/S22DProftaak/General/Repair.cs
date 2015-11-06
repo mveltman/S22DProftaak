@@ -17,22 +17,27 @@ namespace S22DProftaak.Action
             {
 
             }
-            public Repair(string note, RailSection rail, Train tram)
-                : base(note, rail, tram)
+            public Repair(string note, Train tram)
+                : base(note, tram)
             {
                 
             }
 
-            public Repair(string note, RailSection rail, int id, Train tram)
-                : base(note, rail, id, tram)
+            public Repair(string note, int id, Train tram)
+                : base(note, id,tram)
             {
 
             }
 
-            public Repair(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, int id, Train tram)
-                : base(note, dateStart, rail, estimatedDateEnd, id, tram)
+            public Repair(string note, DateTime dateStart,int id, DateTime estimatedDateEnd, Train tram )
+                : base(note, dateStart, id, estimatedDateEnd,tram)
             {
 
+            }
+
+            public override string ToString()
+            {
+                    return this.Tram.ToString();
             }
 
             /// <summary>

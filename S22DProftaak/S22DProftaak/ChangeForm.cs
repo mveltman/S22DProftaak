@@ -13,9 +13,11 @@ namespace S22DProftaak
     public partial class ChangeForm : Form
     {
         public Action.Action Act;
+        public DateTime Time;
+        public string desc;
         public Action.Action ChangedItem()
         {
-            Act.ChangeInfo(richTextBox1.Text, dateTimePicker1.Value);
+            Act.ChangeInfo(desc, Time);
             return Act;
         }
 
@@ -23,6 +25,7 @@ namespace S22DProftaak
         {
             InitializeComponent();
             Act = act;
+            richTextBox1.Text = Act.Note;
         }
         public bool GetChange()
         {
@@ -32,6 +35,8 @@ namespace S22DProftaak
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            Time = dateTimePicker1.Value;
+            desc = richTextBox1.Text;
             this.Close();
         }
 
