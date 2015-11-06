@@ -17,7 +17,8 @@ namespace S22DProftaak.Database
         private string user = "dbi334041"; //User name of the database
         private string pw = "EG4DSBe1fC"; // password of the database
         private string dataSource = "//192.168.15.50:1521/fhictora";
-        
+
+       
         // boa constructor
         public DatabaseConnection()
         {
@@ -27,74 +28,50 @@ namespace S22DProftaak.Database
         }
         public bool CoupleDB()
         {
+
+
+            string user = "dbi334041"; //Dit is de gebruikersnaam
+            string pw = "EG4DSBe1fC"; //Dit is het wachtwoord
+            conn.ConnectionString = "User Id=" + user + ";Password=" + pw + ";Data Source=" + dataSource + ";";
             try
             {
                 conn.Open();
                 return true;
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            catch { return false; }
+            finally { conn.Close(); }
         }
         public OracleCommand CreateOracleCommand(string sql)
         {
-           
+
             OracleCommand command = new OracleCommand(sql, this.conn);
             command.CommandType = System.Data.CommandType.Text;
 
             return command;
         }
-
         public List<OracleDataReader> ExecuteMultiQuery(OracleCommand command)
         {
             try
             {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-
+                conn.Open();
                 OracleDataReader reader = command.ExecuteReader();
-
                 List<OracleDataReader> result = new List<OracleDataReader>();
-                    while (reader.Read())
-                    {
-                        result.Add(reader);
-                    }
-                
+                while (reader.Read()) result.Add(reader);
                 return result;
             }
-            catch
-            {
-                return null;
-            }
+            catch { return null; }
         }
         public OracleDataReader ExecuteQuery(OracleCommand command)
         {
             try
             {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-
+                if (conn.State == ConnectionState.Closed) conn.Open();
                 OracleDataReader reader = command.ExecuteReader();
-
                 reader.Read();
-
                 return reader;
             }
-            catch
-            {
-                return null;
-            }
+            catch { return null; }
         }
-
         public bool ExecuteNonQuery(OracleCommand command)
         {
             try
@@ -103,47 +80,122 @@ namespace S22DProftaak.Database
                 command.ExecuteNonQuery();
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            catch { return false; }
         }
 
-
         #region login user check
-        public bool Login(out User logusr, string loginName, string Password)
+        public bool Login(out User logusr, string loginName, string Password, out string error)
         {
 
             User tempUsr = new User(UserTypeEnum.Cleaner, "Henk", "Henk", "De Boer");
             logusr = tempUsr;
-            return true;
-            throw new NotImplementedException();
-            //to be implemented correctly. This is a template!!!
+            error = "";
             try
             {
-                string query = "SELECT * FROM XX WHERE login = :login AND password= :password";
+                string query = "SELECT per.PERMISSION, us.USERNAME, us.FIRSTNAME, us.LASTNAME " +
+                    "FROM TUSER us INNER JOIN TUSER_PERMISSION usper "+
+                    "ON us.USERNAME = usper.TUSER_USERNAME " +
+                    "INNER JOIN PERMISSION per ON per.ID = usper.PERMISSION_ID " +
+                    "WHERE us.USERNAME = :login AND us.TPASSWORD = :password";
                 OracleCommand command = CreateOracleCommand(query);
                 command.Parameters.Add("login", loginName);
                 command.Parameters.Add("password", Password);
                 OracleDataReader dataReader = ExecuteQuery(command);
                 while (dataReader.Read())
                 {
-                    string enumConv = Convert.ToString(dataReader["Type"]);
+                    string enumConv = Convert.ToString(dataReader["PERMISSION"]);
                     UserTypeEnum usrtype;
-                    if (enumConv == "Admin") usrtype = UserTypeEnum.Admin;
+
+                    if (enumConv == "Administrator") usrtype = UserTypeEnum.Admin;
                     else if (enumConv == "Cleaner") usrtype = UserTypeEnum.Cleaner;
-                    else if (enumConv == "Repairsman") usrtype = UserTypeEnum.Repairsman;
+                    else if (enumConv == "Mechanic") usrtype = UserTypeEnum.Repairsman;
                     else usrtype = UserTypeEnum.Driver;
-                    string username = Convert.ToString(dataReader["Username"]),
-                        fName = Convert.ToString(dataReader["firstname"]),
-                        lName = Convert.ToString(dataReader["lastname"]);
-                    tempUsr = new User(usrtype, username, fName, lName);  
+
+                    string username = Convert.ToString(dataReader["USERNAME"]),
+                        fName = Convert.ToString(dataReader["FIRSTNAME"]),
+                        lName = Convert.ToString(dataReader["LASTNAME"]);
+                    tempUsr = new User(usrtype, username, fName, lName);
                 }
                 logusr = tempUsr;
                 return true;
             }
             catch (Exception ex)
             {
+                error = ex.ToString();
+                return false;
+            }
+            finally { conn.Close(); }
+        }
+        #endregion
+
+        #region EntranceExit
+
+        public bool EnterTrain(Train train, RailSection railsection, out string error)
+        {
+            error = "";
+
+            return false;
+        }
+
+        public bool AddRequest(Train train, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "INSERT INTO REQUEST(RAILPOSITION, RAILNUMBER, TRAMNUMBER) VALUES( null, null, :trainID)";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("trainID", train.TramNumber);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally { conn.Close(); }
+        }
+        public bool RemoveRequest(Train train, out string error)
+        {
+            error = "";
+            try
+            {
+                string query;
+                query = "DELETE FROM REQUEST WHERE TRAMNUMBER = :tramnum";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramnum", train.TramNumber);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally { conn.Close(); }
+        }
+        public bool GetRequest(Train Tram, out RailSection railsect, out string error)
+        {
+            railsect = null;
+            error = "";
+            try
+            {
+                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
+                OracleCommand command = CreateOracleCommand(query);
+                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
+                foreach (OracleDataReader o in datareaders)
+                {
+                    int buildyear = (int)o["BUILDYEAR"];
+                    string model = (string)o["TMODEL"];
+                    int section = (int)o["TRAMNUMBER"];
+
+                    railsect = new RailSection(section);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
                 return false;
             }
             finally
@@ -151,6 +203,85 @@ namespace S22DProftaak.Database
                 conn.Close();
             }
         }
+
+
+
+        #endregion
+        public bool MoveTrain(Train train, User usr, out string error)
+        {
+            error = "";
+
+            try
+            {
+                string query = "INSERT INTO TIMETABLE(ID, TRAM_ID, TUSER_USERNAME, TIME)" +
+                    "VALUES(0, :tramID, :usrnam, :time)";//"UPDATE TABLE TIMETABLE SET TIME = :time WHERE TRAM_ID = :tramID AND TIME IS NULL;";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramid", train.TramNumber);
+                command.Parameters.Add("usrnam", train.TramNumber);
+                command.Parameters.Add("time", DateTime.Now);
+                command.ExecuteNonQuery();
+
+                query = "UPDATE TABLE TRAM SET RAILSECTION_ID = (SELECT railposition FROM REQUESTING WHERE TRAMNUMBER= :tramID) WHERE ID = :tramID ;";
+                command = CreateOracleCommand(query);
+                command.Parameters.Add("railsect", train.TramNumber);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetRails(out List<Rail> rails, out string error)
+        {
+            error = "Not implemented";
+            rails = new List<Rail>();
+            return false;
+
+        }
+        public bool GetTrains(out List<Train> trains, out string error)
+        {
+            trains = null;
+            error = "";
+            try
+            {
+                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
+                OracleCommand command = CreateOracleCommand(query);
+                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
+                foreach (OracleDataReader o in datareaders)
+                {
+                    int buildyear = (int)o["BUILDYEAR"];
+                    string model = (string)o["TMODEL"];
+                    int number = (int)o["TRAMNUMBER"];
+
+                    trains.Add(new Train(buildyear, model, number));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+        
+
+
+
+
+
+
         #endregion
 
 
@@ -445,6 +576,13 @@ namespace S22DProftaak.Database
             }
         }
         #endregion
+
        // public bool GetTrainLocation(int trainnumber, , out string error)
+
+
+#region test
+       
+#endregion
+
     }
 }

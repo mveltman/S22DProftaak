@@ -11,26 +11,20 @@ namespace S22DProftaak.General
     class GeneralSystem
     {
         public static User LoggedUser;
-        private DatabaseConnection db = new Database.DatabaseConnection();  
+
+        private Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private string _error = "";
+        public User GetLoggedUser { get { return LoggedUser; } }
+        public string Error { get { return _error; } }
         public GeneralSystem()
         {
-            ManagementForm mf = new ManagementForm();
-            mf.Show();
+            
 
         }
 
-        public bool Login(string userName, string Password, out string error)
+        public bool Login(string userName, string Password)
         {
-            error = "";
-            User tempusr = new User(UserTypeEnum.Cleaner, "Henk", "Henk", "De Boer");
-            if (!db.Login(out tempusr, userName, Password)) error = "Could not login user";
-            else return true;
-            return false;
-        }
-
-        public User GetLoggedUser()
-        {
-            return LoggedUser;
+            return (!db.Login(out LoggedUser, userName, Password, out _error));
         }
         public bool GetTrainLoggedUser(out Train tram, out string error)
         {

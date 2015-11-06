@@ -32,6 +32,7 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool GetdbTrains()
         {
+
             return db.GetTrains(out Trains, out _error);
         }
         public bool OpenRemise()
@@ -42,6 +43,7 @@ namespace S22DProftaak.ManagementSystem
         public bool OpenRails()
         {
             return db.OpenRails(out RailSections, out _error);
+
         }
         public bool OpenAction(Action.Action action)// action action aanpassen
         {
@@ -62,7 +64,9 @@ namespace S22DProftaak.ManagementSystem
             RichTextBox currentbox = sender as RichTextBox;
             foreach(Train t in Trains)
             {
+
                if(currentbox.Text == Convert.ToString(t.TramNumber))
+
                {
                    return true;
                }

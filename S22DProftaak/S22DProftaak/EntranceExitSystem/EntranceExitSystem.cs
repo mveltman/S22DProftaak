@@ -17,9 +17,12 @@ namespace S22DProftaak.EntranceExit
         private string _error = "";
         public Train CurrenTrain { get { return _currentTram; } }
         private List<Train> _trains = new List<Train>();
+        public List<Train> Trains { get { return _trains; } }
         public string Error { get { return _error; } }
         private List<Rail> _rails = new List<Rail>();
         public List<Rail> Rails { get { return _rails; } }
+        private RailSection _targetTrack;
+        public RailSection TargetTrack { get { return _targetTrack; } }
 
         public EntranceExitSystem()
         {
@@ -36,23 +39,25 @@ namespace S22DProftaak.EntranceExit
         }
         public bool EnterTrain(Train train, RailSection railsection)
         {
-            //return db.EnterTrain(train, railsection);
-            throw new NotImplementedException();
+
+            //throw new NotImplementedException();
+            return db.EnterTrain(train, railsection, out this._error);
+
         }
 
-        public bool getrails()
-        {
-           // return db.GetRails(out _rails, out this._error);
-            throw new NotImplementedException();
+        public bool getRails()
+        {  
+           return db.GetRails(out _rails, out this._error);
+            //throw new NotImplementedException();
+
         }
 
         public bool GetTrams()
         {
+            //throw new NotImplementedException();
             // fill the Trains list with the database
-            bool sht = db.GetTrains(out _trains, out this._error);
-            return sht;
+            return db.GetTrains(out this._trains, out this._error);
             // return the trams in the out
-            throw new NotImplementedException();
         }
 
         public bool ApplyRepairSession(string repairsystem)
@@ -67,14 +72,28 @@ namespace S22DProftaak.EntranceExit
 
         public bool MoveTram()
         {
+            bool sht = db.MoveTrain(this._currentTram, sys.GetLoggedUser, out this._error);
+
             // use this.CurrentTram TODO: movetrain in database class!
-            // -- return (db.MoveTrain(this.currentTram, out error));
-            throw new NotImplementedException();
+            if (sht && RemoveRequest()) return true;
+            else return false;
         }
 
         public bool UpdateAllTrams()
         {
-            throw new NotImplementedException();
+            return db.GetTrains(out this._trains, out this._error);
+        }
+        public bool AddRequest()
+        {
+            return db.AddRequest(this._currentTram, out this._error);
+        }
+        public bool RemoveRequest()
+        {
+            return db.RemoveRequest(this._currentTram, out this._error);
+        }
+        public bool GetRequest()
+        {
+            return db.GetRequest(this._currentTram, out _targetTrack, out _error);
         }
     }
 }
