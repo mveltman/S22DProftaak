@@ -31,11 +31,11 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
             estimatedDateEnd = EstimatedDateEnd;
             Rail = rail;
         }
-        public Action(string note, RailSection rail, Train tram)
+        public Action(string note, Train tram)
         {
             Tram = tram;
             Note = note;
-            Rail = rail;
+            
         }
         /// <summary>
         /// Database Constructor
@@ -43,11 +43,10 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="note"></param>
         /// <param name="rail"></param>
         /// <param name="id"> for database </param>
-        public Action(string note, RailSection rail, int id, Train tram)
+        public Action(string note,  int id, Train tram)
         {
             Tram = tram;
-            Note = note;
-            Rail = rail;
+            Note = note;            
             ID = id;
         }
         /// <summary>
@@ -58,13 +57,13 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="rail"></param>
         /// <param name="estimatedDateEnd"></param>
         /// <param name="id"> Id for database</param>
-        public Action(string note, DateTime dateStart, RailSection rail, DateTime estimatedDateEnd, int id, Train tram)
+        public Action(string note, DateTime dateStart , int id,DateTime estimatedDateEnd, Train tram)
         {
             Tram = tram;
             Note = note;
             DateStart = dateStart;
             estimatedDateEnd = EstimatedDateEnd;
-            Rail = rail;
+            
             ID = id;
         }
 
@@ -103,9 +102,10 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
             return true;
         }// Changing EndTime
 
-        public bool ActivateRepair(DateTime time)
+        public bool ActivateAction(DateTime time)
         {
-            DateStart = time;
+            EstimatedDateEnd = time;
+            DateStart = DateTime.Now;
             InProgress = true;
             return true; 
         }// TO get them acticated
