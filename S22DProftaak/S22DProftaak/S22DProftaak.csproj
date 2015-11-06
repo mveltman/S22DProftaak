@@ -114,6 +114,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="EntranceExitSystem\EntranceExitSystem.cs" />
+    <Compile Include="ManagementSystem\ManagementSystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementSystem\ManagementSystemForm.Designer.cs">
+      <DependentUpon>ManagementSystemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagementSystem\Reservering.cs" />
     <Compile Include="ManagementSystem\ReserveringForm.cs">
       <SubType>Form</SubType>
@@ -172,11 +178,17 @@
     <EmbeddedResource Include="EntranceExitSystem\EntranceExitForm.resx">
       <DependentUpon>EntranceExitForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagementSystem\KiesStatusFormWIP.resx">
       <DependentUpon>KiesStatusFormWIP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementSystem\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementSystem\ManagementSystemForm.resx">
+      <DependentUpon>ManagementSystemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementSystem\ReserveringForm.resx">
       <DependentUpon>ReserveringForm.cs</DependentUpon>
@@ -205,6 +217,7 @@
     <EmbeddedResource Include="WorkerInformationForm.resx">
       <DependentUpon>WorkerInformationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ManagementSystem\0maggu1a.t43" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
