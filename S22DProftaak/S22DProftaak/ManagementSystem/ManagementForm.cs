@@ -37,11 +37,9 @@ namespace S22DProftaak.ManagementSystem
             oldtext = currentBox.Text;
             if(e.Button == MouseButtons.Right)
             {
-                //create new prompt here.
                 ContextMenuStrip cms = new ContextMenuStrip();
                 ToolStripMenuItem cmsBlock = new ToolStripMenuItem("Block");
                 cmsBlock.Click += new EventHandler(cmsBlock_Click);
-
             }
             else if(e.Button == MouseButtons.Left)
             {
@@ -62,14 +60,13 @@ namespace S22DProftaak.ManagementSystem
             else
             {
                 RichTextBox currentbox = sender as RichTextBox;
-                
             }
 
         } 
   
         private void cmsBlock_Click(object sender, EventArgs e)
         {
-            //Rail57Pos1rtf
+            
             RichTextBox selectedbox = sender as RichTextBox;
             string fullrailname = selectedbox.Name;
             string railnumber = Convert.ToString(fullrailname[4]) + Convert.ToString(fullrailname[5]);
@@ -78,8 +75,56 @@ namespace S22DProftaak.ManagementSystem
             {
                 railPosition += Convert.ToString(fullrailname[10]);
             }
-            RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber));
-            mg.BlockRail(deconstructedNameString);
+           // RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber));
+           // mg.BlockRail(deconstructedNameString);
+        }
+
+        private void traminfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TramInfoForm tif = new TramInfoForm();
+            tif.Show();
+        }
+
+        private void statusKiezenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //will be implemented at a later date
+        }
+
+        private void reserveringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReserveringForm rsf = new ReserveringForm();
+            rsf.Show();
+        }
+
+        private void kiesTramnummerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           TramKeuzeForm tkf = new TramKeuzeForm();
+           tkf.Show();
+        }
+
+        private void blokkerenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spoorInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Repairtsdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Exittsdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

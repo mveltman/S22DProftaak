@@ -17,13 +17,13 @@ namespace S22DProftaak.General
         public int Position { get; private set; }
         public bool Blocked { get; private set; }
         public Train Train { get; private set; }
-        public string RailNumber { get; private set; } 
+        public int RailNumber { get; private set; } 
 
-        public RailSection(int position)
+        public RailSection(int position, int railNumber, bool blocked)
         {
-            throw new NotImplementedException();
-            //this.Position = position;
-
+            this.Position = position;
+            this.RailNumber = railNumber;
+            this.Blocked = blocked;
         }//Sets position on rail
         public bool RemoveTrain()
         {

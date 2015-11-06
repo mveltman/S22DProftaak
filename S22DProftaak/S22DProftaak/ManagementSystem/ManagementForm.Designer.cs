@@ -32,25 +32,23 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.OptionsGbx = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Tramstsdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.kiesTramnummerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reserveringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusKiezenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traminfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Sporentsdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.blokkerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.voerGegevensInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButton5 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Dienstentsdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Schoonmaaktsdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.schoonmaakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton6 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.repairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton7 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Repairtsdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Repairtsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Exittsdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.TramInfoGbx = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.RailInfolbl = new System.Windows.Forms.Label();
+            this.TrainInfolbl = new System.Windows.Forms.Label();
             this.richTextBox236 = new System.Windows.Forms.RichTextBox();
             this.richTextBox235 = new System.Windows.Forms.RichTextBox();
             this.Rail38rtf = new System.Windows.Forms.RichTextBox();
@@ -288,7 +286,7 @@
             this.Rail12Pos1rtf = new System.Windows.Forms.RichTextBox();
             this.Rail21Pos1rtf = new System.Windows.Forms.RichTextBox();
             this.ReserveringenGbx = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Reserveringenlbx = new System.Windows.Forms.ListBox();
             this.toolStrip1.SuspendLayout();
             this.TramInfoGbx.SuspendLayout();
             this.ReserveringenGbx.SuspendLayout();
@@ -305,154 +303,145 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2,
-            this.toolStripDropDownButton3,
-            this.toolStripDropDownButton4,
-            this.toolStripDropDownButton5,
-            this.toolStripDropDownButton6,
-            this.toolStripDropDownButton7});
+            this.Tramstsdd,
+            this.Sporentsdd,
+            this.Dienstentsdd,
+            this.Schoonmaaktsdd,
+            this.Repairtsdd,
+            this.Exittsdd});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1499, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripDropDownButton1
+            // Tramstsdd
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Tramstsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Tramstsdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kiesTramnummerToolStripMenuItem,
             this.reserveringToolStripMenuItem,
             this.statusKiezenToolStripMenuItem,
             this.traminfoToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(53, 22);
-            this.toolStripDropDownButton1.Text = "Trams";
+            this.Tramstsdd.Image = ((System.Drawing.Image)(resources.GetObject("Tramstsdd.Image")));
+            this.Tramstsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Tramstsdd.Name = "Tramstsdd";
+            this.Tramstsdd.Size = new System.Drawing.Size(53, 22);
+            this.Tramstsdd.Text = "Trams";
             // 
             // kiesTramnummerToolStripMenuItem
             // 
             this.kiesTramnummerToolStripMenuItem.Name = "kiesTramnummerToolStripMenuItem";
             this.kiesTramnummerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.kiesTramnummerToolStripMenuItem.Text = "Kies Tramnummer";
+            this.kiesTramnummerToolStripMenuItem.Click += new System.EventHandler(this.kiesTramnummerToolStripMenuItem_Click);
             // 
             // reserveringToolStripMenuItem
             // 
             this.reserveringToolStripMenuItem.Name = "reserveringToolStripMenuItem";
             this.reserveringToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.reserveringToolStripMenuItem.Text = "Reservering";
+            this.reserveringToolStripMenuItem.Click += new System.EventHandler(this.reserveringToolStripMenuItem_Click);
             // 
             // statusKiezenToolStripMenuItem
             // 
             this.statusKiezenToolStripMenuItem.Name = "statusKiezenToolStripMenuItem";
             this.statusKiezenToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.statusKiezenToolStripMenuItem.Text = "Status kiezen";
+            this.statusKiezenToolStripMenuItem.Click += new System.EventHandler(this.statusKiezenToolStripMenuItem_Click);
             // 
             // traminfoToolStripMenuItem
             // 
             this.traminfoToolStripMenuItem.Name = "traminfoToolStripMenuItem";
             this.traminfoToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.traminfoToolStripMenuItem.Text = "Traminfo";
+            this.traminfoToolStripMenuItem.Click += new System.EventHandler(this.traminfoToolStripMenuItem_Click);
             // 
-            // toolStripDropDownButton2
+            // Sporentsdd
             // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Sporentsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Sporentsdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.blokkerenToolStripMenuItem,
             this.spoorInfoToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(57, 22);
-            this.toolStripDropDownButton2.Text = "Sporen";
+            this.Sporentsdd.Image = ((System.Drawing.Image)(resources.GetObject("Sporentsdd.Image")));
+            this.Sporentsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Sporentsdd.Name = "Sporentsdd";
+            this.Sporentsdd.Size = new System.Drawing.Size(57, 22);
+            this.Sporentsdd.Text = "Sporen";
             // 
             // blokkerenToolStripMenuItem
             // 
             this.blokkerenToolStripMenuItem.Name = "blokkerenToolStripMenuItem";
-            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.blokkerenToolStripMenuItem.Text = "Blokkeren";
+            this.blokkerenToolStripMenuItem.Click += new System.EventHandler(this.blokkerenToolStripMenuItem_Click);
             // 
             // spoorInfoToolStripMenuItem
             // 
             this.spoorInfoToolStripMenuItem.Name = "spoorInfoToolStripMenuItem";
-            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.spoorInfoToolStripMenuItem.Text = "Spoor info";
+            this.spoorInfoToolStripMenuItem.Click += new System.EventHandler(this.spoorInfoToolStripMenuItem_Click);
             // 
-            // toolStripDropDownButton3
+            // Dienstentsdd
             // 
-            this.toolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.voerGegevensInToolStripMenuItem});
-            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
-            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
-            this.toolStripDropDownButton3.Size = new System.Drawing.Size(52, 22);
-            this.toolStripDropDownButton3.Text = "Lijnen";
+            this.Dienstentsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Dienstentsdd.Image = ((System.Drawing.Image)(resources.GetObject("Dienstentsdd.Image")));
+            this.Dienstentsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Dienstentsdd.Name = "Dienstentsdd";
+            this.Dienstentsdd.Size = new System.Drawing.Size(66, 22);
+            this.Dienstentsdd.Text = "Diensten";
             // 
-            // voerGegevensInToolStripMenuItem
+            // Schoonmaaktsdd
             // 
-            this.voerGegevensInToolStripMenuItem.Name = "voerGegevensInToolStripMenuItem";
-            this.voerGegevensInToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.voerGegevensInToolStripMenuItem.Text = "Voer gegevens in";
-            // 
-            // toolStripDropDownButton4
-            // 
-            this.toolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton4.Image")));
-            this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
-            this.toolStripDropDownButton4.Size = new System.Drawing.Size(66, 22);
-            this.toolStripDropDownButton4.Text = "Diensten";
-            // 
-            // toolStripDropDownButton5
-            // 
-            this.toolStripDropDownButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Schoonmaaktsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Schoonmaaktsdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.schoonmaakToolStripMenuItem});
-            this.toolStripDropDownButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton5.Image")));
-            this.toolStripDropDownButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton5.Name = "toolStripDropDownButton5";
-            this.toolStripDropDownButton5.Size = new System.Drawing.Size(89, 22);
-            this.toolStripDropDownButton5.Text = "Schoonmaak";
+            this.Schoonmaaktsdd.Image = ((System.Drawing.Image)(resources.GetObject("Schoonmaaktsdd.Image")));
+            this.Schoonmaaktsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Schoonmaaktsdd.Name = "Schoonmaaktsdd";
+            this.Schoonmaaktsdd.Size = new System.Drawing.Size(89, 22);
+            this.Schoonmaaktsdd.Text = "Schoonmaak";
             // 
             // schoonmaakToolStripMenuItem
             // 
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
+            this.schoonmaakToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
             // 
-            // toolStripDropDownButton6
+            // Repairtsdd
             // 
-            this.toolStripDropDownButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.repairToolStripMenuItem});
-            this.toolStripDropDownButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton6.Image")));
-            this.toolStripDropDownButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton6.Name = "toolStripDropDownButton6";
-            this.toolStripDropDownButton6.Size = new System.Drawing.Size(53, 22);
-            this.toolStripDropDownButton6.Text = "Repair";
+            this.Repairtsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Repairtsdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Repairtsmi});
+            this.Repairtsdd.Image = ((System.Drawing.Image)(resources.GetObject("Repairtsdd.Image")));
+            this.Repairtsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Repairtsdd.Name = "Repairtsdd";
+            this.Repairtsdd.Size = new System.Drawing.Size(53, 22);
+            this.Repairtsdd.Text = "Repair";
+            this.Repairtsdd.Click += new System.EventHandler(this.Repairtsdd_Click);
             // 
-            // repairToolStripMenuItem
+            // Repairtsmi
             // 
-            this.repairToolStripMenuItem.Name = "repairToolStripMenuItem";
-            this.repairToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.repairToolStripMenuItem.Text = "Repair";
+            this.Repairtsmi.Name = "Repairtsmi";
+            this.Repairtsmi.Size = new System.Drawing.Size(152, 22);
+            this.Repairtsmi.Text = "Repair";
             // 
-            // toolStripDropDownButton7
+            // Exittsdd
             // 
-            this.toolStripDropDownButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton7.Image")));
-            this.toolStripDropDownButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton7.Name = "toolStripDropDownButton7";
-            this.toolStripDropDownButton7.Size = new System.Drawing.Size(38, 22);
-            this.toolStripDropDownButton7.Text = "Exit";
+            this.Exittsdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Exittsdd.Image = ((System.Drawing.Image)(resources.GetObject("Exittsdd.Image")));
+            this.Exittsdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Exittsdd.Name = "Exittsdd";
+            this.Exittsdd.Size = new System.Drawing.Size(38, 22);
+            this.Exittsdd.Text = "Exit";
+            this.Exittsdd.Click += new System.EventHandler(this.Exittsdd_Click);
             // 
             // TramInfoGbx
             // 
-            this.TramInfoGbx.Controls.Add(this.label2);
-            this.TramInfoGbx.Controls.Add(this.label1);
+            this.TramInfoGbx.Controls.Add(this.RailInfolbl);
+            this.TramInfoGbx.Controls.Add(this.TrainInfolbl);
             this.TramInfoGbx.Controls.Add(this.richTextBox236);
             this.TramInfoGbx.Controls.Add(this.richTextBox235);
             this.TramInfoGbx.Location = new System.Drawing.Point(12, 61);
@@ -462,23 +451,23 @@
             this.TramInfoGbx.TabStop = false;
             this.TramInfoGbx.Text = "Tram Info";
             // 
-            // label2
+            // RailInfolbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "label2";
+            this.RailInfolbl.AutoSize = true;
+            this.RailInfolbl.Location = new System.Drawing.Point(77, 156);
+            this.RailInfolbl.Name = "RailInfolbl";
+            this.RailInfolbl.Size = new System.Drawing.Size(35, 13);
+            this.RailInfolbl.TabIndex = 20;
+            this.RailInfolbl.Text = "Spoor";
             // 
-            // label1
+            // TrainInfolbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "label1";
+            this.TrainInfolbl.AutoSize = true;
+            this.TrainInfolbl.Location = new System.Drawing.Point(77, 33);
+            this.TrainInfolbl.Name = "TrainInfolbl";
+            this.TrainInfolbl.Size = new System.Drawing.Size(31, 13);
+            this.TrainInfolbl.TabIndex = 19;
+            this.TrainInfolbl.Text = "Tram";
             // 
             // richTextBox236
             // 
@@ -3269,7 +3258,7 @@
             // 
             // ReserveringenGbx
             // 
-            this.ReserveringenGbx.Controls.Add(this.listBox1);
+            this.ReserveringenGbx.Controls.Add(this.Reserveringenlbx);
             this.ReserveringenGbx.Location = new System.Drawing.Point(12, 420);
             this.ReserveringenGbx.Name = "ReserveringenGbx";
             this.ReserveringenGbx.Size = new System.Drawing.Size(192, 342);
@@ -3277,13 +3266,13 @@
             this.ReserveringenGbx.TabStop = false;
             this.ReserveringenGbx.Text = "Reserveringen";
             // 
-            // listBox1
+            // Reserveringenlbx
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(16, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(159, 277);
-            this.listBox1.TabIndex = 244;
+            this.Reserveringenlbx.FormattingEnabled = true;
+            this.Reserveringenlbx.Location = new System.Drawing.Point(16, 19);
+            this.Reserveringenlbx.Name = "Reserveringenlbx";
+            this.Reserveringenlbx.Size = new System.Drawing.Size(159, 277);
+            this.Reserveringenlbx.TabIndex = 244;
             // 
             // ManagementForm
             // 
@@ -3546,13 +3535,12 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox OptionsGbx;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton4;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton5;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton6;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton7;
+        private System.Windows.Forms.ToolStripDropDownButton Tramstsdd;
+        private System.Windows.Forms.ToolStripDropDownButton Sporentsdd;
+        private System.Windows.Forms.ToolStripDropDownButton Dienstentsdd;
+        private System.Windows.Forms.ToolStripDropDownButton Schoonmaaktsdd;
+        private System.Windows.Forms.ToolStripDropDownButton Repairtsdd;
+        private System.Windows.Forms.ToolStripDropDownButton Exittsdd;
         private System.Windows.Forms.GroupBox TramInfoGbx;
         private System.Windows.Forms.RichTextBox Rail38rtf;
         private System.Windows.Forms.RichTextBox Rail37rtf;
@@ -3789,19 +3777,18 @@
         private System.Windows.Forms.RichTextBox Rail12Pos1rtf;
         private System.Windows.Forms.RichTextBox Rail21Pos1rtf;
         private System.Windows.Forms.GroupBox ReserveringenGbx;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label RailInfolbl;
+        private System.Windows.Forms.Label TrainInfolbl;
         private System.Windows.Forms.RichTextBox richTextBox236;
         private System.Windows.Forms.RichTextBox richTextBox235;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox Reserveringenlbx;
         private System.Windows.Forms.ToolStripMenuItem kiesTramnummerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reserveringToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusKiezenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem traminfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blokkerenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spoorInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem voerGegevensInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem repairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Repairtsmi;
     }
 }

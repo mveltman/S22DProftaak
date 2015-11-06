@@ -36,14 +36,14 @@ namespace S22DProftaak.EntranceExit
         }
         public bool EnterTrain(Train train, RailSection railsection)
         {
-            return db.EnterTrain(train, railsection);
+            //return db.EnterTrain(train, railsection);
             throw new NotImplementedException();
         }
 
         public bool getrails()
         {
-            return db.GetRails(out _rails, out this._error);
-            //throw new NotImplementedException();
+           // return db.GetRails(out _rails, out this._error);
+            throw new NotImplementedException();
         }
 
         public bool GetTrams()

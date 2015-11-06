@@ -10,10 +10,10 @@ namespace S22DProftaak.Action
     /// <summary>
     /// This class saves all information about a clean action
     /// </summary>
-    public class Clean : Action
+    public class Clean //: Action
     {
         public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd)
-            : base(note, dateStart, rail, estimatedDateEnd)
+            //: base(note, dateStart, rail, estimatedDateEnd)
         {
 
         }

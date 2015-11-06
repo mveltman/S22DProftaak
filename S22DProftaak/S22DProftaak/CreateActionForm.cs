@@ -40,7 +40,7 @@ namespace S22DProftaak
                         RailList = new List<General.RailSection>();
             foreach (General.RailSection rail in RailList)
             {
-                if (rail.RailNumber == RailTb.Text && rail.Position == Convert.ToInt16( SectorTb.Text)) 
+                if (rail.RailNumber == Convert.ToInt32(RailTb.Text) && rail.Position == Convert.ToInt16( SectorTb.Text)) 
                 {  
                     General.Train train;
                     if (Repair.GetTramSpoor(out train, Convert.ToInt32(RailTb.Text), Convert.ToInt32(SectorTb.Text)))
@@ -63,7 +63,7 @@ namespace S22DProftaak
                         RailList = new List<General.RailSection>();
             foreach (General.RailSection rail in RailList)
             {
-                if (rail.RailNumber == RailTb.Text && rail.Position == Convert.ToInt16( SectorTb.Text)) 
+                if (rail.RailNumber == Convert.ToInt32(RailTb.Text) && rail.Position == Convert.ToInt16( SectorTb.Text)) 
                 {  
                     General.Train train;
                     if (Repair.GetTramSpoor(out train, Convert.ToInt32(RailTb.Text), Convert.ToInt32(SectorTb.Text)))

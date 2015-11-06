@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using S22DProftaak.Database;
+using S22DProftaak.ManagementSystem;
 
 namespace S22DProftaak.General
 {
     class GeneralSystem
     {
         public static User LoggedUser;
-        private Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private DatabaseConnection db = new Database.DatabaseConnection();  
         public GeneralSystem()
         {
-            throw new NotImplementedException();
+            ManagementForm mf = new ManagementForm();
+            mf.Show();
+
         }
 
         public bool Login(string userName, string Password, out string error)

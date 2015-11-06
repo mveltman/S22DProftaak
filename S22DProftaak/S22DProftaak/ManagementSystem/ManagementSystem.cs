@@ -15,28 +15,38 @@ namespace S22DProftaak.ManagementSystem
     /// </summary>
     public class ManagementSystem
     {
-        private List<Train> trains = new List<Train>();
+        private List<Train> Trains = new List<Train>();
         private DatabaseConnection db = new DatabaseConnection();
+        private List<RailSection> RailSections = new List<RailSection>();
+        private List<Reservering> Reserveringen = new List<Reservering>();
         
+        private string _error = "";
+
+        public List<Train> GetTrains 
+        {
+            get { return Trains; }
+        }
         public ManagementSystem()
         {
             
         }
-        public bool GetTrains()
+        public bool GetdbTrains()
         {
-            this.trains = db.GetTrains();
+            return db.GetTrains(out Trains, out _error);
         }
         public bool OpenRemise()
         {
-            db
+            throw new NotImplementedException();
+            //This is a filler method for the sake of expandibility.
         }
         public bool OpenRails()
         {
-            db.
+            return db.OpenRails(out RailSections, out _error);
         }
         public bool OpenAction(Action.Action action)// action action aanpassen
         {
-            throw new NotImplementedException();
+           // db.GetAllActions();
+            return true;
         }
         public bool BlockRail(RailSection railsection)
         {
@@ -48,12 +58,11 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool ValidateNewInput(object sender)
         {
-            GetTrains();
+            GetdbTrains();
             RichTextBox currentbox = sender as RichTextBox;
-            foreach(Train t in trains)
+            foreach(Train t in Trains)
             {
-                //need to add trainnumber property to train. wait until sure nobody else did.
-               if(currentbox.Text == Convert.ToString(/*t.number*/))
+               if(currentbox.Text == Convert.ToString(t.TramNumber))
                {
                    return true;
                }
@@ -61,5 +70,6 @@ namespace S22DProftaak.ManagementSystem
             }
             return false;
         }
+        
     }
 }
