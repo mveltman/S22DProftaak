@@ -11,6 +11,7 @@ namespace S22DProftaak.General
         public static User LoggedUser;
         private Database.DatabaseConnection db = new Database.DatabaseConnection();
         private string _error = "";
+        public User GetLoggedUser { get { return LoggedUser; } }
         public string Error { get { return _error; } }
         public GeneralSystem()
         {
@@ -20,11 +21,6 @@ namespace S22DProftaak.General
         public bool Login(string userName, string Password)
         {
             return (!db.Login(out LoggedUser, userName, Password, out _error));
-        }
-
-        public User GetLoggedUser()
-        {
-            return LoggedUser;
         }
         public bool GetTrainLoggedUser(out Train tram, out string error)
         {

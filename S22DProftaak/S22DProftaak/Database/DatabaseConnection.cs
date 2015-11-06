@@ -35,14 +35,8 @@ namespace S22DProftaak.Database
                 conn.Open();
                 return true;
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            catch { return false; }
+            finally { conn.Close(); }
         }
         public OracleCommand CreateOracleCommand(string sql)
         {
@@ -93,8 +87,6 @@ namespace S22DProftaak.Database
             User tempUsr = new User(UserTypeEnum.Cleaner, "Henk", "Henk", "De Boer");
             logusr = tempUsr;
             error = "";
-            //throw new NotImplementedException();
-            //to be implemented correctly. This is a template!!!
             try
             {
                 string query = "SELECT per.PERMISSION, us.USERNAME, us.FIRSTNAME, us.LASTNAME " +
@@ -129,12 +121,124 @@ namespace S22DProftaak.Database
                 error = ex.ToString();
                 return false;
             }
+            finally { conn.Close(); }
+        }
+        #endregion
+
+        #region EntranceExit
+
+        public bool EnterTrain(Train train, RailSection railsection, out string error)
+        {
+            error = "";
+
+            return false;
+        }
+        public bool MoveTrain(Train train, User usr, out string error)
+        {
+            error = "";
+
+            try
+            {
+                string query = "INSERT INTO TIMETABLE(ID, TRAM_ID, TUSER_USERNAME, TIME)" +
+                    "VALUES(0, :tramID, :usrnam, :time)";//"UPDATE TABLE TIMETABLE SET TIME = :time WHERE TRAM_ID = :tramID AND TIME IS NULL;";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramid", train.TramNumber);
+                command.Parameters.Add("usrnam", train.TramNumber);
+                command.Parameters.Add("time", DateTime.Now);
+                command.ExecuteNonQuery();
+
+                query = "UPDATE TABLE TRAM SET RAILSECTION_ID = (SELECT railposition FROM REQUESTING WHERE TRAMNUMBER= :tramID) WHERE ID = :tramID ;";
+                command = CreateOracleCommand(query);
+                command.Parameters.Add("railsect", train.TramNumber);
+
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
             finally
             {
                 conn.Close();
             }
         }
+        public bool GetRails(out List<Rail> rails, out string error)
+        {
+            error = "Not implemented";
+            rails = new List<Rail>();
+            return false;
+            
+        }
         #endregion
+        public bool GetTrains(out List<Train> trains, out string error)
+        {
+            trains = null;
+            error = "";
+            try
+            {
+                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
+                OracleCommand command = CreateOracleCommand(query);
+                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
+                foreach (OracleDataReader o in datareaders)
+                {
+                    int buildyear = (int)o["BUILDYEAR"];
+                    string model = (string)o["TMODEL"];
+                    int number = (int)o["TRAMNUMBER"];
 
+                    trains.Add(new Train(buildyear, model, number));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public bool AddRequest(Train train, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "INSERT INTO REQUEST(RAILPOSITION, RAILNUMBER, TRAMNUMBER) VALUES( null, null, :trainID)";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("trainID", train.TramNumber);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally { conn.Close(); }
+        }
+        public bool RemoveRequest(Train train, out string error)
+        {
+            error = "";
+            try
+            {
+                string query;
+                query = "DELETE FROM REQUEST WHERE TRAMNUMBER = :tramnum";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramnum", train.TramNumber);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally { conn.Close(); }
+        }
     }
 }

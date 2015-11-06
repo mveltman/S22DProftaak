@@ -20,6 +20,7 @@ namespace S22DProftaak.General
         {
             enExSys = new EntranceExit.EntranceExitSystem();
             InitializeComponent();
+            txtRail.Text = "";
             if (enExSys.Error != "")
             {
                 MessageBox.Show(enExSys.Error);
@@ -32,23 +33,17 @@ namespace S22DProftaak.General
         }
         private void btnArrived_Click(object sender, EventArgs e)
         {
-            if (!enExSys.MoveTram())
-            {
-                MessageBox.Show(enExSys.Error);
-                this.Close();
-            }
+            if (!enExSys.MoveTram()) MessageBox.Show(enExSys.Error);
             else
             {
                 // here the program checks what cb was checked and opens forms accordingly.
                 if (chkClean.Checked)
                 {
-
                     // open clean form forced popup.
                     enExSys.ApplyCleanSession("Todo: repair");
                 }
                 if (chkRepair.Checked)
                 {
-
                     // open Repair form forced popup.
                     enExSys.ApplyRepairSession("Todo: repair");
                 }
@@ -57,20 +52,22 @@ namespace S22DProftaak.General
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
-            string promptValue;
+            string pv1,pv2,pv3,pv4;
             if (chkClean.Checked)
             {
-                promptValue = Prompt.ShowDialog("Reason:", "Clean Description");
+                pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
                 // open clean form forced popup. todo implement this in actions
                 // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
-                enExSys.ApplyCleanSession("Todo: repair");
+                //Action.Clean cln = new Action.Clean(pv1, null, null,null, enExSys.CurrenTrain);
+                if (!enExSys.ApplyCleanSession("Todo: repair")) MessageBox.Show(enExSys.Error);
                 // TODO: description
             }
             if (chkRepair.Checked)
             {
-                promptValue = Prompt.ShowDialog("Reason:", "Repair Description");
+                pv1 = Prompt.ShowDialog("Reason:", "Repair Description");
                 // open Repair form forced popup.
-                enExSys.ApplyRepairSession("Todo: repair");
+
+                if (!enExSys.ApplyRepairSession("Todo: repair")) MessageBox.Show(enExSys.Error);
             }
         }
         
