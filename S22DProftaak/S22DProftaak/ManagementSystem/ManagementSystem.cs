@@ -24,15 +24,18 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool GetTrains()
         {
-            this.trains = db.GetTrains();
+            //this.trains = db.GetTrains();
+            throw new NotImplementedException();
         }
         public bool OpenRemise()
         {
-            db
+            //db
+            throw new NotImplementedException();
         }
         public bool OpenRails()
         {
-            db.
+            //db.
+            throw new NotImplementedException();
         }
         public bool OpenAction(Action.Action action)// action action aanpassen
         {
@@ -53,7 +56,7 @@ namespace S22DProftaak.ManagementSystem
             foreach(Train t in trains)
             {
                 //need to add trainnumber property to train. wait until sure nobody else did.
-               if(currentbox.Text == Convert.ToString(/*t.number*/))
+               if(currentbox.Text == Convert.ToString(/*t.number*/""))
                {
                    return true;
                }
