@@ -57,7 +57,7 @@ namespace S22DProftaak.General
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
-            string pv1, pv2, pv3, pv4;
+            string pv1;//, pv2, pv3, pv4;
             if (chkClean.Checked)
             {
                 pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
@@ -69,6 +69,10 @@ namespace S22DProftaak.General
             }
             if (chkRepair.Checked)
             {
+                using (CreateActionForm actForm= new CreateActionForm(enExSys.CurrenTrain.TramNumber))
+                {
+                    actForm.Show();
+                }
                 pv1 = Prompt.ShowDialog("Reason:", "Repair Description");
                 // open Repair form forced popup.
 
@@ -86,8 +90,11 @@ namespace S22DProftaak.General
                     e.Cancel = true;
                     return;
                 }
-                if (enExSys.GetRequest() && e.Result == "true") e.Result = "false";
-                else if (enExSys.GetRequest() && e.Result == "false") e.Result = "true";
+                if (enExSys.GetRequest())
+                {
+                    if (e.Result == "true") e.Result = "false";
+                    else e.Result = "true";
+                }
             }
         }
 
