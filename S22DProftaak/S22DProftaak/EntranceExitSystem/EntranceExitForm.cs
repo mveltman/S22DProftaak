@@ -41,18 +41,8 @@ namespace S22DProftaak.General
             if (!enExSys.MoveTram()) MessageBox.Show(enExSys.Error);
             else
             {
-                // here the program checks what cb was checked and opens forms accordingly.
-                if (chkClean.Checked)
-                {
-                    // open clean form forced popup.
-                    enExSys.ApplyCleanSession("Todo: repair");
-                }
-                if (chkRepair.Checked)
-                {
-                    // open Repair form forced popup.
-                    enExSys.ApplyRepairSession("Todo: repair");
-                }
-            }
+                MessageBox.Show("");
+            } 
         }
 
         private void btnDescription_Click(object sender, EventArgs e)

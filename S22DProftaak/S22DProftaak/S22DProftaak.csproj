@@ -66,6 +66,12 @@
       <DependentUpon>CreateActionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="EntranceExitSystem\CentralScreenEnEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntranceExitSystem\CentralScreenEnEx.Designer.cs">
+      <DependentUpon>CentralScreenEnEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntranceExitSystem\EntranceExitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     <EmbeddedResource Include="CreateActionForm.resx">
       <DependentUpon>CreateActionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EntranceExitSystem\CentralScreenEnEx.resx">
+      <DependentUpon>CentralScreenEnEx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntranceExitSystem\EntranceExitForm.resx">
       <DependentUpon>EntranceExitForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +142,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WorkerInformationForm.resx">
       <DependentUpon>WorkerInformationForm.cs</DependentUpon>
@@ -150,8 +160,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Content Include="Resources\FontysIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Plattegrond.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

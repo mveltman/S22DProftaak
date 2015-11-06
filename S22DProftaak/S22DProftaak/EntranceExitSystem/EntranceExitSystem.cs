@@ -17,6 +17,7 @@ namespace S22DProftaak.EntranceExit
         private string _error = "";
         public Train CurrenTrain { get { return _currentTram; } }
         private List<Train> _trains = new List<Train>();
+        public List<Train> Trains { get { return _trains; } }
         public string Error { get { return _error; } }
         private List<Rail> _rails = new List<Rail>();
         public List<Rail> Rails { get { return _rails; } }
@@ -42,7 +43,7 @@ namespace S22DProftaak.EntranceExit
             return db.EnterTrain(train, railsection, out this._error);
         }
 
-        public bool getrails()
+        public bool getRails()
         {
             //throw new NotImplementedException();
             return db.GetRails(out _rails, out this._error);
