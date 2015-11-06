@@ -15,7 +15,7 @@ namespace S22DProftaak.General
         public string Error { get { return _error; } }
         public GeneralSystem()
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool Login(string userName, string Password)

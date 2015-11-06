@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using S22DProftaak.General;
+using System.Timers;
 
 namespace S22DProftaak.General
 {
@@ -16,9 +18,11 @@ namespace S22DProftaak.General
         EntranceExit.EntranceExitSystem enExSys;
         GeneralSystem sys = new GeneralSystem();
         List<Train> trains = new List<Train>();
+
         public EntranceExitForm()
         {
             enExSys = new EntranceExit.EntranceExitSystem();
+
             InitializeComponent();
             txtRail.Text = "";
             if (enExSys.Error != "")
@@ -31,6 +35,7 @@ namespace S22DProftaak.General
                 this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
             }
         }
+        
         private void btnArrived_Click(object sender, EventArgs e)
         {
             if (!enExSys.MoveTram()) MessageBox.Show(enExSys.Error);
@@ -52,7 +57,7 @@ namespace S22DProftaak.General
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
-            string pv1,pv2,pv3,pv4;
+            string pv1, pv2, pv3, pv4;
             if (chkClean.Checked)
             {
                 pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
@@ -70,6 +75,33 @@ namespace S22DProftaak.General
                 if (!enExSys.ApplyRepairSession("Todo: repair")) MessageBox.Show(enExSys.Error);
             }
         }
-        
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                Thread.Sleep(8000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                if (enExSys.GetRequest() && e.Result == "true") e.Result = "false";
+                else if (enExSys.GetRequest() && e.Result == "false") e.Result = "true";
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            txtRail.Text = enExSys.TargetTrack.ToString();
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+        }
+
+
+
     }
 }

@@ -20,6 +20,8 @@ namespace S22DProftaak.EntranceExit
         public string Error { get { return _error; } }
         private List<Rail> _rails = new List<Rail>();
         public List<Rail> Rails { get { return _rails; } }
+        private RailSection _targetTrack;
+        public RailSection TargetTrack { get { return _targetTrack; } }
 
         public EntranceExitSystem()
         {
@@ -68,7 +70,7 @@ namespace S22DProftaak.EntranceExit
         public bool MoveTram()
         {
             bool sht = db.MoveTrain(this._currentTram, sys.GetLoggedUser, out this._error);
-            
+
             // use this.CurrentTram TODO: movetrain in database class!
             if (sht && RemoveRequest()) return true;
             else return false;
@@ -85,6 +87,10 @@ namespace S22DProftaak.EntranceExit
         public bool RemoveRequest()
         {
             return db.RemoveRequest(this._currentTram, out this._error);
+        }
+        public bool GetRequest()
+        {
+            return db.GetRequest(this._currentTram, out _targetTrack, out _error);
         }
     }
 }

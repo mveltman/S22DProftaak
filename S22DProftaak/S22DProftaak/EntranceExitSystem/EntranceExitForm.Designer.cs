@@ -35,6 +35,7 @@
             this.chkClean = new System.Windows.Forms.CheckBox();
             this.chkRepair = new System.Windows.Forms.CheckBox();
             this.txtRail = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,14 @@
             this.txtRail.Size = new System.Drawing.Size(261, 20);
             this.txtRail.TabIndex = 3;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,5 +132,6 @@
         private System.Windows.Forms.CheckBox chkClean;
         private System.Windows.Forms.CheckBox chkRepair;
         private System.Windows.Forms.TextBox txtRail;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

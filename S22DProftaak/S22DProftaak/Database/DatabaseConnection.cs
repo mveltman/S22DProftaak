@@ -240,5 +240,34 @@ namespace S22DProftaak.Database
             }
             finally { conn.Close(); }
         }
+        public bool GetRequest(Train Tram, out RailSection railsect, out string error)
+        {
+            railsect = null;
+            error = "";
+            try
+            {
+                string query = "SELECT BUILDYEAR, TMODEL, TRAMNUMBER FROM TRAM";
+                OracleCommand command = CreateOracleCommand(query);
+                List<OracleDataReader> datareaders = ExecuteMultiQuery(command);
+                foreach (OracleDataReader o in datareaders)
+                {
+                    int buildyear = (int)o["BUILDYEAR"];
+                    string model = (string)o["TMODEL"];
+                    int section = (int)o["TRAMNUMBER"];
+
+                    railsect = new RailSection(section);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

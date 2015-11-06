@@ -23,20 +23,59 @@ namespace S22DProftaak
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Loginbtn();
+        }
+        private void Loginbtn()
+        {
             if (Login(tbLogin.Text, tbPassword.Text))
             {
-                throw new NotImplementedException();
+                MessageBox.Show("U bent ingelogd als " + sys.GetLoggedUser.UserName + sys.GetLoggedUser.Type.ToString());
+                //throw new NotImplementedException();
                 //open new form, hide this form.
+                UserTypeEnum enm = sys.GetLoggedUser.Type;
+                if (enm == UserTypeEnum.Admin)
+                {
+                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
+                    {
+                        opnForm.Show();
+                    }
+
+                }
+                else if (enm == UserTypeEnum.Repairsman)
+                {
+                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
+                    {
+                        opnForm.Show();
+                    }
+                }
+                else if (enm == UserTypeEnum.Driver)
+                {
+                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
+                    {
+                        opnForm.Show();
+                    }
+                }
+                else if (enm == UserTypeEnum.Cleaner)
+                {
+                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
+                    {
+                        opnForm.Show();
+                    }
+                }
                 this.Hide();
             }
             // else has been handled in bool Login. Messagebox gets shown already. Should do nothing.
         }
-
         private bool Login(string name, string password)
         {
             if (sys.Login(name, password)) return true;
             MessageBox.Show(sys.Error);
             return false;
+        }
+
+        private void tbLogin_Enter(object sender, EventArgs e)
+        {
+            Loginbtn();
         }
     }
 }
