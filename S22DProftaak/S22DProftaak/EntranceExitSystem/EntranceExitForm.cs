@@ -58,7 +58,7 @@ namespace S22DProftaak.General
                 pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
                 // open clean form forced popup. todo implement this in actions
                 // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
-                //Action.Clean cln = new Action.Clean(pv1, null, null,null, enExSys.CurrenTrain);
+                //Action.Clean cln = new Action.Clean(pv1, enExSys.CurrenTrain);
                 if (!enExSys.ApplyCleanSession("Todo: repair")) MessageBox.Show(enExSys.Error);
                 // TODO: description
             }
