@@ -33,6 +33,8 @@
             this.CleanInProgress = new System.Windows.Forms.ListBox();
             this.CleanButton = new System.Windows.Forms.Button();
             this.DoneButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
+            this.ChangeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CleanDescription
@@ -50,6 +52,7 @@
             this.CleanAssignments.Name = "CleanAssignments";
             this.CleanAssignments.Size = new System.Drawing.Size(204, 537);
             this.CleanAssignments.TabIndex = 1;
+            this.CleanAssignments.SelectedIndexChanged += new System.EventHandler(this.CleanAssignments_SelectedIndexChanged);
             // 
             // CleanInProgress
             // 
@@ -68,6 +71,7 @@
             this.CleanButton.TabIndex = 3;
             this.CleanButton.Text = "Clean";
             this.CleanButton.UseVisualStyleBackColor = true;
+            this.CleanButton.Click += new System.EventHandler(this.CleanButton_Click);
             // 
             // DoneButton
             // 
@@ -78,12 +82,37 @@
             this.DoneButton.TabIndex = 4;
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = true;
+            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.CreateButton.Location = new System.Drawing.Point(267, 251);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(122, 42);
+            this.CreateButton.TabIndex = 12;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // ChangeButton
+            // 
+            this.ChangeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.ChangeButton.Location = new System.Drawing.Point(654, 70);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(122, 42);
+            this.ChangeButton.TabIndex = 13;
+            this.ChangeButton.Text = "Change";
+            this.ChangeButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
             // 
             // CleanSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 561);
+            this.Controls.Add(this.ChangeButton);
+            this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.CleanButton);
             this.Controls.Add(this.CleanInProgress);
@@ -102,5 +131,7 @@
         private System.Windows.Forms.ListBox CleanInProgress;
         private System.Windows.Forms.Button CleanButton;
         private System.Windows.Forms.Button DoneButton;
+        private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.Button ChangeButton;
     }
 }

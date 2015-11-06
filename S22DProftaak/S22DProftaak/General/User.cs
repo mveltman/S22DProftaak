@@ -25,5 +25,10 @@ namespace S22DProftaak.General
             this.FirstName = firstName;
             this.LastName = lastName;
         }  // sets the usertype, username, first and lastname
+
+        public override string ToString()
+        {
+               return FirstName + " "+LastName;
+        }
     }
 }

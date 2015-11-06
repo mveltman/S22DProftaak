@@ -16,12 +16,13 @@ namespace S22DProftaak
         public RepairSystem.RepairSystem repair;
 
         public void UpdateTasks() 
-        { 
-            List<Action.Repair> repairlist = new List<Action.Repair>();
-            if (repair.GetRepairTasks(out repairlist, true))
+        {
+            List<Action.Action> repairlist = new List<Action.Action>();
+           
+            if (repair.GetRepairTasks(out repairlist))
             {
 
-                foreach (Action.Repair pair in repairlist)
+                foreach (Action.Action pair in repairlist)
                 { 
                     if(pair.InProgress)
                     {
@@ -48,7 +49,14 @@ namespace S22DProftaak
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            using (ChangeForm Change = new ChangeForm((Action.Action)RepairInProgress.SelectedItem)) 
+            {
+                Change.ShowDialog();
+                repair.UpdateRepaired(Change.Act,Change.desc, Change.Time);
+                UpdateTasks(); 
+            }
+            
+            
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -57,35 +65,40 @@ namespace S22DProftaak
             {
                 Information.ShowDialog();
             }
+            UpdateTasks();
 
         }
 
         private void RepairAssignments_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RepairDescription.Text = RepairAssignments.SelectedItem.ToString(); 
+            Action.Action act =  (Action.Action)RepairAssignments.SelectedItem;
+            RepairDescription.Text = act.Note; 
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
+            repair.SetEndTime((Action.Action)RepairInProgress.SelectedItem);
+            UpdateTasks();
 
         }
 
         private void RepairButton_Click(object sender, EventArgs e)
         {
 
-            using (AddWorkerForm Work = new AddWorkerForm())
+            using (AddWorkerForm Work = new AddWorkerForm("Repair"))
             {
 
                 Work.ShowDialog();
                 List<General.User> list = new List<General.User>();
-                if (Work.GetIformation(out list))
+                DateTime Time = DateTime.Now;
+                if (Work.GetIformation(out list,out Time))
                 {
-                    repair.ApplyRepairSession((Action.Repair)RepairAssignments.SelectedItem, list, DateTime.Now);
-                }
+                    repair.ApplyRepairSession((Action.Repair)RepairAssignments.SelectedItem, list, Time);
+                }// List of users who work on a particular action
                 else
                 {
                     MessageBox.Show("No Workers selected");
-                }
+                }// aplying the session with a estimated date and 
 
             }
            
