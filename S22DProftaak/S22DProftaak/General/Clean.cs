@@ -12,6 +12,14 @@ namespace S22DProftaak.Action
     /// </summary>
     public class Clean : Action
     {
+<<<<<<< HEAD
+        public Clean(string note, DateTime dateStart, DateTime dateEnd, 
+            RailSection rail, DateTime estimatedDateEnd, Train train)
+            : base(note, rail, train)
+        {
+            throw new NotImplementedException();
+        }
+=======
         public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, Train tram)
             : base(note, dateStart, rail, estimatedDateEnd, tram)
             {
@@ -40,6 +48,7 @@ namespace S22DProftaak.Action
                 return this.Tram.ToString();
             }
 
+>>>>>>> refs/remotes/origin/Update
 
         /// <summary>
         /// This method adds a cleaner to this action
