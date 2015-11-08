@@ -1,4 +1,4 @@
-﻿namespace S22DProftaak.General
+﻿namespace S22DProftaak.EntranceExitSystem
 {
     partial class EntranceExitForm
     {

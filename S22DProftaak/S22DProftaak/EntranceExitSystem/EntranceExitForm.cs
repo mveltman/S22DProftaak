@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using S22DProftaak.General;
 using System.Timers;
 
-namespace S22DProftaak.General
+namespace S22DProftaak.EntranceExitSystem
 {
     public partial class EntranceExitForm : Form
     {
@@ -41,32 +41,35 @@ namespace S22DProftaak.General
             if (!enExSys.MoveTram()) MessageBox.Show(enExSys.Error);
             else
             {
-                MessageBox.Show("");
+                string pv1;//, pv2, pv3, pv4;
+                if (chkClean.Checked)
+                {
+                    pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
+                    // open clean form forced popup. todo implement this in actions
+                    // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
+                    //Action.Clean cln = new Action.Clean(pv1, enExSys.CurrenTrain);
+                    if (!enExSys.ApplyCleanSession("Todo: repair")) MessageBox.Show(enExSys.Error);
+                    // TODO: description
+                }
+                if (chkRepair.Checked)
+                {
+                    using (CreateActionForm actForm = new CreateActionForm(enExSys.CurrenTrain.TramNumber))
+                    {
+                        actForm.Show();
+                    }
+                    pv1 = Prompt.ShowDialog("Reason:", "Repair Description");
+                    // open Repair form forced popup.
+
+                    if (!enExSys.ApplyRepairSession("Todo: repair")) MessageBox.Show(enExSys.Error);
+                }
             } 
         }
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
-            string pv1;//, pv2, pv3, pv4;
-            if (chkClean.Checked)
+            using(CentralScreenEnEx screen = new CentralScreenEnEx())
             {
-                pv1 = Prompt.ShowDialog("Reason:", "Clean Description");
-                // open clean form forced popup. todo implement this in actions
-                // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
-                //Action.Clean cln = new Action.Clean(pv1, enExSys.CurrenTrain);
-                if (!enExSys.ApplyCleanSession("Todo: repair")) MessageBox.Show(enExSys.Error);
-                // TODO: description
-            }
-            if (chkRepair.Checked)
-            {
-                using (CreateActionForm actForm= new CreateActionForm(enExSys.CurrenTrain.TramNumber))
-                {
-                    actForm.Show();
-                }
-                pv1 = Prompt.ShowDialog("Reason:", "Repair Description");
-                // open Repair form forced popup.
-
-                if (!enExSys.ApplyRepairSession("Todo: repair")) MessageBox.Show(enExSys.Error);
+                screen.Show();
             }
         }
 

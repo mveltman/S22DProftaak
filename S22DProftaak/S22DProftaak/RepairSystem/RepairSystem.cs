@@ -37,10 +37,10 @@ namespace S22DProftaak.RepairSystem
             act.AddEndDate(DateTime.Now);
             if (SQL.FinishAction(act))
             {
-                    return true;
+                return true;
             }
             return false;
-           
+
         }
         public bool ApplyRepairSession(Repair repair, List<User> Repairsman, DateTime time)
         {
@@ -54,36 +54,36 @@ namespace S22DProftaak.RepairSystem
             Train tram = null;
             if (SQL.GetTram(out tram, number))
             {
-                Action.Repair action = new Action.Repair(Desc,tram);
+                Action.Repair action = new Action.Repair(Desc, tram);
                 SQL.CreateAction(action); // creates a new action based on the the given information
             }
-                        
-                        return false;
 
-               
+            return false;
+
+
         }
 
         public bool GetRepairTasks(out List<Action.Action> Repairs)
         {
             Repairs = null;
-            if (SQL.GetActions("Repair",out Repairs))
+            if (SQL.GetActions("Repair", out Repairs))
             {
                 return true;
             }
             return false;
         }
 
-    
 
-       
+
+
 
         public bool UpdateRepaired(Action.Action action, string Descrition, DateTime EstimatedEndTime)
         {
-            
-            
+
+
             action.ChangeInfo(Descrition, EstimatedEndTime);
             SQL.ChangeAction(action);
-            
+
             return true;
         }
 
@@ -91,9 +91,9 @@ namespace S22DProftaak.RepairSystem
         {
             throw new NotImplementedException();
         }
-     
-        
 
-     
+
+
+
     }
 }
