@@ -31,7 +31,7 @@ namespace S22DProftaak.ManagementSystem
             {
                // ms.AddReservation((Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.TrainNumberrtf.Text));
                 db.GetOneTrainInfo(Convert.ToInt32(this.TrainNumberrtf.Text), out this.t, out this.error);
-                ms.ApplyForAction(new Action.Repair("no note", new General.RailSection(1, Convert.ToInt32(this.Railnumberrtf),false), t));
+                //ms.ApplyForAction(new Action.Repair("no note", new General.RailSection(1, Convert.ToInt32(this.Railnumberrtf),false), t));
             }
            // ms.AddReservation((Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.TrainNumberrtf.Text));
         }

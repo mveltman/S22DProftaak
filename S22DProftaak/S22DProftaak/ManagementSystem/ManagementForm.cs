@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using S22DProftaak.General;
 using S22DProftaak.ManagementSystem;
+using System.Threading;
 
 
 namespace S22DProftaak.ManagementSystem
@@ -125,8 +126,25 @@ namespace S22DProftaak.ManagementSystem
 
         private void Exittsdd_Click(object sender, EventArgs e)
         {
-
-
+            this.Close();
         }
+
+        //private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    while (true)
+        //    {
+        //        Thread.Sleep(8000);
+        //        if (backgroundWorker1.CancellationPending)
+        //        {
+        //            e.Cancel = true;
+        //            return;
+        //        }
+        //        if ()
+        //        {
+        //            if (e.Result == "true") e.Result = "false";
+        //            else e.Result = "true";
+        //        }
+        //    }
+        //}
     }
 }

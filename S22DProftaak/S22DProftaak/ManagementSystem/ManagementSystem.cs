@@ -15,16 +15,18 @@ namespace S22DProftaak.ManagementSystem
     /// </summary>
     public class ManagementSystem
     {
-        private List<Train> Trains = new List<Train>();
+        private List<Train> _Trains = new List<Train>();
         private DatabaseConnection db = new DatabaseConnection();
         private List<RailSection> RailSections = new List<RailSection>();
         private List<Reservering> Reserveringen = new List<Reservering>();
         
         private string _error = "";
+        private bool _status;
 
         public List<Train> GetTrains 
         {
-            get { return Trains; }
+            get { return _Trains; }
+            set { this._Trains = value; }
         }
         public ManagementSystem()
         {
@@ -33,7 +35,7 @@ namespace S22DProftaak.ManagementSystem
         public bool GetdbTrains()
         {
 
-            return db.GetTrains(out Trains, out _error);
+            return db.GetTrains(out _Trains, out _error);
         }
         public bool OpenRemise()
         {
@@ -52,7 +54,7 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool BlockRail(RailSection railsection)
         {
-            throw new NotImplementedException();
+            return db.BlockRail(railsection, out _status, out _error);
         }
         public bool ApplyForAction(Action.Action action) //aanpassen
         {
@@ -62,7 +64,7 @@ namespace S22DProftaak.ManagementSystem
         {
             GetdbTrains();
             RichTextBox currentbox = sender as RichTextBox;
-            foreach(Train t in Trains)
+            foreach(Train t in _Trains)
             {
 
                if(currentbox.Text == Convert.ToString(t.TramNumber))

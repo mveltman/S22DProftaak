@@ -292,6 +292,10 @@
             this.ReserveringenGbx.SuspendLayout();
             this.SuspendLayout();
             // 
+            // backgroundWorker1
+            // 
+            //this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // OptionsGbx
             // 
             this.OptionsGbx.Location = new System.Drawing.Point(0, 1);
@@ -372,14 +376,14 @@
             // blokkerenToolStripMenuItem
             // 
             this.blokkerenToolStripMenuItem.Name = "blokkerenToolStripMenuItem";
-            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.blokkerenToolStripMenuItem.Text = "Blokkeren";
             this.blokkerenToolStripMenuItem.Click += new System.EventHandler(this.blokkerenToolStripMenuItem_Click);
             // 
             // spoorInfoToolStripMenuItem
             // 
             this.spoorInfoToolStripMenuItem.Name = "spoorInfoToolStripMenuItem";
-            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.spoorInfoToolStripMenuItem.Text = "Spoor info";
             this.spoorInfoToolStripMenuItem.Click += new System.EventHandler(this.spoorInfoToolStripMenuItem_Click);
             // 
@@ -406,7 +410,7 @@
             // schoonmaakToolStripMenuItem
             // 
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
             this.schoonmaakToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
             // 
@@ -425,7 +429,7 @@
             // Repairtsmi
             // 
             this.Repairtsmi.Name = "Repairtsmi";
-            this.Repairtsmi.Size = new System.Drawing.Size(152, 22);
+            this.Repairtsmi.Size = new System.Drawing.Size(107, 22);
             this.Repairtsmi.Text = "Repair";
             // 
             // Exittsdd

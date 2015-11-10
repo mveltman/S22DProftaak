@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S22DProftaak.General;
-
+using S22DProftaak.CleanSystem;
 using S22DProftaak.RepairSystem;
+
 
 namespace S22DProftaak.EntranceExit
 {
@@ -14,6 +15,8 @@ namespace S22DProftaak.EntranceExit
         private Train _currentTram;// { get; private set; }
         private Database.DatabaseConnection db = new Database.DatabaseConnection();
         private GeneralSystem sys = new GeneralSystem();
+        private CleanSystem.CleanSystem cleansys = new CleanSystem.CleanSystem();
+        private RepairSystem.RepairSystem repairsys = new RepairSystem.RepairSystem();
         private string _error = "";
         public Train CurrenTrain { get { return _currentTram; } }
         private List<Train> _trains = new List<Train>();
@@ -26,16 +29,15 @@ namespace S22DProftaak.EntranceExit
 
         public EntranceExitSystem()
         {
-            if (!sys.GetTrainLoggedUser(out _currentTram, out this._error))
-            {
-                // error is written. Must be shown in the form.
-            }
-            else
-            {
-                // we know the logged user and the tram used.
-            }
+            //if (!sys.GetTrainLoggedUser(out _currentTram, out this._error))
+            //{
+            //    // error is written. Must be shown in the form.
+            //}
+            //else
+            //{
+            //    // we know the logged user and the tram used.
+            //}
             //CurrentTram = //Sys.GetLoggedUser();
-            throw new NotImplementedException();
         }
         public bool EnterTrain(Train train, RailSection railsection)
         {
@@ -60,14 +62,14 @@ namespace S22DProftaak.EntranceExit
             // return the trams in the out
         }
 
-        public bool ApplyRepairSession(string repairsystem)
-        {//todo : this might not be necessary if repair form is used!
-            throw new NotImplementedException();
+        public bool ApplyRepairSession(string note)
+        {
+            return cleansys.CreateClean(_currentTram.TramNumber, note);
         }
 
-        public bool ApplyCleanSession(string repairsystem)
-        {//todo : this might not be necessary if clean form is used!
-            throw new NotImplementedException();
+        public bool ApplyCleanSession(string note)
+        {
+            return repairsys.CreateRepair(_currentTram.TramNumber, note);
         }
 
         public bool MoveTram()
@@ -94,6 +96,16 @@ namespace S22DProftaak.EntranceExit
         public bool GetRequest()
         {
             return db.GetRequest(this._currentTram, out _targetTrack, out _error);
+        }
+
+        public bool ValidateTrainNumber(int p)
+        {
+           return db.GetOneTrainInfo(p, out this._currentTram, out _error);
+        }
+
+        public bool HasArrived()
+        {
+            return db.HasArrived(CurrenTrain, out _error);
         }
     }
 }

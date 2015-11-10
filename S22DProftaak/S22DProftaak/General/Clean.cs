@@ -10,50 +10,44 @@ namespace S22DProftaak.Action
     /// <summary>
     /// This class saves all information about a clean action
     /// </summary>
-    public class Clean //: Action
+    public class Clean : Action
     {
 
-        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd)
-            //: base(note, dateStart, rail, estimatedDateEnd)
+        //public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd)
+        //: base(note, dateStart, rail, estimatedDateEnd)
+        //{
+
+        //}
+
+
+
+        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, Train tram) : base(note, dateStart, rail, estimatedDateEnd, tram)
         {
 
         }
 
-
-        public Clean(string note, DateTime dateStart, DateTime dateEnd, 
-            RailSection rail, DateTime estimatedDateEnd, Train train)
-            : base(note, rail, train)
+        public Clean(string note, Train tram)
+            : base(note, tram)
         {
-            throw new NotImplementedException();
+
         }
 
-        public Clean(string note, DateTime dateStart, DateTime dateEnd, RailSection rail, DateTime estimatedDateEnd, Train tram)
-            : base(note, dateStart, rail, estimatedDateEnd, tram)
-            {
+        public Clean(string note, int id, Train tram)
+            : base(note, id, tram)
+        {
 
-            }
-            public Clean(string note, Train tram)
-                : base(note, tram)
-            {
-                
-            }
+        }
 
-            public Clean(string note, int id, Train tram)
-                : base(note, id,tram)
-            {
+        public Clean(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram)
+            : base(note, dateStart, id, estimatedDateEnd, tram)
+        {
 
-            }
+        }
 
-            public Clean(string note, DateTime dateStart,int id, DateTime estimatedDateEnd, Train tram )
-                : base(note, dateStart, id, estimatedDateEnd,tram)
-            {
-
-            }
-
-            public override string ToString()
-            {
-                return this.Tram.ToString();
-            }
+        public override string ToString()
+        {
+            return this.Tram.ToString();
+        }
 
 
         /// <summary>
@@ -61,8 +55,8 @@ namespace S22DProftaak.Action
         /// </summary>
         /// <param name="cleaner"></param>
         /// <returns></returns>
-       // public bool AddCleaner(User cleaner)
-       // {
+        // public bool AddCleaner(User cleaner)
+        // {
         //    throw new NotImplementedException();
         //}
     }

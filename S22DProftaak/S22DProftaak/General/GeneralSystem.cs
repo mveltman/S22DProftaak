@@ -18,17 +18,17 @@ namespace S22DProftaak.General
         public string Error { get { return _error; } }
         public GeneralSystem()
         {
-            
+
 
         }
 
         public bool Login(string userName, string Password)
         {
-            return (!db.Login(out LoggedUser, userName, Password, out _error));
+            return (db.Login(out LoggedUser, userName, Password, out _error));
         }
         public bool GetTrainLoggedUser(out Train tram, out string error)
         {
-            List<Train> trainlist=new List<Train>();
+            List<Train> trainlist = new List<Train>();
             tram = null;
             error = "";
             if (LoggedUser.Type != UserTypeEnum.Driver)
@@ -36,18 +36,21 @@ namespace S22DProftaak.General
                 error = "User is not a driver.";
                 return false;
             }
-            // TODO: GetTrains implementation. bool gettrains(list<Train>, string) from database
-            // -- if (!db.GetTrains(trainlist, error)) return false;
-            foreach (Train t in trainlist)
+            if (db.GetTrains(out trainlist, out _error))
             {
-                if (t.TrainUser.UserName == LoggedUser.UserName)
+                foreach (Train t in trainlist)
                 {
-                    tram = t;
-                    return true;
+                    if (t.TrainUser.UserName == LoggedUser.UserName)
+                    {
+                        tram = t;
+                        return true;
+                    }
                 }
             }
             error = "Tram not found.";
+
             return false;
         }
+
     }
 }

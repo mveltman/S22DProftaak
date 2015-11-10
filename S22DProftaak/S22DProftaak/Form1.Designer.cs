@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(260, 20);
             this.tbLogin.TabIndex = 0;
+            this.tbLogin.Text = "Cleaner1";
             // 
             // tbPassword
             // 
@@ -50,6 +50,7 @@
             this.tbPassword.PasswordChar = '♥';
             this.tbPassword.Size = new System.Drawing.Size(260, 20);
             this.tbPassword.TabIndex = 0;
+            this.tbPassword.Text = "Cleaner1";
             // 
             // label1
             // 
@@ -89,7 +90,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbLogin);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Login";
             this.ResumeLayout(false);

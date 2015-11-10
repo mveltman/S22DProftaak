@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntranceExitForm));
             this.btnArrived = new System.Windows.Forms.Button();
             this.btnDescription = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.chkRepair = new System.Windows.Forms.CheckBox();
             this.txtRail = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.CheckRequestTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +108,12 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // CheckRequestTimer
+            // 
+            this.CheckRequestTimer.Enabled = true;
+            this.CheckRequestTimer.Interval = 2000;
+            this.CheckRequestTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +140,7 @@
         private System.Windows.Forms.CheckBox chkClean;
         private System.Windows.Forms.CheckBox chkRepair;
         private System.Windows.Forms.TextBox txtRail;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Timer CheckRequestTimer;
     }
 }

@@ -20,7 +20,7 @@ namespace S22DProftaak
             if (Clean.GetCleanTasks(out repairlist))
             {
 
-                foreach (Action.Action pair in repairlist)
+                foreach(Action.Action pair in repairlist)
                 {
                     if (pair.InProgress)
                     {

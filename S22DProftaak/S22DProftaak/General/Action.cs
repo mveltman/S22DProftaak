@@ -22,8 +22,8 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         public Boolean InProgress { get; private set; }
 
 
-        
-        public Action(string note, DateTime dateStart,  RailSection rail,DateTime estimatedDateEnd, Train tram)
+
+        public Action(string note, DateTime dateStart, RailSection rail, DateTime estimatedDateEnd, Train tram)
         {
             Tram = tram;
             Note = note;
@@ -35,7 +35,7 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         {
             Tram = tram;
             Note = note;
-            
+
         }
         /// <summary>
         /// Database Constructor
@@ -43,10 +43,10 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="note"></param>
         /// <param name="rail"></param>
         /// <param name="id"> for database </param>
-        public Action(string note,  int id, Train tram)
+        public Action(string note, int id, Train tram)
         {
             Tram = tram;
-            Note = note;            
+            Note = note;
             ID = id;
         }
         /// <summary>
@@ -57,19 +57,19 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="rail"></param>
         /// <param name="estimatedDateEnd"></param>
         /// <param name="id"> Id for database</param>
-        public Action(string note, DateTime dateStart , int id,DateTime estimatedDateEnd, Train tram)
+        public Action(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram)
         {
             Tram = tram;
             Note = note;
             DateStart = dateStart;
             estimatedDateEnd = EstimatedDateEnd;
-            
+
             ID = id;
         }
 
         public void AddDateEnd(DateTime dateEnd)
         {
-            
+
             DateEnd = dateEnd;
         }
 
@@ -98,7 +98,7 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         {
             Note = desc;
             EstimatedDateEnd = EstimatedEndTime;
-            
+
             return true;
         }// Changing EndTime
 
@@ -107,7 +107,7 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
             EstimatedDateEnd = time;
             DateStart = DateTime.Now;
             InProgress = true;
-            return true; 
+            return true;
         }// TO get them acticated
     }
 }

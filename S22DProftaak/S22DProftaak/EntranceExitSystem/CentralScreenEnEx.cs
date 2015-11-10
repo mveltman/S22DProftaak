@@ -17,6 +17,7 @@ namespace S22DProftaak.EntranceExitSystem
         GeneralSystem sys = new GeneralSystem();
         public CentralScreenEnEx()
         {
+            InitializeComponent();
             if (enexSys.GetTrams())
             {
                 foreach (Train t in enexSys.Trains)
@@ -24,7 +25,6 @@ namespace S22DProftaak.EntranceExitSystem
                     lbxTrams.Items.Add(t.TramNumber);
                 }
             }
-            InitializeComponent();
         }
     }
 }

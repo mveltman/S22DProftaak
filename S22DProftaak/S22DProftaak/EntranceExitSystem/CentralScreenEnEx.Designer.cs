@@ -38,6 +38,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::S22DProftaak.Properties.Resources.Plattegrond;
             this.pictureBox1.InitialImage = global::S22DProftaak.Properties.Resources.Plattegrond;
             this.pictureBox1.Location = new System.Drawing.Point(13, 13);
             this.pictureBox1.Name = "pictureBox1";

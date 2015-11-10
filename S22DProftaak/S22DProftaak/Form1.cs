@@ -35,42 +35,37 @@ namespace S22DProftaak
                 UserTypeEnum enm = sys.GetLoggedUser.Type;
                 if (enm == UserTypeEnum.Admin)
                 {
-                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
-                    {
-                        opnForm.Show();
-                    }
-
+                    ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm();
+                    opnForm.Show();
                 }
                 else if (enm == UserTypeEnum.Repairsman)
                 {
-                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
-                    {
-                        opnForm.Show();
-                    }
+                    RepairSystemForm opnForm = new RepairSystemForm();
+                    opnForm.Show();
                 }
                 else if (enm == UserTypeEnum.Driver)
                 {
-                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
-                    {
-                        opnForm.Show();
-                    }
+                    EntranceExitForm ex = new EntranceExitForm();
+                    ex.Show();
                 }
                 else if (enm == UserTypeEnum.Cleaner)
                 {
-                    using (ManagementSystem.ManagementForm opnForm = new ManagementSystem.ManagementForm())
-                    {
-                        opnForm.Show();
-                    }
+                    CleanSystemForm opnForm = new CleanSystemForm();
+                    opnForm.Show();  
                 }
-                this.Hide();
+                //this.Hide();
             }
             // else has been handled in bool Login. Messagebox gets shown already. Should do nothing.
         }
         private bool Login(string name, string password)
         {
-            if (sys.Login(name, password)) return true;
-            MessageBox.Show(sys.Error);
-            return false;
+            if (sys.Login(name, password) == true)
+            { return true; }
+            else
+            {
+                MessageBox.Show(sys.Error);
+                return false;
+            }
         }
 
         private void tbLogin_Enter(object sender, EventArgs e)
