@@ -11,21 +11,6 @@
     <AssemblyName>S22DProftaak</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,13 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>S22DProftaak.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
+    <Reference Include="Oracle.Web, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -111,12 +95,6 @@
     <Compile Include="General\Train.cs" />
     <Compile Include="General\User.cs" />
     <Compile Include="General\UserTypeEnum.cs" />
-    <Compile Include="ManagementSystem\KiesStatusFormWIP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManagementSystem\KiesStatusFormWIP.Designer.cs">
-      <DependentUpon>KiesStatusFormWIP.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManagementSystem\ManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,30 +110,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="EntranceExitSystem\EntranceExitSystem.cs" />
-    <Compile Include="ManagementSystem\Reservering.cs" />
-    <Compile Include="ManagementSystem\ReserveringForm.cs">
+    <Compile Include="ManagementSystem\ManagementSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManagementSystem\ReserveringForm.Designer.cs">
-      <DependentUpon>ReserveringForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManagementSystem\ToggleBlockRailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManagementSystem\ToggleBlockRailForm.Designer.cs">
-      <DependentUpon>ToggleBlockRailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManagementSystem\TramInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManagementSystem\TramInfoForm.Designer.cs">
-      <DependentUpon>TramInfoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManagementSystem\TramKeuzeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManagementSystem\TramKeuzeForm.Designer.cs">
-      <DependentUpon>TramKeuzeForm.cs</DependentUpon>
+    <Compile Include="ManagementSystem\ManagementSystemForm.Designer.cs">
+      <DependentUpon>ManagementSystemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,9 +137,6 @@
     <EmbeddedResource Include="ChangeForm.resx">
       <DependentUpon>ChangeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CleanSystem\CleanSystemForm.resx">
-      <DependentUpon>CleanSystemForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CreateActionForm.resx">
       <DependentUpon>CreateActionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,23 +149,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagementSystem\KiesStatusFormWIP.resx">
-      <DependentUpon>KiesStatusFormWIP.cs</DependentUpon>
+    <EmbeddedResource Include="CleanSystem\CleanSystemForm.resx">
+      <DependentUpon>CleanSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateActionForm.resx">
+      <DependentUpon>CreateActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementSystem\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagementSystem\ReserveringForm.resx">
-      <DependentUpon>ReserveringForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManagementSystem\ToggleBlockRailForm.resx">
-      <DependentUpon>ToggleBlockRailForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManagementSystem\TramInfoForm.resx">
-      <DependentUpon>TramInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ManagementSystem\TramKeuzeForm.resx">
-      <DependentUpon>TramKeuzeForm.cs</DependentUpon>
+    <EmbeddedResource Include="ManagementSystem\ManagementSystemForm.resx">
+      <DependentUpon>ManagementSystemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -219,6 +169,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RepairSystem\RepairSystemForm.resx">
       <DependentUpon>RepairSystemForm.cs</DependentUpon>
@@ -235,28 +186,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="S22DProftaak.csproj.bkup" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\FontysIcon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -266,11 +200,7 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
+  
   <Target Name="AfterBuild">
   </Target>
-  -->
 </Project>

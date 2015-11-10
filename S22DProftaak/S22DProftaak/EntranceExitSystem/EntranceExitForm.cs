@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using S22DProftaak.General;
+using System.Timers;
+using S22DProftaak.EntranceExitSystem;
 
 namespace S22DProftaak.General
 {
@@ -16,63 +19,96 @@ namespace S22DProftaak.General
         EntranceExit.EntranceExitSystem enExSys;
         GeneralSystem sys = new GeneralSystem();
         List<Train> trains = new List<Train>();
+
         public EntranceExitForm()
         {
-            enExSys = new EntranceExit.EntranceExitSystem();
-            InitializeComponent();
-            if (enExSys.Error != "")
+            try
             {
-                MessageBox.Show(enExSys.Error);
-                this.Close();
+
+
+                string promptresult = "";
+                promptresult = Prompt.ShowDialog("Train: ", "Kies tram");
+                enExSys = new EntranceExit.EntranceExitSystem();
+                //backgroundWorker1 = new BackgroundWorker();
+                //backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+                //backgroundWorker1.RunWorkerAsync();
+                //backgroundWorker1_DoWork(backgroundWorker1, new DoWorkEventArgs(backgroundWorker1));
+                enExSys.ValidateTrainNumber(Convert.ToInt32(promptresult));
+                enExSys.AddRequest();
+
+
+                InitializeComponent();
+                txtRail.Text = "";
+                if (enExSys.Error != "")
+                {
+                    MessageBox.Show(enExSys.Error);
+                    this.Close();
+                }
+                else
+                {
+                    this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
+                }
             }
-            else
+            catch(Exception e)
             {
-                this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
+                MessageBox.Show("hello, i am an error.");
             }
         }
+
         private void btnArrived_Click(object sender, EventArgs e)
         {
-            if (!enExSys.MoveTram())
-            {
-                MessageBox.Show(enExSys.Error);
-                this.Close();
-            }
-            else
-            {
-                // here the program checks what cb was checked and opens forms accordingly.
-                if (chkClean.Checked)
-                {
-
-                    // open clean form forced popup.
-                    enExSys.ApplyCleanSession("Todo: repair");
-                }
-                if (chkRepair.Checked)
-                {
-
-                    // open Repair form forced popup.
-                    enExSys.ApplyRepairSession("Todo: repair");
-                }
-            }
+            enExSys.HasArrived();
         }
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
-            string promptValue;
-            if (chkClean.Checked)
+            CentralScreenEnEx sc = new CentralScreenEnEx();
+            sc.Show();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+
+
+            while (true)
             {
-                promptValue = Prompt.ShowDialog("Reason:", "Clean Description");
-                // open clean form forced popup. todo implement this in actions
-                // -- Action.Clean cln = new Action.Clean(promptValue, DateTime.Now, null, "");
-                enExSys.ApplyCleanSession("Todo: repair");
-                // TODO: description
-            }
-            if (chkRepair.Checked)
-            {
-                promptValue = Prompt.ShowDialog("Reason:", "Repair Description");
-                // open Repair form forced popup.
-                enExSys.ApplyRepairSession("Todo: repair");
+                Thread.Sleep(2000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                if (enExSys.GetRequest())
+                {
+                    backgroundWorker1.CancelAsync();
+                }
             }
         }
-        
+
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //hello im useless
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (enExSys.GetRequest())
+            {
+                txtRail.Text = "rail: " + enExSys.TargetTrack.RailNumber.ToString() + " positie:" + enExSys.TargetTrack.Position.ToString();
+            }
+
+        }
+
+
+
     }
 }

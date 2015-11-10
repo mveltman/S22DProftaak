@@ -11,30 +11,24 @@ namespace S22DProftaak.General
     class GeneralSystem
     {
         public static User LoggedUser;
-        private DatabaseConnection db = new Database.DatabaseConnection();  
+
+        private Database.DatabaseConnection db = new Database.DatabaseConnection();
+        private string _error = "";
+        public User GetLoggedUser { get { return LoggedUser; } }
+        public string Error { get { return _error; } }
         public GeneralSystem()
         {
-            ManagementForm mf = new ManagementForm();
-            mf.Show();
+
 
         }
 
-        public bool Login(string userName, string Password, out string error)
+        public bool Login(string userName, string Password)
         {
-            error = "";
-            User tempusr = new User(UserTypeEnum.Cleaner, "Henk", "Henk", "De Boer");
-            if (!db.Login(out tempusr, userName, Password)) error = "Could not login user";
-            else return true;
-            return false;
-        }
-
-        public User GetLoggedUser()
-        {
-            return LoggedUser;
+            return (db.Login(out LoggedUser, userName, Password, out _error));
         }
         public bool GetTrainLoggedUser(out Train tram, out string error)
         {
-            List<Train> trainlist=new List<Train>();
+            List<Train> trainlist = new List<Train>();
             tram = null;
             error = "";
             if (LoggedUser.Type != UserTypeEnum.Driver)
@@ -42,18 +36,21 @@ namespace S22DProftaak.General
                 error = "User is not a driver.";
                 return false;
             }
-            // TODO: GetTrains implementation. bool gettrains(list<Train>, string) from database
-            // -- if (!db.GetTrains(trainlist, error)) return false;
-            foreach (Train t in trainlist)
+            if (db.GetTrains(out trainlist, out _error))
             {
-                if (t.TrainUser.UserName == LoggedUser.UserName)
+                foreach (Train t in trainlist)
                 {
-                    tram = t;
-                    return true;
+                    if (t.TrainUser.UserName == LoggedUser.UserName)
+                    {
+                        tram = t;
+                        return true;
+                    }
                 }
             }
             error = "Tram not found.";
+
             return false;
         }
+
     }
 }

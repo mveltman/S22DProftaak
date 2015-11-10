@@ -12,11 +12,11 @@ namespace S22DProftaak.CleanSystem
 {
     public class CleanSystem
     {
-       public List<General.RailSection> RailList;
+        public List<General.RailSection> RailList;
         Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public CleanSystem()
         {
-            throw new NotImplementedException();
+
         }
 
         public bool GetWorkers(out List<User> Use)
@@ -35,10 +35,10 @@ namespace S22DProftaak.CleanSystem
             act.AddEndDate(DateTime.Now);
             if (SQL.FinishAction(act))
             {
-                    return true;
+                return true;
             }
             return false;
-           
+
         }
         public bool ApplyCleanSession(Clean clean, List<User> Cleansman, DateTime time)
         {
@@ -52,13 +52,13 @@ namespace S22DProftaak.CleanSystem
             Train tram = null;
             if (SQL.GetTram(out tram, number))
             {
-                Action.Clean action = new Action.Clean(Desc,tram);
+                Action.Clean action = new Action.Clean(Desc, tram);
                 SQL.CreateAction(action); // creates a new action based on the the given information
             }
-                        
-                        return false;
 
-               
+            return false;
+
+
         }
 
         public bool GetCleanTasks(out List<Action.Action> Cleans)
@@ -71,17 +71,17 @@ namespace S22DProftaak.CleanSystem
             return false;
         }
 
-    
 
-       
+
+
 
         public bool UpdateCleaned(Action.Action action, string Descrition, DateTime EstimatedEndTime)
         {
-            
-            
+
+
             action.ChangeInfo(Descrition, EstimatedEndTime);
             SQL.ChangeAction(action);
-            
+
             return true;
         }
 
