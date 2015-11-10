@@ -40,8 +40,8 @@ namespace S22DProftaak
                 }
                 else if (enm == UserTypeEnum.Repairsman)
                 {
-                    RepairSystemForm opnForm = new RepairSystemForm();
-                    opnForm.Show();
+                    RepairSystem.WorkerInformationForm wif = new RepairSystem.WorkerInformationForm("Repair", tbLogin.Text);
+                    wif.Show();
                 }
                 else if (enm == UserTypeEnum.Driver)
                 {
@@ -50,8 +50,19 @@ namespace S22DProftaak
                 }
                 else if (enm == UserTypeEnum.Cleaner)
                 {
+                    RepairSystem.WorkerInformationForm wif = new RepairSystem.WorkerInformationForm("Clean", tbLogin.Text);
+                    wif.Show();
+                }
+                else if (enm == UserTypeEnum.CleanerTL)
+                {
+
                     CleanSystemForm opnForm = new CleanSystemForm();
                     opnForm.Show();  
+                }
+                else if(enm == UserTypeEnum.RepairsmanTL)
+                {
+                    RepairSystemForm opnForm = new RepairSystemForm();
+                    opnForm.Show();
                 }
                 //this.Hide();
             }

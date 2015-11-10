@@ -17,10 +17,10 @@ namespace S22DProftaak
         {
             List<Action.Action> repairlist = new List<Action.Action>();
 
-            if (Clean.GetCleanTasks(out repairlist))
+            if (Clean.GetCleanTasks())
             {
 
-                foreach(Action.Action pair in repairlist)
+                foreach(Action.Action pair in Clean.cleanlist)
                 {
                     if (pair.InProgress)
                     {
@@ -89,6 +89,11 @@ namespace S22DProftaak
                 Clean.UpdateCleaned(Change.Act, Change.desc, Change.Time);
                 UpdateTasks();
             }
+        }
+
+        private void RefreshCleanTasks_Tick(object sender, EventArgs e)
+        {
+            UpdateTasks();
         }
     }
 }

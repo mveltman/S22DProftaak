@@ -11,6 +11,8 @@ namespace S22DProftaak.General
         Driver,
         Admin,
         Cleaner,
-        Repairsman
+        Repairsman,
+        CleanerTL,
+        RepairsmanTL
     }
 }

@@ -32,14 +32,14 @@ namespace S22DProftaak.Action
 
         }
 
-        public Clean(string note, int id, Train tram)
-            : base(note, id, tram)
+        public Clean(string note, int id, Train tram, bool inprogess)
+            : base(note, id, tram, inprogess)
         {
 
         }
 
-        public Clean(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram)
-            : base(note, dateStart, id, estimatedDateEnd, tram)
+        public Clean(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram, bool inprogress)
+            : base(note, dateStart, id, estimatedDateEnd, tram, inprogress)
         {
 
         }

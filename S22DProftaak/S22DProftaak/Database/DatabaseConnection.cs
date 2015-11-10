@@ -591,56 +591,190 @@ namespace S22DProftaak.Database
         }
         #endregion
 
-        // public bool GetTrainLocation(int trainnumber, , out string error)
-
-
-        #region action
-        public bool GetActions(string status, out List<Action.Action> act)
+        public bool GetTrainLocation(int trainnumber, out int railnumber, out int railposition , out string error)
         {
-            act = null;
-            string error = "";
-
-
+            railnumber = -1;
+            railposition = -1;
+            error = "";
             try
             {
-                string query = "Select * from action a,tram t where a.Tram_id = t.id and EndTime is null and TType = ':action'";
-                OracleCommand com = CreateOracleCommand(query);
-                com.Parameters.Add("action", status);
+                string query = "SELECT rs.POSITION, r.TNUMBER FROM RAILSECTION RS, RAIL R, TRAM T WHERE RS.RAIL_ID = R.ID AND T.RAILSECTION_ID = RS.ID AND T.TRAMNUMBER = :tramnumber";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("tramnumber", trainnumber);
                 OracleDataReader datareader = ExecuteQuery(command);
-                while (datareader.Read())
+                while(datareader.Read())
                 {
-                    string desc = (string)datareader["TASK"];
-                    int id = (int)datareader["ID"];
-                    int buildYear = (int)datareader["buildyear"];
-                    string model = (string)datareader["tmodel"];
-                    int tramNumber = (int)datareader["TramNumber"];
-                    if (status == "Repair")
-                    {
-
-                        act.Add(new Action.Repair(desc, id, new Train(buildYear, model, tramNumber)));
-                    }
-                    else if (status == "Clean")
-                    {
-                        // act.Add(new Action.Clean(desc,id));
-                    }
-
+                    railnumber = Convert.ToInt32(datareader["TNUMBER"]);
+                    railposition = Convert.ToInt32(datareader["POSITION"]);
                 }
-
+                    return true;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                error = "Something went wrong";
-
+                error = e.ToString();
+                return false;
             }
             finally
             {
                 conn.Close();
             }
-
-
-
-            return true;
         }
+
+
+        #region action
+        public bool GetRepairActions(out List<Action.Repair> repact, out string error)
+        {
+            error = "";
+            repact = new List<Action.Repair>();
+
+            try
+            {
+                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Repair'";
+                OracleCommand command = CreateOracleCommand(query);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    bool stat;
+                    if ((string)datareader["status"] == "Finished")
+                    {
+                        stat = true;
+                    }
+                    else stat = false;
+                    int id = Convert.ToInt32(datareader["ID"]);
+                    string desc = (string)datareader["TASK"];
+                    DateTime buildYear = (DateTime)datareader["buildyear"];
+                    string model = (string)datareader["tmodel"];
+                    int tramNumber = Convert.ToInt32(datareader["TramNumber"]);
+                    repact.Add(new Action.Repair(desc, id, new Train(buildYear.Year, model, tramNumber), stat));
+                }
+                return true;
+            }
+            catch(Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool GetRepairActions(string username, out List<Action.Repair> repact, out string error)
+        {
+            error = "";
+            repact = new List<Action.Repair>();
+
+            try
+            {
+                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM, ACTION, TUSER_ACTION WHERE TRAM.ID = ACTION.TRAM_ID AND TUSER_ACTION.ACTION_ID = ACTION.ID AND TUSER_ACTION.TUSER_USERNAME = :username AND EndTime is null AND TType = 'Repair'";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("username", username);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while (datareader.Read())
+                {
+                    bool stat;
+                    if ((string)datareader["status"] == "Finished")
+                    {
+                        stat = true;
+                    }
+                    else stat = false;
+                    int id = Convert.ToInt32(datareader["ID"]);
+                    string desc = (string)datareader["TASK"];
+                    DateTime buildYear = (DateTime)datareader["buildyear"];
+                    string model = (string)datareader["tmodel"];
+                    int tramNumber = Convert.ToInt32(datareader["TramNumber"]);
+                    repact.Add(new Action.Repair(desc, id, new Train(buildYear.Year, model, tramNumber), stat));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetCleanActions(out List<Action.Clean> clact, out string error)
+        {
+            error = "";
+            clact = new List<Action.Clean>();
+
+            try
+            {
+                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Clean'";
+                OracleCommand command = CreateOracleCommand(query);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while (datareader.Read())
+                {
+                    bool stat;
+                    if ((string)datareader["status"] == "Finished")
+                    {
+                        stat = true;
+                    }
+                    else stat = false;
+                    int id = Convert.ToInt32(datareader["ID"]);
+                    string desc = (string)datareader["TASK"];
+                    DateTime buildYear = (DateTime)datareader["buildyear"];
+                    string model = (string)datareader["tmodel"];
+                    int tramNumber = Convert.ToInt32(datareader["TramNumber"]);
+                    clact.Add(new Action.Clean(desc, id, new Train(buildYear.Year, model, tramNumber), stat));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetCleanActions(string username, out List<Action.Clean> clact, out string error)
+        {
+            error = "";
+            clact = new List<Action.Clean>();
+
+            try
+            {
+                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM, ACTION, TUSER_ACTION WHERE TRAM.ID = ACTION.TRAM_ID AND TUSER_ACTION.ACTION_ID = ACTION.ID AND TUSER_ACTION.TUSER_USERNAME = :username AND EndTime is null and TType = 'Clean'";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("username", username);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while (datareader.Read())
+                {
+                    bool stat;
+                    if ((string)datareader["status"] == "Finished")
+                    {
+                        stat = true;
+                    }
+                    else stat = false;
+                    int id = Convert.ToInt32(datareader["ID"]);
+                    string desc = (string)datareader["TASK"];
+                    DateTime buildYear = (DateTime)datareader["buildyear"];
+                    string model = (string)datareader["tmodel"];
+                    int tramNumber = Convert.ToInt32(datareader["TramNumber"]);
+                    clact.Add(new Action.Clean(desc, id, new Train(buildYear.Year, model, tramNumber), stat));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        
+                
 
         //public bool    GetActionsInProgress(string status, out List<Action.Action> act)
         //{
@@ -821,45 +955,6 @@ namespace S22DProftaak.Database
             return true;
         }
 
-
-        public bool GetUserActions(General.User usr, out List<Action.Action> act)
-        {
-            act = null;
-            try
-            {
-                string query = "Take the action and tram for this user";
-                OracleCommand com = CreateOracleCommand(query);
-                List<OracleDataReader> list = ExecuteMultiQuery(com);
-                foreach (OracleDataReader item in list)
-                {
-                    string note = (string)item["Task"];
-                    DateTime estimatedDateEnd = (DateTime)item["estematedDateEnd"];
-                    DateTime dateStart = (DateTime)item["StartTime"];
-                    int Id = (int)item["ID"];
-                    int buildYear = (int)item["buildyear"];
-                    string model = (string)item["tmodel"];
-                    int tramNumber = (int)item["TramNumber"];
-
-
-                    act.Add(new Action.Repair(note, dateStart, Id, estimatedDateEnd, new Train(buildYear, model, tramNumber)));
-
-
-
-                }
-                com.Dispose();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            user = null;
-            return true;
-        }
 
         public bool FinishAction(Action.Action act)
         {

@@ -43,11 +43,12 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="note"></param>
         /// <param name="rail"></param>
         /// <param name="id"> for database </param>
-        public Action(string note, int id, Train tram)
+        public Action(string note, int id, Train tram, bool inprogress)
         {
             Tram = tram;
             Note = note;
             ID = id;
+            InProgress = inprogress;
         }
         /// <summary>
         /// To make the action from the database
@@ -57,12 +58,13 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <param name="rail"></param>
         /// <param name="estimatedDateEnd"></param>
         /// <param name="id"> Id for database</param>
-        public Action(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram)
+        public Action(string note, DateTime dateStart, int id, DateTime estimatedDateEnd, Train tram, bool inprogress)
         {
             Tram = tram;
             Note = note;
             DateStart = dateStart;
             estimatedDateEnd = EstimatedDateEnd;
+            InProgress = inprogress;
 
             ID = id;
         }

@@ -13,6 +13,9 @@ namespace S22DProftaak.CleanSystem
     public class CleanSystem
     {
         public List<General.RailSection> RailList;
+        private string _error;
+        private List<Action.Clean> _cleanlist = new List<Action.Clean>();
+        public List<Action.Clean> cleanlist { get { return _cleanlist; }}
         Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public CleanSystem()
         {
@@ -61,10 +64,19 @@ namespace S22DProftaak.CleanSystem
 
         }
 
-        public bool GetCleanTasks(out List<Action.Action> Cleans)
+        public bool GetCleanTasks()
         {
-            Cleans = null;
-            if (SQL.GetActions("Clean", out Cleans))
+            
+            if (SQL.GetCleanActions(out this._cleanlist, out _error))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool GetCleanTasks(string username)
+        {
+
+            if (SQL.GetCleanActions(username, out this._cleanlist, out _error))
             {
                 return true;
             }

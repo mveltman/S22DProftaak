@@ -19,10 +19,10 @@ namespace S22DProftaak
         {
             List<Action.Action> repairlist = new List<Action.Action>();
            
-            if (repair.GetRepairTasks(out repairlist))
+            if (repair.GetRepairTasks())
             {
 
-                foreach (Action.Action pair in repairlist)
+                foreach (Action.Action pair in repair.repairlist)
                 { 
                     if(pair.InProgress)
                     {

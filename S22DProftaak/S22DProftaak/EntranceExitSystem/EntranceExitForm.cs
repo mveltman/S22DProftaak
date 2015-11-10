@@ -29,14 +29,8 @@ namespace S22DProftaak.General
                 string promptresult = "";
                 promptresult = Prompt.ShowDialog("Train: ", "Kies tram");
                 enExSys = new EntranceExit.EntranceExitSystem();
-                //backgroundWorker1 = new BackgroundWorker();
-                //backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-                //backgroundWorker1.RunWorkerAsync();
-                //backgroundWorker1_DoWork(backgroundWorker1, new DoWorkEventArgs(backgroundWorker1));
                 enExSys.ValidateTrainNumber(Convert.ToInt32(promptresult));
                 enExSys.AddRequest();
-
-
                 InitializeComponent();
                 txtRail.Text = "";
                 if (enExSys.Error != "")
@@ -58,6 +52,17 @@ namespace S22DProftaak.General
         private void btnArrived_Click(object sender, EventArgs e)
         {
             enExSys.HasArrived();
+            
+            if(chkRepair.Checked)
+            {
+                if(Actionrtf.Text != null)
+                enExSys.ApplyRepairSession(Convert.ToString(Actionrtf.Text));
+            }
+            else if(chkClean.Checked)
+            {
+                if(Actionrtf.Text != null)
+                enExSys.ApplyCleanSession(Convert.ToString(Actionrtf.Text));
+            }
         }
 
         private void btnDescription_Click(object sender, EventArgs e)
@@ -66,38 +71,6 @@ namespace S22DProftaak.General
             sc.Show();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-
-
-            while (true)
-            {
-                Thread.Sleep(2000);
-                if (backgroundWorker1.CancellationPending)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-                if (enExSys.GetRequest())
-                {
-                    backgroundWorker1.CancelAsync();
-                }
-            }
-        }
-
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //hello im useless
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            
-            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-            backgroundWorker1.RunWorkerAsync();
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {

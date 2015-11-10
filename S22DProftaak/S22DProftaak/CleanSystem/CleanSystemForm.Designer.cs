@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CleanDescription = new System.Windows.Forms.RichTextBox();
             this.CleanAssignments = new System.Windows.Forms.ListBox();
             this.CleanInProgress = new System.Windows.Forms.ListBox();
@@ -35,6 +36,7 @@
             this.DoneButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.ChangeButton = new System.Windows.Forms.Button();
+            this.RefreshCleanTasks = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // CleanDescription
@@ -106,6 +108,12 @@
             this.ChangeButton.UseVisualStyleBackColor = true;
             this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
             // 
+            // RefreshCleanTasks
+            // 
+            this.RefreshCleanTasks.Enabled = true;
+            this.RefreshCleanTasks.Interval = 2000;
+            this.RefreshCleanTasks.Tick += new System.EventHandler(this.RefreshCleanTasks_Tick);
+            // 
             // CleanSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,5 +141,6 @@
         private System.Windows.Forms.Button DoneButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button ChangeButton;
+        private System.Windows.Forms.Timer RefreshCleanTasks;
     }
 }

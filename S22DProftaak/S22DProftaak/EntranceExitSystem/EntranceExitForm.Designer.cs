@@ -38,6 +38,7 @@
             this.txtRail = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.CheckRequestTimer = new System.Windows.Forms.Timer(this.components);
+            this.Actionrtf = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,9 +105,6 @@
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // CheckRequestTimer
             // 
@@ -114,11 +112,20 @@
             this.CheckRequestTimer.Interval = 2000;
             this.CheckRequestTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Actionrtf
+            // 
+            this.Actionrtf.Location = new System.Drawing.Point(18, 164);
+            this.Actionrtf.Name = "Actionrtf";
+            this.Actionrtf.Size = new System.Drawing.Size(251, 37);
+            this.Actionrtf.TabIndex = 4;
+            this.Actionrtf.Text = "";
+            // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 169);
+            this.ClientSize = new System.Drawing.Size(281, 213);
+            this.Controls.Add(this.Actionrtf);
             this.Controls.Add(this.txtRail);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDescription);
@@ -142,5 +149,6 @@
         private System.Windows.Forms.TextBox txtRail;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Timer CheckRequestTimer;
+        private System.Windows.Forms.RichTextBox Actionrtf;
     }
 }

@@ -23,14 +23,14 @@ namespace S22DProftaak.Action
                 
             }
 
-            public Repair(string note, int id, Train tram)
-                : base(note, id,tram)
+            public Repair(string note, int id, Train tram, bool inprogress)
+                : base(note, id,tram, inprogress)
             {
 
             }
 
-            public Repair(string note, DateTime dateStart,int id, DateTime estimatedDateEnd, Train tram )
-                : base(note, dateStart, id, estimatedDateEnd,tram)
+            public Repair(string note, DateTime dateStart,int id, DateTime estimatedDateEnd, Train tram , bool inprogress)
+                : base(note, dateStart, id, estimatedDateEnd,tram,inprogress)
             {
 
             }

@@ -18,6 +18,9 @@ namespace S22DProftaak.RepairSystem
     public class RepairSystem
     {
         public List<General.RailSection> RailList;
+        private string _error;
+        private List<Action.Repair> _repairlist = new List<Action.Repair>();
+        public List<Action.Repair> repairlist { get { return _repairlist; } } 
         Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public RepairSystem()
         {
@@ -66,10 +69,18 @@ namespace S22DProftaak.RepairSystem
 
         }
 
-        public bool GetRepairTasks(out List<Action.Action> Repairs)
+        public bool GetRepairTasks()
         {
-            Repairs = null;
-            if (SQL.GetActions("Repair", out Repairs))
+            if (SQL.GetRepairActions(out _repairlist, out _error))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool GetRepairTasks(string username)
+        {
+            if (SQL.GetRepairActions(username, out _repairlist, out _error))
             {
                 return true;
             }
