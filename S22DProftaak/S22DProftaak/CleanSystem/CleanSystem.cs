@@ -31,14 +31,12 @@ namespace S22DProftaak.CleanSystem
 
         public bool SetEndTime(Action.Action act)
         {
-
             act.AddEndDate(DateTime.Now);
             if (SQL.FinishAction(act))
             {
                 return true;
             }
             return false;
-
         }
         public bool ApplyCleanSession(Clean clean, List<User> Cleansman, DateTime time)
         {
@@ -55,12 +53,19 @@ namespace S22DProftaak.CleanSystem
                 Action.Clean action = new Action.Clean(Desc, tram);
                 SQL.CreateAction(action); // creates a new action based on the the given information
             }
-
             return false;
-
-
         }
-
+        public bool CreateClean(int number, string Desc, out string error)
+        {
+            Train tram = null;
+            error = "";
+            if (SQL.GetTram(out tram, number, out error))
+            {
+                Action.Clean action = new Action.Clean(Desc, tram);
+                return SQL.CreateAction(action, out error); // creates a new action based on the the given information and returns whether it succeeded
+            }
+            return false;
+        }
         public bool GetCleanTasks(out List<Action.Action> Cleans)
         {
             Cleans = null;
@@ -70,18 +75,10 @@ namespace S22DProftaak.CleanSystem
             }
             return false;
         }
-
-
-
-
-
         public bool UpdateCleaned(Action.Action action, string Descrition, DateTime EstimatedEndTime)
         {
-
-
             action.ChangeInfo(Descrition, EstimatedEndTime);
             SQL.ChangeAction(action);
-
             return true;
         }
 

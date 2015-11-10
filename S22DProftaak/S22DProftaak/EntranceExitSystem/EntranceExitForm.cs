@@ -24,19 +24,11 @@ namespace S22DProftaak.General
         {
             try
             {
-
-
                 string promptresult = "";
                 promptresult = Prompt.ShowDialog("Train: ", "Kies tram");
                 enExSys = new EntranceExit.EntranceExitSystem();
-                //backgroundWorker1 = new BackgroundWorker();
-                //backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-                //backgroundWorker1.RunWorkerAsync();
-                //backgroundWorker1_DoWork(backgroundWorker1, new DoWorkEventArgs(backgroundWorker1));
                 enExSys.ValidateTrainNumber(Convert.ToInt32(promptresult));
                 enExSys.AddRequest();
-
-
                 InitializeComponent();
                 txtRail.Text = "";
                 if (enExSys.Error != "")
@@ -44,33 +36,36 @@ namespace S22DProftaak.General
                     MessageBox.Show(enExSys.Error);
                     this.Close();
                 }
-                else
-                {
-                    this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
-                }
+                else this.Text = "EntranceExitForm Tram:" + enExSys.CurrenTrain.TramNumber;
             }
-            catch(Exception e)
-            {
-                MessageBox.Show("hello, i am an error.");
-            }
+            catch { MessageBox.Show("Creation of this form has failed."); }
         }
-
         private void btnArrived_Click(object sender, EventArgs e)
         {
             enExSys.HasArrived();
-        }
+
+            if (chkRepair.Checked)
+            {
+                if (Actionrtf.Text != null)
+                    if (!enExSys.ApplyRepairSession(Convert.ToString(Actionrtf.Text)))
+                        MessageBox.Show(enExSys.Error);
+            }
+            else if (chkClean.Checked)
+            {
+                if (Actionrtf.Text != null)
+                    if (!enExSys.ApplyCleanSession(Convert.ToString(Actionrtf.Text)))
+                        MessageBox.Show(enExSys.Error);
+            }
+        }// this button shows the driver has arrived with the tram.
 
         private void btnDescription_Click(object sender, EventArgs e)
         {
             CentralScreenEnEx sc = new CentralScreenEnEx();
             sc.Show();
-        }
-
+        } // this button shows the description and map of the remise in question.
+        #region backgroundworker
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
-
-
             while (true)
             {
                 Thread.Sleep(2000);
@@ -98,15 +93,14 @@ namespace S22DProftaak.General
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
             backgroundWorker1.RunWorkerAsync();
         }
-
+        #endregion
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (enExSys.GetRequest())
             {
                 txtRail.Text = "rail: " + enExSys.TargetTrack.RailNumber.ToString() + " positie:" + enExSys.TargetTrack.Position.ToString();
             }
-
-        }
+        }// this void times events to update the textbox viewing the destination.
 
 
 

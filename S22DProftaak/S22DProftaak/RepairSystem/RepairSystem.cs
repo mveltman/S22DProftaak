@@ -60,12 +60,18 @@ namespace S22DProftaak.RepairSystem
                 Action.Repair action = new Action.Repair(Desc, tram);
                 SQL.CreateAction(action); // creates a new action based on the the given information
             }
-
             return false;
-
-
         }
-
+        public bool CreateRepair(int number, string Desc, out string error)
+        {
+            Train tram = null;
+            if (SQL.GetTram(out tram, number, out error))
+            {
+                Action.Repair action = new Action.Repair(Desc, tram);
+                return SQL.CreateAction(action, out error); // creates a new action based on the the given information
+            }
+            return false;
+        }
         public bool GetRepairTasks(out List<Action.Action> Repairs)
         {
             Repairs = null;

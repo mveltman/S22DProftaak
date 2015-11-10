@@ -38,6 +38,7 @@
             this.txtRail = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.CheckRequestTimer = new System.Windows.Forms.Timer(this.components);
+            this.Actionrtf = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,11 +115,20 @@
             this.CheckRequestTimer.Interval = 2000;
             this.CheckRequestTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Actionrtf
+            // 
+            this.Actionrtf.Location = new System.Drawing.Point(13, 164);
+            this.Actionrtf.Name = "Actionrtf";
+            this.Actionrtf.Size = new System.Drawing.Size(260, 89);
+            this.Actionrtf.TabIndex = 4;
+            this.Actionrtf.Text = "";
+            // 
             // EntranceExitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 169);
+            this.ClientSize = new System.Drawing.Size(285, 265);
+            this.Controls.Add(this.Actionrtf);
             this.Controls.Add(this.txtRail);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDescription);
@@ -142,5 +152,6 @@
         private System.Windows.Forms.TextBox txtRail;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Timer CheckRequestTimer;
+        private System.Windows.Forms.RichTextBox Actionrtf;
     }
 }

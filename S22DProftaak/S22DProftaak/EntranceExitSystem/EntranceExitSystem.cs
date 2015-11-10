@@ -64,12 +64,12 @@ namespace S22DProftaak.EntranceExit
 
         public bool ApplyRepairSession(string note)
         {
-            return cleansys.CreateClean(_currentTram.TramNumber, note);
+            return cleansys.CreateClean(_currentTram.TramNumber, note, out _error);
         }
 
         public bool ApplyCleanSession(string note)
         {
-            return repairsys.CreateRepair(_currentTram.TramNumber, note);
+            return repairsys.CreateRepair(_currentTram.TramNumber, note, out _error);
         }
 
         public bool MoveTram()
@@ -77,7 +77,10 @@ namespace S22DProftaak.EntranceExit
             bool sht = db.MoveTrain(this._currentTram, sys.GetLoggedUser, out this._error);
 
             // use this.CurrentTram TODO: movetrain in database class!
-            if (sht && RemoveRequest()) return true;
+            if (sht) 
+            {
+                return RemoveRequest();
+            }
             else return false;
         }
 

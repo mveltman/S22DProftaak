@@ -778,7 +778,7 @@ namespace S22DProftaak.Database
         }
         public bool CreateAction(Action.Action act)
         {
-            string error = "";
+            //string error = "";
             try
             {
                 string type;
@@ -820,10 +820,48 @@ namespace S22DProftaak.Database
             }
             return true;
         }
-
-
-        public bool GetUserActions(General.User usr, out List<Action.Action> act)
+        public bool CreateAction(Action.Action act, out string error)
         {
+            error = "";
+            try
+            {
+                string type;
+                if (act is Action.Repair)
+                {
+                    type = "Repair";
+                }
+                else
+                {
+                    type = "Clean";
+                }
+                int Id = 0;
+                string errors = "";
+                string query = "insert into action(id, Task,TType) values(':id',':note','type')";
+                if (!GetNrOfRows("action", "id", out Id, out errors))
+                {
+                    OracleCommand com = CreateOracleCommand(query);
+                    com.Parameters.Add("id", Id);
+                    com.Parameters.Add("note", act.Note);
+                    com.Parameters.Add("type", type);
+                    ExecuteNonQuery(com);
+                    com.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                error = "An error occured. Updating the database has failed.";
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+
+        public bool GetUserActions(General.User usr, out List<Action.Action> act, out string error)
+        {
+            error = "";
             act = null;
             try
             {
@@ -839,24 +877,16 @@ namespace S22DProftaak.Database
                     int buildYear = (int)item["buildyear"];
                     string model = (string)item["tmodel"];
                     int tramNumber = (int)item["TramNumber"];
-
-
                     act.Add(new Action.Repair(note, dateStart, Id, estimatedDateEnd, new Train(buildYear, model, tramNumber)));
-
-
-
                 }
                 com.Dispose();
             }
             catch (Exception)
             {
-
-                throw;
+                error = "This query doesn't exist. To be implemented.?";
+                return false;
             }
-            finally
-            {
-                conn.Close();
-            }
+            finally {  conn.Close(); }
             user = null;
             return true;
         }
@@ -906,6 +936,35 @@ namespace S22DProftaak.Database
             {
                 return false;
                 throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetTram(out Train tram, int number, out string error)
+        {
+            tram = null;
+            error = "";
+            try
+            {
+
+                string query = "select * from tram where tramnumber = ':id'";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("id", number);
+
+                OracleDataReader value = ExecuteQuery(com);
+                int buildYear = (int)value["buildyear"];
+                string model = (string)value["tmodel"];
+                int tramNumber = (int)value["TramNumber"];
+                tram = new Train(buildYear, model, tramNumber);
+                return true;
+
+            }
+            catch
+            {
+                error = "Either the database was disconected or the query did not return an answer.";
+                return false;
             }
             finally
             {
