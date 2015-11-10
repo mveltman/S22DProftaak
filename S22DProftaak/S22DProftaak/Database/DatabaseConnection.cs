@@ -79,7 +79,7 @@ namespace S22DProftaak.Database
             }
             catch { return false; }
         }
-<<<<<<< HEAD
+
 
         #region login user check
         public bool Login(out User logusr, string loginName, string Password, out string error)
@@ -272,7 +272,7 @@ namespace S22DProftaak.Database
         }
         
 
-=======
+
        
 
 
@@ -605,6 +605,6 @@ namespace S22DProftaak.Database
 #region test
        
 #endregion
->>>>>>> refs/remotes/origin/Update
+
     }
 }
