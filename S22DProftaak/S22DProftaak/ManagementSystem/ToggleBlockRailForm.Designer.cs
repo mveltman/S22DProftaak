@@ -28,24 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRailNumber = new System.Windows.Forms.Label();
+            this.btnToggleBlock = new System.Windows.Forms.Button();
+            this.rtfRailNumber = new System.Windows.Forms.RichTextBox();
+            this.rtfRailPosition = new System.Windows.Forms.RichTextBox();
+            this.lblRailPosition = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblRailNumber
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lblRailNumber.AutoSize = true;
+            this.lblRailNumber.Location = new System.Drawing.Point(38, 30);
+            this.lblRailNumber.Name = "lblRailNumber";
+            this.lblRailNumber.Size = new System.Drawing.Size(65, 13);
+            this.lblRailNumber.TabIndex = 0;
+            this.lblRailNumber.Text = "Rail nummer";
+            // 
+            // btnToggleBlock
+            // 
+            this.btnToggleBlock.Location = new System.Drawing.Point(41, 179);
+            this.btnToggleBlock.Name = "btnToggleBlock";
+            this.btnToggleBlock.Size = new System.Drawing.Size(100, 49);
+            this.btnToggleBlock.TabIndex = 1;
+            this.btnToggleBlock.Text = "Toggle Block";
+            this.btnToggleBlock.UseVisualStyleBackColor = true;
+            this.btnToggleBlock.Click += new System.EventHandler(this.btnToggleBlock_Click);
+            // 
+            // rtfRailNumber
+            // 
+            this.rtfRailNumber.Location = new System.Drawing.Point(41, 46);
+            this.rtfRailNumber.Name = "rtfRailNumber";
+            this.rtfRailNumber.Size = new System.Drawing.Size(100, 96);
+            this.rtfRailNumber.TabIndex = 2;
+            this.rtfRailNumber.Text = "";
+            // 
+            // rtfRailPosition
+            // 
+            this.rtfRailPosition.Location = new System.Drawing.Point(171, 46);
+            this.rtfRailPosition.Name = "rtfRailPosition";
+            this.rtfRailPosition.Size = new System.Drawing.Size(100, 96);
+            this.rtfRailPosition.TabIndex = 3;
+            this.rtfRailPosition.Text = "";
+            // 
+            // lblRailPosition
+            // 
+            this.lblRailPosition.AutoSize = true;
+            this.lblRailPosition.Location = new System.Drawing.Point(168, 30);
+            this.lblRailPosition.Name = "lblRailPosition";
+            this.lblRailPosition.Size = new System.Drawing.Size(56, 13);
+            this.lblRailPosition.TabIndex = 4;
+            this.lblRailPosition.Text = "RailPositie";
             // 
             // ToggleBlockRailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 448);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(365, 289);
+            this.Controls.Add(this.lblRailPosition);
+            this.Controls.Add(this.rtfRailPosition);
+            this.Controls.Add(this.rtfRailNumber);
+            this.Controls.Add(this.btnToggleBlock);
+            this.Controls.Add(this.lblRailNumber);
             this.Name = "ToggleBlockRailForm";
             this.Text = "ToggleBlockRailForm";
             this.ResumeLayout(false);
@@ -55,6 +98,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRailNumber;
+        private System.Windows.Forms.Button btnToggleBlock;
+        private System.Windows.Forms.RichTextBox rtfRailNumber;
+        private System.Windows.Forms.RichTextBox rtfRailPosition;
+        private System.Windows.Forms.Label lblRailPosition;
     }
 }

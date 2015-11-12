@@ -20,85 +20,74 @@ namespace S22DProftaak.RepairSystem
         public List<General.RailSection> RailList;
         private string _error;
         private List<Action.Repair> _repairlist = new List<Action.Repair>();
-        public List<Action.Repair> repairlist { get { return _repairlist; } } 
+        public List<Action.Repair> repairlist { get { return _repairlist; } }
         Database.DatabaseConnection SQL = new Database.DatabaseConnection();
         public RepairSystem()
         {
-            
+
         }
 
-        public bool GetWorkers(out List<User> Use)
+        public bool GetWorkers(out List<User> Use, out string error)
         {
             Use = new List<User>();
-            if (SQL.GetAllUsers("Repair", out Use))
-            {
-                return true;
-            }
-            return false;
+            return SQL.GetAllUsers("Repair", out Use, out error);
+
         }// Gets Alle workers who can Repair
 
-        public bool SetEndTime(Action.Action act)
+        public bool SetEndTime(Action.Repair act, out string error)
         {
 
             act.AddEndDate(DateTime.Now);
-            if (SQL.FinishAction(act))
-            {
-                return true;
-            }
-            return false;
+            return SQL.FinishActionRepair(act, out error);
 
         }
-        public bool ApplyRepairSession(Repair repair, List<User> Repairsman, DateTime time)
+        public bool ApplyRepairSession(Repair repair, List<User> Repairsman, DateTime time, out string error)
         {
+
             repair.ActivateAction(time);
-            SQL.ActivateAction(Repairsman, repair);
-            return true;
+            return SQL.ActivateAction(Repairsman, repair, out error);
+
         }
 
-        public bool CreateRepair(int number, string Desc)
+        public bool CreateRepair(int number, string Desc, out string error)
         {
             Train tram = null;
-            if (SQL.GetTram(out tram, number))
-            {
-                Action.Repair action = new Action.Repair(Desc, tram);
-                SQL.CreateAction(action); // creates a new action based on the the given information
-            }
-
-            return false;
+            SQL.GetTram(out tram, number);
+            Action.Repair action = new Action.Repair(Desc, tram);
+            return SQL.CreateActionRepair(action, out error); // creates a new action based on the the given information     
 
 
+        }
+        public bool Redo(Action.Repair act, out string error)
+        {
+            return SQL.RedoActiveR(act, out error);
         }
 
         public bool GetRepairTasks()
         {
-            if (SQL.GetRepairActions(out _repairlist, out _error))
-            {
-                return true;
-            }
-            return false;
+            return SQL.GetRepairActions(out _repairlist, out _error);
+
         }
+
 
         public bool GetRepairTasks(string username)
         {
-            if (SQL.GetRepairActions(username, out _repairlist, out _error))
-            {
-                return true;
-            }
-            return false;
+
+            return SQL.GetRepairActions(username, out this._repairlist, out _error);
         }
 
 
 
 
 
-        public bool UpdateRepaired(Action.Action action, string Descrition, DateTime EstimatedEndTime)
+        public bool UpdateRepaired(Action.Repair action, string Descrition, DateTime EstimatedEndTime, out string error)
         {
 
 
             action.ChangeInfo(Descrition, EstimatedEndTime);
-            SQL.ChangeAction(action);
+            return SQL.ChangeActionRepair(action, out error);
 
-            return true;
+
         }
 
         public bool UpdateUser(User user, bool active)

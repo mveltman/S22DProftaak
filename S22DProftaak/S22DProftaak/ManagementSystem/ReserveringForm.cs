@@ -27,13 +27,23 @@ namespace S22DProftaak.ManagementSystem
 
         private void Confirmbtn_Click(object sender, EventArgs e)
         {
-            if(Repaircbx.Checked == true)
+            if (ms.ValidateNewInput(Convert.ToInt32(TrainNumberrtf.Text)))
             {
-               // ms.AddReservation((Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.TrainNumberrtf.Text));
-                db.GetOneTrainInfo(Convert.ToInt32(this.TrainNumberrtf.Text), out this.t, out this.error);
-                //ms.ApplyForAction(new Action.Repair("no note", new General.RailSection(1, Convert.ToInt32(this.Railnumberrtf),false), t));
+                if (ms.ValidateRailNr(Convert.ToInt32(Railnumberrtf.Text)) && ms.ValidateRailposition(Convert.ToInt32(Railnumberrtf.Text), Convert.ToInt32(rtfRailPosition.Text)))
+                {
+                    if (Repaircbx.Checked == true)
+                    {
+                        if (ms.AddReserveration(new Reservering(Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.rtfRailPosition.Text), Convert.ToInt32(this.TrainNumberrtf.Text)))) MessageBox.Show("reservering succesvol toegevoegd");
+                        db.GetOneTrainInfo(Convert.ToInt32(this.TrainNumberrtf.Text), out this.t, out this.error);
+                        db.CreateActionRepair(new Repair("Auto Generated Repair by manager", t), out error);
+                    }
+                    else
+                    {
+                        if (ms.AddReserveration(new Reservering(Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.rtfRailPosition.Text), Convert.ToInt32(this.TrainNumberrtf.Text)))) MessageBox.Show("reservering succesvol toegevoegd");
+                    }
+                }
             }
-           // ms.AddReservation((Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.TrainNumberrtf.Text));
+
         }
 
         private void Cancelbtn_Click(object sender, EventArgs e)

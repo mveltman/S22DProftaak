@@ -12,15 +12,18 @@ namespace S22DProftaak
 {
     public partial class CleanSystemForm : Form
     {
+        public string error = "";
         CleanSystem.CleanSystem Clean = new CleanSystem.CleanSystem();
         public void UpdateTasks()
         {
-            List<Action.Action> repairlist = new List<Action.Action>();
+            List<Action.Clean> repairlist = new List<Action.Clean>();
 
             if (Clean.GetCleanTasks())
             {
 
-                foreach(Action.Action pair in Clean.cleanlist)
+                CleanInProgress.Items.Clear();
+                CleanAssignments.Items.Clear();
+                foreach (Action.Clean pair in Clean.cleanlist)
                 {
                     if (pair.InProgress)
                     {
@@ -38,62 +41,121 @@ namespace S22DProftaak
         public CleanSystemForm()
         {
             InitializeComponent();
+            UpdateTasks();
+            RefreshCleanTasks.Start();
         }
 
         private void CleanButton_Click(object sender, EventArgs e)
         {
-
-            using (AddWorkerForm Work = new AddWorkerForm("Clean"))
+            if (CleanAssignments.SelectedItem != null)
             {
-
-                Work.ShowDialog();
-                List<General.User> list = new List<General.User>();
-                DateTime Time = DateTime.Now;
-                if (Work.GetIformation(out list, out Time))
+                RefreshCleanTasks.Stop();
+                using (AddWorkerForm Work = new AddWorkerForm("Clean"))
                 {
-                    Clean.ApplyCleanSession((Action.Clean)CleanAssignments.SelectedItem, list, Time);
-                }// List of users who work on a particular action
-                else
-                {
-                    MessageBox.Show("No Workers selected");
-                }// aplying the session with a estimated date and 
 
+                    Work.ShowDialog();
+                    List<General.User> list = new List<General.User>();
+                    DateTime Time = DateTime.Now;
+                    if (Work.GetIformation(out list, out Time))
+                    {
+                        Clean.ApplyCleanSession((Action.Clean)CleanAssignments.SelectedItem, list, Time);
+                    }// List of users who work on a particular action
+                    else
+                    {
+                        MessageBox.Show("No Workers selected");
+                    }// aplying the session with a estimated date and 
+
+                }
+                RefreshCleanTasks.Start();
+                UpdateTasks();
+                CleanDescription.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Choose Your Selection");
             }
         }
 
         private void CleanAssignments_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (CleanAssignments.SelectedItem != null)
+            {
+                Action.Clean act = (Action.Clean)CleanAssignments.SelectedItem;
+                CleanDescription.Text = act.Note;
+
+            }
 
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            RefreshCleanTasks.Stop();
             using (CreateActionForm Information = new CreateActionForm(2))
             {
                 Information.ShowDialog();
             }
             UpdateTasks();
+            RefreshCleanTasks.Start();
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-            Clean.SetEndTime((Action.Action)CleanInProgress.SelectedItem);
-            UpdateTasks();
+            if (CleanInProgress.SelectedItem != null)
+            {
+                Clean.SetEndTime((Action.Clean)CleanInProgress.SelectedItem, out error);
+                Clean.Redo((Action.Clean)CleanInProgress.SelectedItem, out error);
+                UpdateTasks();
+                CleanDescription.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Choose Your Selection");
+            }
         }
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            using (ChangeForm Change = new ChangeForm((Action.Action)CleanInProgress.SelectedItem))
+            if (CleanInProgress.SelectedItem != null)
             {
+                RefreshCleanTasks.Stop();
+                ChangeForm Change = new ChangeForm((Action.Clean)CleanInProgress.SelectedItem);
                 Change.ShowDialog();
-                Clean.UpdateCleaned(Change.Act, Change.desc, Change.Time);
+                Clean.UpdateCleaned(Change.CAct, Change.desc, Change.Time, out error);
                 UpdateTasks();
+
+                RefreshCleanTasks.Start();
+            }
+            else
+            {
+                MessageBox.Show("Choose Your Selection");
             }
         }
 
         private void RefreshCleanTasks_Tick(object sender, EventArgs e)
         {
             UpdateTasks();
+        }
+
+        private void CleanInProgress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CleanInProgress.SelectedItem != null)
+                {
+
+
+                    Action.Clean act = (Action.Clean)
+                      CleanInProgress.SelectedItem;
+                    CleanDescription.Text = act.Note;
+                }
+
+
+            }
+            catch
+            {
+                CleanDescription.Text = "Error!!";
+            }
+
         }
     }
 }

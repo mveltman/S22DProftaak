@@ -35,6 +35,8 @@
             this.Repaircbx = new System.Windows.Forms.CheckBox();
             this.Confirmbtn = new System.Windows.Forms.Button();
             this.Cancelbtn = new System.Windows.Forms.Button();
+            this.rtfRailPosition = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TrainNumberlbl
@@ -49,7 +51,7 @@
             // RailNumberlbl
             // 
             this.RailNumberlbl.AutoSize = true;
-            this.RailNumberlbl.Location = new System.Drawing.Point(257, 39);
+            this.RailNumberlbl.Location = new System.Drawing.Point(188, 39);
             this.RailNumberlbl.Name = "RailNumberlbl";
             this.RailNumberlbl.Size = new System.Drawing.Size(72, 13);
             this.RailNumberlbl.TabIndex = 1;
@@ -65,7 +67,7 @@
             // 
             // Railnumberrtf
             // 
-            this.Railnumberrtf.Location = new System.Drawing.Point(260, 67);
+            this.Railnumberrtf.Location = new System.Drawing.Point(191, 67);
             this.Railnumberrtf.Name = "Railnumberrtf";
             this.Railnumberrtf.Size = new System.Drawing.Size(100, 96);
             this.Railnumberrtf.TabIndex = 3;
@@ -101,11 +103,30 @@
             this.Cancelbtn.UseVisualStyleBackColor = true;
             this.Cancelbtn.Click += new System.EventHandler(this.Cancelbtn_Click);
             // 
+            // rtfRailPosition
+            // 
+            this.rtfRailPosition.Location = new System.Drawing.Point(303, 67);
+            this.rtfRailPosition.Name = "rtfRailPosition";
+            this.rtfRailPosition.Size = new System.Drawing.Size(100, 96);
+            this.rtfRailPosition.TabIndex = 7;
+            this.rtfRailPosition.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(300, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Sector nummer";
+            // 
             // ReserveringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 339);
+            this.ClientSize = new System.Drawing.Size(540, 339);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rtfRailPosition);
             this.Controls.Add(this.Cancelbtn);
             this.Controls.Add(this.Confirmbtn);
             this.Controls.Add(this.Repaircbx);
@@ -129,5 +150,7 @@
         private System.Windows.Forms.CheckBox Repaircbx;
         private System.Windows.Forms.Button Confirmbtn;
         private System.Windows.Forms.Button Cancelbtn;
+        private System.Windows.Forms.RichTextBox rtfRailPosition;
+        private System.Windows.Forms.Label label1;
     }
 }

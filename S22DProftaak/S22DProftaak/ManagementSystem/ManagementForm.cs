@@ -12,12 +12,14 @@ using S22DProftaak.ManagementSystem;
 using System.Threading;
 
 
+
 namespace S22DProftaak.ManagementSystem
 {
     public partial class ManagementForm : Form
     {
         private string oldtext;
         private ManagementSystem mg = new ManagementSystem();
+        private RichTextBox selectedbox;
         public ManagementForm()
         {
             InitializeComponent();  
@@ -34,21 +36,23 @@ namespace S22DProftaak.ManagementSystem
         private void Textbox_MouseDown(object sender, MouseEventArgs e)
         {
             
-            RichTextBox currentBox = sender as RichTextBox;
-            oldtext = currentBox.Text;
+             selectedbox = sender as RichTextBox;
+            oldtext = selectedbox.Text;
             if(e.Button == MouseButtons.Right)
             {
                 ContextMenuStrip cms = new ContextMenuStrip();
                 ToolStripMenuItem cmsBlock = new ToolStripMenuItem("Block");
+                cms.Items.Add(cmsBlock);
                 cmsBlock.Click += new EventHandler(cmsBlock_Click);
+                cms.Show(System.Windows.Forms.Control.MousePosition);    
             }
             else if(e.Button == MouseButtons.Left)
             {
-                currentBox.SelectAll();
+                selectedbox.SelectAll();
             }
 
-            currentBox.SelectAll();
-            currentBox.SelectionAlignment = HorizontalAlignment.Center;
+            selectedbox.SelectAll();
+            selectedbox.SelectionAlignment = HorizontalAlignment.Center;
             
         }
 
@@ -56,19 +60,26 @@ namespace S22DProftaak.ManagementSystem
         {
             if (mg.ValidateNewInput(sender))
             {
-
+                selectedbox = sender as RichTextBox;
+                int railnumber;
+                int railposition;
+                DeconstructObjectName(selectedbox.Name, out railnumber, out railposition);
+                mg.CheckRailStatus(railnumber, railposition);
+                if(!mg.RailStatus)
+                {
+                    if (!mg.PlaceTrain(Convert.ToInt32(selectedbox.Text), Convert.ToInt32(railnumber), Convert.ToInt32(railposition))) MessageBox.Show(mg.Error);
+                    Checkrtfnames(Convert.ToInt32(selectedbox.Text));
+                }
+                
             }
-            else
-            {
-                RichTextBox currentbox = sender as RichTextBox;
-            }
+           
 
         } 
   
         private void cmsBlock_Click(object sender, EventArgs e)
         {
+
             
-            RichTextBox selectedbox = sender as RichTextBox;
             string fullrailname = selectedbox.Name;
             string railnumber = Convert.ToString(fullrailname[4]) + Convert.ToString(fullrailname[5]);
             string railPosition = Convert.ToString(fullrailname[9]);
@@ -76,9 +87,20 @@ namespace S22DProftaak.ManagementSystem
             {
                 railPosition += Convert.ToString(fullrailname[10]);
             }
-
-           // RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber));
-           // mg.BlockRail(deconstructedNameString);
+            
+             RailSection deconstructedNameString = new RailSection(Convert.ToInt32(railPosition), Convert.ToInt32(railnumber), true);
+             mg.BlockRail(deconstructedNameString);
+             mg.CheckRailStatus(Convert.ToInt32(railnumber), Convert.ToInt32(railPosition));
+            if(mg.RailStatus)
+            {
+                selectedbox.BackColor = Color.LightGray;
+                selectedbox.ReadOnly = true;
+            }
+            else
+            {
+                selectedbox.BackColor = Color.White;
+                selectedbox.ReadOnly = false;
+            }
         }
 
         private void traminfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,22 +128,26 @@ namespace S22DProftaak.ManagementSystem
 
         private void blokkerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ToggleBlockRailForm tbrf = new ToggleBlockRailForm();
+            tbrf.Show();
         }
 
         private void spoorInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SpoorInfoForm sif = new SpoorInfoForm();
+            sif.Show();
         }
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CleanSystemForm csf = new CleanSystemForm();
+            csf.Show();
         }
 
         private void Repairtsdd_Click(object sender, EventArgs e)
         {
-
+            RepairSystemForm rsf = new RepairSystemForm();
+            rsf.Show();
         }
 
         private void Exittsdd_Click(object sender, EventArgs e)
@@ -129,22 +155,86 @@ namespace S22DProftaak.ManagementSystem
             this.Close();
         }
 
-        //private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    while (true)
-        //    {
-        //        Thread.Sleep(8000);
-        //        if (backgroundWorker1.CancellationPending)
-        //        {
-        //            e.Cancel = true;
-        //            return;
-        //        }
-        //        if ()
-        //        {
-        //            if (e.Result == "true") e.Result = "false";
-        //            else e.Result = "true";
-        //        }
-        //    }
-        //}
+        private void CheckForRequestsTmr_Tick(object sender, EventArgs e)
+        {
+            if(mg.Reserveringen.Count > 0)
+            {
+                Reserveringenlbx.Items.Clear();
+                foreach (Reservering r in mg.Reserveringen)
+                {
+                    Reserveringenlbx.Items.Add(r);
+                }
+            }
+
+            mg.CheckRequests();
+        }
+
+        private void DeconstructObjectName(string objectname, out int railnumber, out int railposition)
+        {
+            railnumber = -1;
+            railposition = -1;
+            try
+            {
+               railnumber = Convert.ToInt32(objectname.Substring(4, 2));
+                if(objectname.Substring(10,1) != "r")
+                {
+                    railposition = Convert.ToInt32(objectname.Substring(10, 2));
+                }
+                else
+                {
+                    railposition = Convert.ToInt32(objectname.Substring(9,1));
+                }
+                
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
+
+        private void Checkrtfnames(int checkablenumber)
+        {
+            foreach(Control c in this.Controls)
+            {
+                if (c is RichTextBox)
+                {
+                    if(c.Name.Length > 9)
+                    if(c.Text != "")
+
+                    if (Convert.ToInt32(c.Text) == checkablenumber)
+                    {
+                        if(c != selectedbox)
+                        c.Text = "";
+                    }
+                    else c.Text = "";
+                }
+                
+            }
+        }
+
+        private void SpoorInsertrtf_TextChanged(object sender, EventArgs e)
+        {
+            if(TramInsertrtf.Text != null)
+            {
+                if(mg.ValidateRailNr(Convert.ToInt32(SpoorInsertrtf.Text)))
+                {
+                    if(mg.ValidateNewInput(Convert.ToInt32(TramInsertrtf.Text)))
+                    {
+                        mg.PlaceTrain(Convert.ToInt32(TramInsertrtf.Text), Convert.ToInt32(SpoorInsertrtf.Text), 1);
+                        string test = "Rail" + SpoorInsertrtf.Text + "Pos1rtf";
+                        foreach(Control c in this.Controls)
+                        {
+                            if(c.Name == test)
+                            {
+                                c.Text = TramInsertrtf.Text;
+                                SpoorInsertrtf.Text = "";
+                                TramInsertrtf.Text = "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

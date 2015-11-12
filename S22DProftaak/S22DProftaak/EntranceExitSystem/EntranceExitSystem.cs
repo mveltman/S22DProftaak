@@ -69,7 +69,7 @@ namespace S22DProftaak.EntranceExit
 
         public bool ApplyCleanSession(string note)
         {
-            return repairsys.CreateRepair(_currentTram.TramNumber, note);
+            return repairsys.CreateRepair(_currentTram.TramNumber, note, out _error);
         }
 
         public bool MoveTram()

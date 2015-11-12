@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagementForm));
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.OptionsGbx = new System.Windows.Forms.GroupBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Tramstsdd = new System.Windows.Forms.ToolStripDropDownButton();
@@ -49,8 +49,8 @@
             this.TramInfoGbx = new System.Windows.Forms.GroupBox();
             this.RailInfolbl = new System.Windows.Forms.Label();
             this.TrainInfolbl = new System.Windows.Forms.Label();
-            this.richTextBox236 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox235 = new System.Windows.Forms.RichTextBox();
+            this.SpoorInsertrtf = new System.Windows.Forms.RichTextBox();
+            this.TramInsertrtf = new System.Windows.Forms.RichTextBox();
             this.Rail38rtf = new System.Windows.Forms.RichTextBox();
             this.Rail37rtf = new System.Windows.Forms.RichTextBox();
             this.Rail36rtf = new System.Windows.Forms.RichTextBox();
@@ -287,14 +287,11 @@
             this.Rail21Pos1rtf = new System.Windows.Forms.RichTextBox();
             this.ReserveringenGbx = new System.Windows.Forms.GroupBox();
             this.Reserveringenlbx = new System.Windows.Forms.ListBox();
+            this.CheckForRequestsTmr = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.TramInfoGbx.SuspendLayout();
             this.ReserveringenGbx.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // backgroundWorker1
-            // 
-            //this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // OptionsGbx
             // 
@@ -446,8 +443,8 @@
             // 
             this.TramInfoGbx.Controls.Add(this.RailInfolbl);
             this.TramInfoGbx.Controls.Add(this.TrainInfolbl);
-            this.TramInfoGbx.Controls.Add(this.richTextBox236);
-            this.TramInfoGbx.Controls.Add(this.richTextBox235);
+            this.TramInfoGbx.Controls.Add(this.SpoorInsertrtf);
+            this.TramInfoGbx.Controls.Add(this.TramInsertrtf);
             this.TramInfoGbx.Location = new System.Drawing.Point(12, 61);
             this.TramInfoGbx.Name = "TramInfoGbx";
             this.TramInfoGbx.Size = new System.Drawing.Size(192, 342);
@@ -473,25 +470,26 @@
             this.TrainInfolbl.TabIndex = 19;
             this.TrainInfolbl.Text = "Tram";
             // 
-            // richTextBox236
+            // SpoorInsertrtf
             // 
-            this.richTextBox236.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox236.Location = new System.Drawing.Point(37, 175);
-            this.richTextBox236.Name = "richTextBox236";
-            this.richTextBox236.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox236.Size = new System.Drawing.Size(118, 71);
-            this.richTextBox236.TabIndex = 18;
-            this.richTextBox236.Text = "";
+            this.SpoorInsertrtf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpoorInsertrtf.Location = new System.Drawing.Point(37, 175);
+            this.SpoorInsertrtf.Name = "SpoorInsertrtf";
+            this.SpoorInsertrtf.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.SpoorInsertrtf.Size = new System.Drawing.Size(118, 71);
+            this.SpoorInsertrtf.TabIndex = 18;
+            this.SpoorInsertrtf.Text = "";
+            this.SpoorInsertrtf.TextChanged += new System.EventHandler(this.SpoorInsertrtf_TextChanged);
             // 
-            // richTextBox235
+            // TramInsertrtf
             // 
-            this.richTextBox235.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox235.Location = new System.Drawing.Point(37, 52);
-            this.richTextBox235.Name = "richTextBox235";
-            this.richTextBox235.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox235.Size = new System.Drawing.Size(118, 71);
-            this.richTextBox235.TabIndex = 17;
-            this.richTextBox235.Text = "";
+            this.TramInsertrtf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TramInsertrtf.Location = new System.Drawing.Point(37, 52);
+            this.TramInsertrtf.Name = "TramInsertrtf";
+            this.TramInsertrtf.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.TramInsertrtf.Size = new System.Drawing.Size(118, 71);
+            this.TramInsertrtf.TabIndex = 17;
+            this.TramInsertrtf.Text = "";
             // 
             // Rail38rtf
             // 
@@ -697,6 +695,7 @@
             this.Rail38Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail38Pos5rtf.TabIndex = 24;
             this.Rail38Pos5rtf.Text = "";
+            this.Rail38Pos5rtf.Visible = false;
             this.Rail38Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail38Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -709,6 +708,7 @@
             this.Rail37Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail37Pos5rtf.TabIndex = 25;
             this.Rail37Pos5rtf.Text = "";
+            this.Rail37Pos5rtf.Visible = false;
             this.Rail37Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail37Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -769,6 +769,7 @@
             this.Rail36Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail36Pos5rtf.TabIndex = 30;
             this.Rail36Pos5rtf.Text = "";
+            this.Rail36Pos5rtf.Visible = false;
             this.Rail36Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail36Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -913,6 +914,7 @@
             this.Rail35Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail35Pos5rtf.TabIndex = 42;
             this.Rail35Pos5rtf.Text = "";
+            this.Rail35Pos5rtf.Visible = false;
             this.Rail35Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail35Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -949,6 +951,7 @@
             this.Rail34Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail34Pos5rtf.TabIndex = 45;
             this.Rail34Pos5rtf.Text = "";
+            this.Rail34Pos5rtf.Visible = false;
             this.Rail34Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail34Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -973,6 +976,7 @@
             this.Rail33Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail33Pos5rtf.TabIndex = 47;
             this.Rail33Pos5rtf.Text = "";
+            this.Rail33Pos5rtf.Visible = false;
             this.Rail33Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail33Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1009,6 +1013,7 @@
             this.Rail32Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail32Pos5rtf.TabIndex = 50;
             this.Rail32Pos5rtf.Text = "";
+            this.Rail32Pos5rtf.Visible = false;
             this.Rail32Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail32Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1093,6 +1098,7 @@
             this.Rail31Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail31Pos4rtf.TabIndex = 57;
             this.Rail31Pos4rtf.Text = "";
+            this.Rail31Pos4rtf.Visible = false;
             this.Rail31Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail31Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1105,6 +1111,7 @@
             this.Rail30Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail30Pos4rtf.TabIndex = 58;
             this.Rail30Pos4rtf.Text = "";
+            this.Rail30Pos4rtf.Visible = false;
             this.Rail30Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail30Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1212,6 +1219,7 @@
             this.Rail40Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail40Pos8rtf.TabIndex = 67;
             this.Rail40Pos8rtf.Text = "";
+            this.Rail40Pos8rtf.Visible = false;
             this.Rail40Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail40Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1283,6 +1291,7 @@
             this.Rail41Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail41Pos5rtf.TabIndex = 73;
             this.Rail41Pos5rtf.Text = "";
+            this.Rail41Pos5rtf.Visible = false;
             this.Rail41Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail41Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1354,6 +1363,7 @@
             this.Rail42Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail42Pos5rtf.TabIndex = 79;
             this.Rail42Pos5rtf.Text = "";
+            this.Rail42Pos5rtf.Visible = false;
             this.Rail42Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail42Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1425,6 +1435,7 @@
             this.Rail43Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail43Pos5rtf.TabIndex = 85;
             this.Rail43Pos5rtf.Text = "";
+            this.Rail43Pos5rtf.Visible = false;
             this.Rail43Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail43Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1496,6 +1507,7 @@
             this.Rail44Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail44Pos5rtf.TabIndex = 91;
             this.Rail44Pos5rtf.Text = "";
+            this.Rail44Pos5rtf.Visible = false;
             this.Rail44Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail44Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1627,6 +1639,7 @@
             this.Rail45Pos10rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail45Pos10rtf.TabIndex = 102;
             this.Rail45Pos10rtf.Text = "";
+            this.Rail45Pos10rtf.Visible = false;
             this.Rail45Pos10rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail45Pos10rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -1710,6 +1723,7 @@
             this.Rail58Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail58Pos6rtf.TabIndex = 110;
             this.Rail58Pos6rtf.Text = "";
+            this.Rail58Pos6rtf.Visible = false;
             this.Rail58Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail58Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2093,6 +2107,7 @@
             this.Rail57Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail57Pos9rtf.TabIndex = 145;
             this.Rail57Pos9rtf.Text = "";
+            this.Rail57Pos9rtf.Visible = false;
             this.Rail57Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail57Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2105,6 +2120,7 @@
             this.Rail56Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail56Pos9rtf.TabIndex = 154;
             this.Rail56Pos9rtf.Text = "";
+            this.Rail56Pos9rtf.Visible = false;
             this.Rail56Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail56Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2213,6 +2229,7 @@
             this.Rail55Pos9rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail55Pos9rtf.TabIndex = 163;
             this.Rail55Pos9rtf.Text = "";
+            this.Rail55Pos9rtf.Visible = false;
             this.Rail55Pos9rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail55Pos9rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2321,6 +2338,7 @@
             this.Rail54Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail54Pos8rtf.TabIndex = 171;
             this.Rail54Pos8rtf.Text = "";
+            this.Rail54Pos8rtf.Visible = false;
             this.Rail54Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail54Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2417,6 +2435,7 @@
             this.Rail53Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail53Pos8rtf.TabIndex = 179;
             this.Rail53Pos8rtf.Text = "";
+            this.Rail53Pos8rtf.Visible = false;
             this.Rail53Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail53Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2513,6 +2532,7 @@
             this.Rail52Pos8rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail52Pos8rtf.TabIndex = 187;
             this.Rail52Pos8rtf.Text = "";
+            this.Rail52Pos8rtf.Visible = false;
             this.Rail52Pos8rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail52Pos8rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2609,6 +2629,7 @@
             this.Rail51Pos7rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail51Pos7rtf.TabIndex = 194;
             this.Rail51Pos7rtf.Text = "";
+            this.Rail51Pos7rtf.Visible = false;
             this.Rail51Pos7rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail51Pos7rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2693,6 +2714,7 @@
             this.Rail64Pos6rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail64Pos6rtf.TabIndex = 200;
             this.Rail64Pos6rtf.Text = "";
+            this.Rail64Pos6rtf.Visible = false;
             this.Rail64Pos6rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail64Pos6rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2765,6 +2787,7 @@
             this.Rail63Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail63Pos5rtf.TabIndex = 205;
             this.Rail63Pos5rtf.Text = "";
+            this.Rail63Pos5rtf.Visible = false;
             this.Rail63Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail63Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2825,6 +2848,7 @@
             this.Rail62Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail62Pos4rtf.TabIndex = 209;
             this.Rail62Pos4rtf.Text = "";
+            this.Rail62Pos4rtf.Visible = false;
             this.Rail62Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail62Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2873,6 +2897,7 @@
             this.Rail61Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail61Pos4rtf.TabIndex = 213;
             this.Rail61Pos4rtf.Text = "";
+            this.Rail61Pos4rtf.Visible = false;
             this.Rail61Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail61Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2921,6 +2946,7 @@
             this.Rail75Pos4rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail75Pos4rtf.TabIndex = 217;
             this.Rail75Pos4rtf.Text = "";
+            this.Rail75Pos4rtf.Visible = false;
             this.Rail75Pos4rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail75Pos4rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -2969,6 +2995,7 @@
             this.Rail74Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail74Pos5rtf.TabIndex = 222;
             this.Rail74Pos5rtf.Text = "";
+            this.Rail74Pos5rtf.Visible = false;
             this.Rail74Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail74Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -3029,6 +3056,7 @@
             this.Rail76Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail76Pos5rtf.TabIndex = 227;
             this.Rail76Pos5rtf.Text = "";
+            this.Rail76Pos5rtf.Visible = false;
             this.Rail76Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail76Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -3089,6 +3117,7 @@
             this.Rail77Pos5rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail77Pos5rtf.TabIndex = 232;
             this.Rail77Pos5rtf.Text = "";
+            this.Rail77Pos5rtf.Visible = false;
             this.Rail77Pos5rtf.TextChanged += new System.EventHandler(this.TextChanged);
             this.Rail77Pos5rtf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Textbox_MouseDown);
             // 
@@ -3277,6 +3306,12 @@
             this.Reserveringenlbx.Name = "Reserveringenlbx";
             this.Reserveringenlbx.Size = new System.Drawing.Size(159, 277);
             this.Reserveringenlbx.TabIndex = 244;
+            // 
+            // CheckForRequestsTmr
+            // 
+            this.CheckForRequestsTmr.Enabled = true;
+            this.CheckForRequestsTmr.Interval = 2000;
+            this.CheckForRequestsTmr.Tick += new System.EventHandler(this.CheckForRequestsTmr_Tick);
             // 
             // ManagementForm
             // 
@@ -3536,7 +3571,6 @@
 
         #endregion
 
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox OptionsGbx;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton Tramstsdd;
@@ -3783,8 +3817,8 @@
         private System.Windows.Forms.GroupBox ReserveringenGbx;
         private System.Windows.Forms.Label RailInfolbl;
         private System.Windows.Forms.Label TrainInfolbl;
-        private System.Windows.Forms.RichTextBox richTextBox236;
-        private System.Windows.Forms.RichTextBox richTextBox235;
+        private System.Windows.Forms.RichTextBox SpoorInsertrtf;
+        private System.Windows.Forms.RichTextBox TramInsertrtf;
         private System.Windows.Forms.ListBox Reserveringenlbx;
         private System.Windows.Forms.ToolStripMenuItem kiesTramnummerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reserveringToolStripMenuItem;
@@ -3794,5 +3828,6 @@
         private System.Windows.Forms.ToolStripMenuItem spoorInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Repairtsmi;
+        private System.Windows.Forms.Timer CheckForRequestsTmr;
     }
 }

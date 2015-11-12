@@ -83,7 +83,8 @@ namespace S22DProftaak.Action // the references don't work for action, but do fo
         /// <returns></returns>
         public bool AddEndDate(DateTime date)
         {
-            throw new NotImplementedException();
+            DateEnd = date;
+            return true;
         }
 
         /// <summary>

@@ -12,10 +12,11 @@ namespace S22DProftaak
 {
     public partial class CreateActionForm : Form
     {
-        List<General.RailSection> RailList;
+
         RepairSystem.RepairSystem Repair;
         CleanSystem.CleanSystem Clean = new CleanSystem.CleanSystem();
         int status;
+        string error = "";
         public CreateActionForm(int check)
         {
             InitializeComponent();
@@ -36,28 +37,30 @@ namespace S22DProftaak
         {
 
 
-
-            switch (status)
+            if (textBox1.Text != "")
             {
-                case 1:
+                switch (status)
+                {
+                    case 1:
 
-                    Repair.CreateRepair(Convert.ToInt32(textBox1.Text), Description.Text);
-                    this.Close();
-                    break;
-
-
-
-
-
-                case 2:
-
-                    Clean.CreateClean(Convert.ToInt32(textBox1.Text), Description.Text);
-                    this.Close();
+                        Repair.CreateRepair(Convert.ToInt32(textBox1.Text), Description.Text, out error);
+                        this.Close();
+                        break;
 
 
 
-                    break;
 
+
+                    case 2:
+
+                        Clean.CreateClean(Convert.ToInt32(textBox1.Text), Description.Text);
+                        this.Close();
+
+
+
+                        break;
+
+                }
             }
             this.Close();
         }
@@ -65,6 +68,11 @@ namespace S22DProftaak
         {
             this.Close();
             this.Dispose();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

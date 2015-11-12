@@ -50,6 +50,8 @@ namespace S22DProftaak.ManagementSystem
             string infoboxstring;
             foreach(Train t in trains)
             {
+                infoboxstring = t.TramNumber + "     " + t.Model + "   " + t.BuildYear + "   ";
+                    TrainInfolbx.Items.Add(infoboxstring);
                // infoboxstring = t.TramNumber + "   "+ t.Model + "   "  
                // TrainInfolbx.Items.Add(infoboxstring)
             }

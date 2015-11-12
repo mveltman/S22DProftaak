@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DoneButton = new System.Windows.Forms.Button();
             this.RepairButton = new System.Windows.Forms.Button();
             this.RepairInProgress = new System.Windows.Forms.ListBox();
@@ -35,6 +36,7 @@
             this.RepairDescription = new System.Windows.Forms.RichTextBox();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // DoneButton
@@ -106,6 +108,10 @@
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 20000;
+            // 
             // RepairSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,5 +139,6 @@
         private System.Windows.Forms.RichTextBox RepairDescription;
         private System.Windows.Forms.Button ChangeButton;
         private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }

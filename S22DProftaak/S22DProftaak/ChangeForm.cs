@@ -12,7 +12,10 @@ namespace S22DProftaak
 {
     public partial class ChangeForm : Form
     {
-        public Action.Action Act;
+        public Action.Repair Act;
+        public Action.Repair Act2;
+        public Action.Clean CAct;
+        public Action.Clean CAct2;
         public DateTime Time;
         public string desc;
         public Action.Action ChangedItem()
@@ -21,11 +24,18 @@ namespace S22DProftaak
             return Act;
         }
 
-        public ChangeForm(Action.Action act)
+        public ChangeForm(Action.Repair act)
         {
             InitializeComponent();
             Act = act;
             richTextBox1.Text = Act.Note;
+
+        }
+        public ChangeForm(Action.Clean act)
+        {
+            InitializeComponent();
+            CAct = act;
+            richTextBox1.Text = CAct.Note;
         }
         public bool GetChange()
         {
@@ -43,6 +53,11 @@ namespace S22DProftaak
         private void Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ChangeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

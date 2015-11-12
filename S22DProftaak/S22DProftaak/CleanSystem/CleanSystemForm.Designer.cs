@@ -111,7 +111,7 @@
             // RefreshCleanTasks
             // 
             this.RefreshCleanTasks.Enabled = true;
-            this.RefreshCleanTasks.Interval = 2000;
+            this.RefreshCleanTasks.Interval = 20000;
             this.RefreshCleanTasks.Tick += new System.EventHandler(this.RefreshCleanTasks_Tick);
             // 
             // CleanSystemForm

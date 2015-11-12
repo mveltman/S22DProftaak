@@ -224,7 +224,100 @@ namespace S22DProftaak.Database
             }
         }
 
+        public bool PlaceTrain(int trainnumber, int railnumber, int railposition, out string error)
+        {
+            if(ValidateRailNr(railnumber, out error) || ValidateSector(railposition, railnumber, out error))
+            {
+               
+            int railsectionid = -1;
+            error = "";
+            try
+            {
+                string query  = "SELECT rs.ID FROM RAILSECTION rs, RAIL r WHERE rs.RAIL_ID = r.ID AND r.TNUMBER = :railnumber AND rs.POSITION = :railposition";
 
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("railnumber", railnumber);
+                command.Parameters.Add("railposition", railposition);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    railsectionid = Convert.ToInt32(datareader["ID"]);
+                }
+
+                query = "UPDATE TRAM SET RAILSECTION_ID = :railsectionid WHERE TRAMNUMBER = :tramnumber";
+                command = CreateOracleCommand(query);
+                command.Parameters.Add("railsectionid", railsectionid);
+                command.Parameters.Add("tramnumber", trainnumber);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            }
+            else
+            {
+                error = "er ging iets fout met de rail of/en railpositie";
+                return false;
+            }
+        }
+        public bool ValidateRailNr(int railnr, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "SELECT TNUMBER FROM RAIL WHERE TNUMBER = :railnr";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("railnr", railnr);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                error = "spoornummer bestaat niet.";
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool ValidateSector(int railposition, int railnr, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "SELECT POSITION FROM RAILSECTION rs, RAIL r WHERE r.ID = rs.RAIL_ID AND r.TNUMBER = :railnr AND rs.POSITION = :railposition";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("railnr", railnr);
+                command.Parameters.Add("railposition", railposition);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                error = "sectornummer bestaat niet.";
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         #endregion
         public bool MoveTrain(Train train, User usr, out string error)
@@ -408,7 +501,7 @@ namespace S22DProftaak.Database
             string currentstatus = "";
             try
             {
-                string query = "SELECT STATUS FROM RAILSECTION WHERE RAIL_ID = :RAILNUMBER AND POSITION = :POSITION";
+                string query = "SELECT rs.STATUS FROM RAILSECTION rs, RAIL r WHERE rs.RAIL_ID = r.ID AND r.TNUMBER = :RAILNUMBER AND rs.POSITION = :POSITION";
                 OracleCommand command = CreateOracleCommand(query);
                 command.Parameters.Add("RAILNUMBER", rs.RailNumber);
                 command.Parameters.Add("POSITION", rs.Position);
@@ -417,12 +510,12 @@ namespace S22DProftaak.Database
                 {
                     if (Convert.ToString(datareader["STATUS"]) == "Open")
                     {
-                        currentstatus = "Open";
+                        currentstatus = "Blocked";
                         status = false;
                     }
                     else
                     {
-                        currentstatus = "Blocked";
+                        currentstatus = "Open";
                         status = true;
                     }
                 }
@@ -431,6 +524,7 @@ namespace S22DProftaak.Database
             catch (Exception e)
             {
                 error = e.ToString();
+                return false;
             }
             finally
             {
@@ -439,12 +533,13 @@ namespace S22DProftaak.Database
 
             try
             {
-                string query = "UPDATE RAILSECTION SET STATUS = ':STATUS' WHERE Rail_Id = :RAILNUMBER AND POSITION = :POSITION";
+                
+                string query = "UPDATE RAILSECTION SET STATUS = :STATUS WHERE Rail_Id = (select id from rail where tnumber = :railnumber) AND POSITION = :POSITION";
                 OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("STATUS", currentstatus);
                 command.Parameters.Add("RAILNUMBER", rs.RailNumber);
                 command.Parameters.Add("POSITION", rs.Position);
-                command.Parameters.Add("STATUS", currentstatus);
-
+                conn.Open();
                 int updates = command.ExecuteNonQuery();
                 command.Dispose();
                 return true;
@@ -524,7 +619,7 @@ namespace S22DProftaak.Database
             try
             {
                 string query = "UPDATE REQUESTING SET Railposition = :railposition, Railnumber = :railnumber WHERE TRAMNUMBER = :tramnumber";
-
+                conn.Open();
                 OracleCommand command = CreateOracleCommand(query);
                 command.Parameters.Add("railposition", railposition);
                 command.Parameters.Add("railnumber", railnumber);
@@ -574,7 +669,8 @@ namespace S22DProftaak.Database
                 }
                 else
                 {
-                    return false;
+                    AmountOfRows = 0;
+                    return true;
                 }
 
 
@@ -620,8 +716,224 @@ namespace S22DProftaak.Database
             }
         }
 
+        public bool HasArrived(Train _currentTram, out string _error)
+        {
+            
+            _error = "";
+            try
+            {
+                string query = "update REQUESTING SET ARRIVED = 1 WHERE TRAMNUMBER = :TRAMNUMBER";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("TRAMNUMBER", _currentTram.TramNumber);
+                if(conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                com.ExecuteNonQuery();
+                
+                
+                return true;
+                
+              
+            }
+             catch (Exception e)
+            {
+                _error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
 
-        #region action
+        }
+
+
+        public bool CheckForRequests(out int trainnumber,out string _error)
+        {
+            trainnumber = -1;
+            _error = "";
+            
+            try
+            {
+                string query = "SELECT TRAMNUMBER FROM REQUESTING WHERE RAILNUMBER IS null";
+
+                OracleCommand command = CreateOracleCommand(query);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    trainnumber = Convert.ToInt32(datareader["TRAMNUMBER"]);
+                }
+                return true;
+            }
+            catch(Exception e)
+            {
+                _error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool RemoveTrainRailSection(int tramnummer, out string error)
+        {
+            error = "";
+            try
+            {
+
+                string query = "UPDATE TRAM SET RAILSECTION_ID = NULL WHERE TRAM.TRAMNUMBER = :TRAMNUMBER";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("TRAMNUMBER", tramnummer);
+                ExecuteNonQuery(com);
+                com.Dispose();
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+        public bool CheckRailStatus(int Railnumber, int Railposition,  out bool status, out string _error)
+        {
+            status = false;
+            _error = "";
+             try
+             {
+
+                
+         
+                 
+                     string query = "SELECT rs.STATUS FROM RAILSECTION rs, RAIL r WHERE rs.RAIL_ID = r.ID AND r.TNUMBER = :RAILNUMBER AND rs.POSITION = :POSITION";
+                     OracleCommand command = CreateOracleCommand(query);
+                     command.Parameters.Add("RAILNUMBER", Railnumber);
+                     command.Parameters.Add("POSITION", Railposition);
+                     OracleDataReader datareader = ExecuteQuery(command);
+                     while (datareader.Read())
+                     {
+                         if (Convert.ToString(datareader["STATUS"]) == "Open")
+                         {
+                             status = false;
+                         }
+                         else
+                         {
+                             status = true;
+                         }
+                     }
+
+                     return true;
+             }
+            catch(Exception e)
+             {
+                 _error = e.ToString();
+                 return false;
+             }
+            finally
+             {
+                 conn.Close();
+             }
+        }
+        public bool GetRailInfo(int railnr, out List<string> infoStr, out string error)
+        {
+            error = "";
+            infoStr = new List<string>();
+            try
+            {
+                // The query to get the position of each railsection and its status. And in case it has one, the train on it.
+                string query = "SELECT rs.POSITION, rs.STATUS, rs.ID FROM RAILSECTION rs " +
+                 "WHERE RAIL_ID = ( SELECT ID FROM RAIL WHERE TNUMBER = :railnr ) ORDER BY POSITION ASC";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("railnr", railnr);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while (datareader.Read())
+                {
+                    string pos = Convert.ToString(datareader["POSITION"]),
+                      stats = Convert.ToString(datareader["STATUS"]);
+                    int rsid = Convert.ToInt32(datareader["ID"]);
+
+                    string query2 = "SELECT TRAMNUMBER FROM TRAM WHERE RAILSECTION_ID = :rsid";
+                    OracleCommand command2 = CreateOracleCommand(query2);
+                    command2.Parameters.Add("rsid", rsid);
+                    OracleDataReader datareader2 = ExecuteQuery(command2);
+                    int tnum = -1;
+                    // if tram is null, it won't get a result.
+                    while (datareader2.Read())
+                    {
+                        tnum = Convert.ToInt32(datareader2["TRAMNUMBER"]);
+                        infoStr.Add("Section| " + pos + " |Status| " + stats + " |Tramnummer| " + tnum);
+                        break;
+                    }
+                    if (tnum == -1) infoStr.Add("Section| " + pos + " |Status| " + stats + " |Tramnummer| Geen Tram");
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally { conn.Close(); }
+        }
+
+
+        #region actions
+        public bool GetNrOfRowsRepair(string table, string row, out int AmountOfRows, out string error)
+        {
+            error = "";
+            AmountOfRows = -1;
+
+            try
+            {
+                string query = "SELECT MAX(id) as NVALUE FROM action";
+                OracleCommand command = CreateOracleCommand(query);
+                // command.Parameters.Add("rw", row);
+                //command.Parameters.Add("tabl", table);
+                OracleDataReader datareader = ExecuteQuery(command);
+                if (datareader.HasRows)
+                {
+                    while (datareader.Read())
+                    {
+                        try
+                        {
+                            AmountOfRows = Convert.ToInt32(datareader["NVALUE"]) + 1;
+
+                        }
+                        catch (Exception)
+                        {
+
+                            AmountOfRows = 1;
+                        }
+
+
+
+
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public bool GetRepairActions(out List<Action.Repair> repact, out string error)
         {
             error = "";
@@ -629,10 +941,10 @@ namespace S22DProftaak.Database
 
             try
             {
-                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Repair'";
+                string query = "SELECT TRAM.buildyear, tram.tramnumber,tram.tmodel ,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Repair'";
                 OracleCommand command = CreateOracleCommand(query);
                 OracleDataReader datareader = ExecuteQuery(command);
-                while(datareader.Read())
+                while (datareader.Read())
                 {
                     bool stat;
                     if ((string)datareader["status"] == "Finished")
@@ -649,7 +961,39 @@ namespace S22DProftaak.Database
                 }
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool RedoActiveC(Action.Clean act, out string error)
+        {
+            error = "";
+
+
+            try
+            {
+                string query = "SELECT TUSER_USERNAME, ACTION_ID FROM TUSER_ACTION WHERE ACTION_ID = :act";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("act", act.ID);
+                OracleDataReader datareader = ExecuteQuery(command);
+
+                while (datareader.Read())
+                {
+                    string query2 = "update tuser set status = 'Available' where username = :username";
+                    OracleCommand command2 = CreateOracleCommand(query2);
+                    command2.Parameters.Add("username", (string)datareader["TUSER_USERNAME"]);
+                    ExecuteNonQuery(command2);
+
+                }
+                return true;
+            }
+            catch (Exception e)
             {
                 error = e.ToString();
                 return false;
@@ -660,6 +1004,38 @@ namespace S22DProftaak.Database
             }
         }
 
+        public bool RedoActiveR(Action.Repair act, out string error)
+        {
+            error = "";
+
+
+            try
+            {
+                string query = "SELECT TUSER_USERNAME, ACTION_ID FROM TUSER_ACTION WHERE ACTION_ID = :act";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("act", act.ID);
+                OracleDataReader datareader = ExecuteQuery(command);
+
+                while (datareader.Read())
+                {
+                    string query2 = "update tuser set status = 'Available' where username = :username";
+                    OracleCommand command2 = CreateOracleCommand(query2);
+                    command2.Parameters.Add("username", (string)datareader["TUSER_USERNAME"]);
+                    ExecuteNonQuery(command2);
+
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public bool GetRepairActions(string username, out List<Action.Repair> repact, out string error)
         {
             error = "";
@@ -690,7 +1066,7 @@ namespace S22DProftaak.Database
             }
             catch (Exception e)
             {
-                error = e.ToString();
+                error = e.Message;
                 return false;
             }
             finally
@@ -705,7 +1081,7 @@ namespace S22DProftaak.Database
 
             try
             {
-                string query = "SELECT TRAM.*,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Clean'";
+                string query = "SELECT TRAM.Buildyear, tram.tramnumber,tram.tmodel ,  ACTION.*FROM TRAM INNER JOIN ACTION ON TRAM.ID = ACTION.TRAM_ID where EndTime is null and TType = 'Clean'";
                 OracleCommand command = CreateOracleCommand(query);
                 OracleDataReader datareader = ExecuteQuery(command);
                 while (datareader.Read())
@@ -727,7 +1103,7 @@ namespace S22DProftaak.Database
             }
             catch (Exception e)
             {
-                error = e.ToString();
+                error = e.Message;
                 return false;
             }
             finally
@@ -765,7 +1141,7 @@ namespace S22DProftaak.Database
             }
             catch (Exception e)
             {
-                error = e.ToString();
+                error = e.Message;
                 return false;
             }
             finally
@@ -773,100 +1149,73 @@ namespace S22DProftaak.Database
                 conn.Close();
             }
         }
-        
-                
-
-        //public bool    GetActionsInProgress(string status, out List<Action.Action> act)
-        //{
-        //   string error = "";
-        //    act = null;
-        //    try
-        //    {
-        //        string query = "select * from actionwhere a.Tram_ID = t.ID and TType = ':status' and status = 'Finished' and EndTime is null ";
-        //        OracleCommand com = CreateOracleCommand(query);
-        //        com.Parameters.Add("status", status);
-        //        List<OracleDataReader> list = ExecuteMultiQuery(com);
-        //        foreach (OracleDataReader item in list)
-        //        {
-        //            DateTime time = (DateTime)item["StartTime"];
-        //            int id = (int)item["ID"];
-        //            string desc = (string)item["Task"];
-        //            DateTime time2 = (DateTime)item["EstematedEndTime"]; 
-        //            int buildYear = (int)item["buildyear"];
-        //            string model = (string)item["tmodel"];
-        //            int tramNumber = (int)item["TramNumber"];
-        //             if(status == "Repair")
-        //                    {
-
-        //                    act.Add(new Action.Repair(desc,time,id,time2,new Train(buildYear,model,tramNumber)));
-        //                    }
-        //                    else if (status == "Clean")
-        //                    {
-        //                       // act.Add(new Action.Clean(desc,id));
-        //                    }
-
-        //        }
 
 
-        //    }
-        //    catch(Exception e)
-        //    {
-        //        error = "Something went wrong";
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
 
-        //    return true;
-        //}
-        public bool GetAllUsers(string status, out List<User> usr)
+
+        public bool GetAllUsers(string status, out List<User> usr, out string error)
         {
-            string error = "";
-            usr = null;
+            error = "";
+            usr = new List<User>();
+            string str = "";
             try
             {
-                string query = "select * from user where ";// uhm query 
-                OracleCommand com = CreateOracleCommand(query);
-                com.Parameters.Add("status", status);
-                List<OracleDataReader> list = ExecuteMultiQuery(com);
-                foreach (OracleDataReader item in list)
+                if (status == "Repair")
                 {
-                    string userName = (string)item["Username"];
-                    string firstName = (string)item["FirstName"];
-                    string lastName = (string)item["LastName"];
-                    usr.Add(new User(UserTypeEnum.Repairsman, userName, firstName, lastName));
-
-
+                    str = "Mechanic";
                 }
+                else
+                {
+                    str = "Cleaner";
+                }
+                string query = "SELECT PERMISSION.PERMISSION,  TUSER.USERNAME,  TUSER.FIRSTNAME,  TUSER.LASTNAME FROM TUSER INNER JOIN TUSER_PERMISSION ON TUSER.USERNAME = TUSER_PERMISSION.TUSER_USERNAME INNER JOIN PERMISSION ON PERMISSION.ID = TUSER_PERMISSION.PERMISSION_ID where PERMISSION.PERMISSION = :status ";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("status", str);
+                OracleDataReader read = ExecuteQuery(com);
+                while (read.Read())
+                {
+                    string userName = (string)read["Username"];
+                    string firstName = (string)read["FirstName"];
+                    string lastName = (string)read["LastName"];
+                    User us;
+                    if (status == "Repair")
+                        us = new User(UserTypeEnum.Repairsman, userName, firstName, lastName);
+                    else
+                        us = new User(UserTypeEnum.Cleaner, userName, firstName, lastName);
 
+                    usr.Add(us);
+                }
+                return true;
             }
             catch (Exception e)
             {
-
+                error = e.Message;
+                return false;
             }
             finally
             {
                 conn.Close();
             }
-            return true;
         }
-        public bool ChangeAction(Action.Action act)
-        {
-            string error = "update tram set Task = ':task' , EstimatedEndTime = ':estimatedEndTime' where ID = ':id'";
+        public bool ChangeActionRepair(Action.Repair act, out string error)
+        {//EstimatedEndTime = :estimatedEndTime 
+            error = "";
             try
             {
-                string query = "";
+                string query = "update ACTION set TASK = :tsk, ESTIMATEDENDDATE = :estimatedEndTime  where ID = :id";
                 OracleCommand com = CreateOracleCommand(query);
-                com.Parameters.Add("id", act.ID);
-                com.Parameters.Add("task", act.Note);
+                com.Parameters.Add("tsk", act.Note);
                 com.Parameters.Add("estematedEndTime", act.EstimatedDateEnd);
+                com.Parameters.Add("id", act.ID);
+
+
                 ExecuteNonQuery(com);
                 com.Dispose();
             }
             catch (Exception e)
             {
-
+                error = e.Message;
+                return false;
             }
             finally
             {
@@ -874,25 +1223,84 @@ namespace S22DProftaak.Database
             }
             return true;
         }
-        public bool ActivateAction(List<General.User> usr, Action.Action act)
+        public bool ChangeActionClean(Action.Clean act, out string error)
+        {//EstimatedEndTime = :estimatedEndTime 
+            error = "";
+            try
+            {
+                string query = "update ACTION set TASK = :tsk, ESTIMATEDENDDATE = :estimatedEndTime  where ID = :id";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("tsk", act.Note);
+                com.Parameters.Add("estematedEndTime", act.EstimatedDateEnd);
+                com.Parameters.Add("id", act.ID);
+
+
+                ExecuteNonQuery(com);
+                com.Dispose();
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+        public bool ChangeActionRepair(Action.Clean act, out string error)
+        {//EstimatedEndTime = :estimatedEndTime 
+            error = "";
+            try
+            {
+                string query = "update ACTION set TASK = :tsk  where ID = :id";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("id", Convert.ToInt32(act.ID));
+                com.Parameters.Add("tsk", (string)act.Note);
+                //com.Parameters.Add("estematedEndTime", act.EstimatedDateEnd);
+                ExecuteNonQuery(com);
+                com.Dispose();
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+        public bool ActivateAction(List<General.User> usr, Action.Repair act, out string error)
         {
-            string error = "";
+            error = "";
             try
             {
                 foreach (User item in usr)
                 {
-                    string query = "insert into TUser_Action(TUser_Username, Action_id) values(':UserId', ':ActionId')";
+                    string query = "insert into TUser_Action(TUser_Username, Action_id) values(:UserId, :ActionId)";
                     OracleCommand com = CreateOracleCommand(query);
                     com.Parameters.Add("UserId", item.UserName);
                     com.Parameters.Add("ActionId", act.ID);
+
                     ExecuteNonQuery(com);
                     com.Dispose();
+                    conn.Close();
+
+                    string query3 = "update TUSER set status = 'Not Available' where USERNAME = :UserId";
+                    OracleCommand com3 = CreateOracleCommand(query3);
+                    com3.Parameters.Add("UserId", item.UserName);
+                    ExecuteNonQuery(com3);
+                    com3.Dispose();
+                    conn.Close();
 
                 }
-                string query2 = "update action set EstimatedEndTime = 'estimatedEndTime' , Task = ':note', StartTime = 'Time' where id = ':id'";
+                //EstimatedEndTime = :estimatedEndTime    Not yet in the create
+                string query2 = "update action set ESTIMATEDENDDATE = :estimatedEndTime,  StartTime = :Time, status = 'Finished' where id = :id";
                 OracleCommand com2 = CreateOracleCommand(query2);
                 com2.Parameters.Add("estimatedEndTime", act.EstimatedDateEnd);
-                com2.Parameters.Add("note", act.Note);
                 com2.Parameters.Add("Time", act.DateStart);
                 com2.Parameters.Add("id", act.ID);
                 ExecuteNonQuery(com2);
@@ -902,6 +1310,8 @@ namespace S22DProftaak.Database
             }
             catch (Exception e)
             {
+                error = e.Message;
+                return false;
 
             }
             finally
@@ -910,43 +1320,45 @@ namespace S22DProftaak.Database
             }
             return true;
         }
-        public bool CreateAction(Action.Action act)
+
+        public bool ActivateActionC(List<General.User> usr, Action.Clean act)
         {
             string error = "";
             try
             {
-                string type;
-                if (act is Action.Repair)
+                foreach (User item in usr)
                 {
-                    type = "Repair";
-
-                }
-                else
-                {
-                    type = "Clean";
-                }
-                int Id = 0;
-                string errors = "";
-
-                string query = "insert into action(id, Task,TType) values(':id',':note','type')";
-                if (!GetNrOfRows("action", "id", out Id, out errors))
-                {
+                    string query = "insert into TUser_Action(TUser_Username, Action_id) values(:UserId, :ActionId)";
                     OracleCommand com = CreateOracleCommand(query);
-                    com.Parameters.Add("id", Id);
-                    com.Parameters.Add("note", act.Note);
-                    com.Parameters.Add("type", type);
+                    com.Parameters.Add("UserId", item.UserName);
+                    com.Parameters.Add("ActionId", act.ID);
+
                     ExecuteNonQuery(com);
                     com.Dispose();
+                    conn.Close();
+
+                    string query3 = "update TUSER set status = 'Not Available' where USERNAME = :UserId";
+                    OracleCommand com3 = CreateOracleCommand(query3);
+                    com3.Parameters.Add("UserId", item.UserName);
+                    ExecuteNonQuery(com3);
+                    com3.Dispose();
+                    conn.Close();
+
                 }
-
-
+                //EstimatedEndTime = :estimatedEndTime    Not yet in the create
+                string query2 = "update action set ESTIMATEDENDDATE = :estimatedEndTime,  StartTime = :Time, status = 'Finished' where id = :id";
+                OracleCommand com2 = CreateOracleCommand(query2);
+                com2.Parameters.Add("estimatedEndTime", act.EstimatedDateEnd);
+                com2.Parameters.Add("Time", act.DateStart);
+                com2.Parameters.Add("id", act.ID);
+                ExecuteNonQuery(com2);
+                com2.Dispose();
 
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                error = e.Message;
             }
             finally
             {
@@ -954,24 +1366,133 @@ namespace S22DProftaak.Database
             }
             return true;
         }
-
-
-        public bool FinishAction(Action.Action act)
+        public bool CreateActionRepair(Action.Repair act, out string error)
         {
+            error = "";
             try
             {
-                string query = "update tram set DateEnd = ':end' where id = ':id'";
+
+                int Id = 0;
+                string errors = "";
+                int id2 = 0;
+                string query = "insert into action(id, Task,TType,status,tram_id) values(:id,:note,:type, 'Unfinished', :tram)";
+                if (GetNrOfRowsRepair("ACTION", "id", out Id, out errors))
+                {
+                    if (GetTramId(out id2, act.Tram.TramNumber))
+                    {
+
+                        OracleCommand com = CreateOracleCommand(query);
+                        com.Parameters.Add("id", Id);
+                        com.Parameters.Add("note", act.Note);
+                        com.Parameters.Add("type", "Repair");
+                        com.Parameters.Add("tram", id2);
+                        ExecuteNonQuery(com);
+                        com.Dispose();
+
+                    }
+                }
+
+                return true;
+
+
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
+        }
+        public bool CreateActionClean(Action.Clean act, out string error)
+        {
+            error = "";
+            try
+            {
+
+                int Id = 0;
+                string errors = "";
+                int id2 = 0;
+                string query = "insert into action(id, Task,TType,status,tram_id) values(:id,:note,:type, 'Unfinished', :tram)";
+                if (GetNrOfRowsRepair("ACTION", "id", out Id, out errors))
+                {
+                    if (GetTramId(out id2, act.Tram.TramNumber))
+                    {
+
+                        OracleCommand com = CreateOracleCommand(query);
+                        com.Parameters.Add("id", Id);
+                        com.Parameters.Add("note", act.Note);
+                        com.Parameters.Add("type", "Clean");
+                        com.Parameters.Add("tram", id2);
+                        ExecuteNonQuery(com);
+
+
+                    }
+                }
+
+                return true;
+
+
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return false;
+        }
+
+
+        public bool FinishActionRepair(Action.Repair act, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "update action set ENDTIME = :end where ID = :id";
                 OracleCommand com = CreateOracleCommand(query);
-                com.Parameters.Add("id", act.ID);
                 com.Parameters.Add("end", act.DateEnd);
+                com.Parameters.Add("id", act.ID);
                 ExecuteNonQuery(com);
                 return true;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                error = e.Message;
                 return false;
-                throw;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool FinishActionClean(Action.Clean act, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "update action set ENDTIME = :end where ID = :id";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("end", Convert.ToDateTime(act.DateEnd));
+                com.Parameters.Add("id", act.ID);
+
+                ExecuteNonQuery(com);
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+
             }
             finally
             {
@@ -981,26 +1502,58 @@ namespace S22DProftaak.Database
 
         public bool GetTram(out Train tram, int number)
         {
+            string error = "";
             tram = null;
             try
             {
 
-                string query = "select * from tram where tramnumber = ':id'";
+                string query = "select * from tram where tramnumber = :id";
                 OracleCommand com = CreateOracleCommand(query);
                 com.Parameters.Add("id", number);
 
                 OracleDataReader value = ExecuteQuery(com);
-                int buildYear = (int)value["buildyear"];
-                string model = (string)value["tmodel"];
-                int tramNumber = (int)value["TramNumber"];
-                tram = new Train(buildYear, model, tramNumber);
+                while (value.Read())
+                {
+                    DateTime buildYear = (DateTime)value["buildyear"];
+                    string model = (string)value["tmodel"];
+                    int tramNumber = Convert.ToInt32(value["TramNumber"]);
+                    tram = new Train(buildYear.Year, model, tramNumber);
+                }
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool GetTramId(out int tramid, int number)
+        {
+            tramid = -1;
+            try
+            {
+
+                string query = "select tram.id from tram where tramnumber = :id";
+                OracleCommand com = CreateOracleCommand(query);
+                com.Parameters.Add("id", number);
+
+                OracleDataReader value = ExecuteQuery(com);
+                while (value.Read())
+                {
+                    tramid = Convert.ToInt32(value["ID"]);
+                }
                 return true;
 
             }
             catch (Exception)
             {
+
                 return false;
-                throw;
             }
             finally
             {
@@ -1008,39 +1561,6 @@ namespace S22DProftaak.Database
             }
         }
         #endregion
-
-
-        public bool HasArrived(Train _currentTram, out string _error)
-        {
-            
-            _error = "";
-            try
-            {
-                string query = "update REQUESTING SET ARRIVED = 1 WHERE TRAMNUMBER = :TRAMNUMBER";
-                OracleCommand com = CreateOracleCommand(query);
-                com.Parameters.Add("TRAMNUMBER", _currentTram.TramNumber);
-                if(conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-                com.ExecuteNonQuery();
-                
-                
-                return true;
-                
-              
-            }
-             catch (Exception e)
-            {
-                _error = e.ToString();
-                return false;
-            }
-            finally
-            {
-                this.conn.Close();
-            }
-
-        }
     }
 }
 
