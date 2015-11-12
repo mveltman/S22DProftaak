@@ -25,6 +25,17 @@ namespace S22DProftaak.ManagementSystem
                 if(ms.ValidateRailposition(Convert.ToInt32(rtfRailNumber.Text),Convert.ToInt32(rtfRailPosition.Text)))
                 {
                     ms.BlockRail(new General.RailSection(Convert.ToInt32(rtfRailNumber), Convert.ToInt32(rtfRailPosition.Text), false));
+                    ms.CheckRailStatus(Convert.ToInt32(rtfRailNumber.Text), Convert.ToInt32(rtfRailPosition.Text));
+                    if (ms.RailStatus)
+                    {
+                     //   selectedbox.BackColor = Color.LightGray;
+                      //  selectedbox.ReadOnly = true;
+                    }
+                    else
+                    {
+                       // selectedbox.BackColor = Color.White;
+                       //// selectedbox.ReadOnly = false;
+                    }
                 }
             }
         }

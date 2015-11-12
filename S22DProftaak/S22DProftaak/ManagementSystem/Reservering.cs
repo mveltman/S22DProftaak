@@ -10,7 +10,7 @@ namespace S22DProftaak.ManagementSystem
     {
         private int RailNumber { get; set; }
         private int RailPosition { get; set; }
-        private int TrainNumber { get; set; }
+        public int TrainNumber { get; set; }
 
         public Reservering(int railnumber, int railposition, int trainnumber)
         {

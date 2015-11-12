@@ -554,6 +554,31 @@ namespace S22DProftaak.Database
                 conn.Close();
             }
         }
+        public bool CheckArrived(int tramnumber, out string error)
+        {
+            error = "";
+            try
+            {
+                string query = "SELECT ARRIVED FROM REQUESTING WHERE ARRIVED = 1 AND TRAINNUMBER = :trainnumber";
+                OracleCommand command = CreateOracleCommand(query);
+                command.Parameters.Add("trainnumber", tramnumber);
+                OracleDataReader datareader = ExecuteQuery(command);
+                while(datareader.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                error = e.ToString();
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         public bool MoveTrain(RailSection newrs, int tramid, out string error)
         {

@@ -24,6 +24,7 @@ namespace S22DProftaak.ManagementSystem
         private bool _railstatus;
         private string _error = "";
         private bool _status;
+        private int _trainnumber;
 
         public List<string> RailInfoStrings { get { return _railinfostrings; } }
         public List<Reservering> Reserveringen { get { return _reserveringen; } }
@@ -42,6 +43,19 @@ namespace S22DProftaak.ManagementSystem
         public bool GetdbTrains()
         {
             return db.GetTrains(out _Trains, out _error);
+        }
+        public bool CheckArrived()
+        {
+            return true;
+            //if(changeBusyWithRequest == false){
+
+            
+            //if(db.CheckArrived(_trainnumber, out _error))
+            //{
+                
+            //}
+            //}
+
         }
         public bool OpenRails()
         {
@@ -95,12 +109,12 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool CheckRequests()
         {
-            int trainnumber = -1;
+            _trainnumber = -1;
             if (changeBusyWithRequest == false)
             {
-                if (db.CheckForRequests(out trainnumber, out _error))
+                if (db.CheckForRequests(out _trainnumber, out _error))
                 {
-                    ManagementRequestingForm fm = new ManagementRequestingForm(trainnumber);
+                    ManagementRequestingForm fm = new ManagementRequestingForm(_trainnumber);
                     fm.Show();
                     changeBusyWithRequest = true;
                     return true;

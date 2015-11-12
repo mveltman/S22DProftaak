@@ -111,7 +111,7 @@ namespace S22DProftaak.ManagementSystem
 
         private void statusKiezenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //will be implemented at a later date
+            MessageBox.Show("will be implemented at a later date");
         }
 
         private void reserveringToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,16 +157,17 @@ namespace S22DProftaak.ManagementSystem
 
         private void CheckForRequestsTmr_Tick(object sender, EventArgs e)
         {
-            if(mg.Reserveringen.Count > 0)
+            if(mg.Reserveringen.Count > -1)
             {
                 Reserveringenlbx.Items.Clear();
                 foreach (Reservering r in mg.Reserveringen)
                 {
-                    Reserveringenlbx.Items.Add(r);
+                    Reserveringenlbx.Items.Add(Convert.ToString(r.TrainNumber));
                 }
             }
 
             mg.CheckRequests();
+            //if(mg.CheckArrived())
         }
 
         private void DeconstructObjectName(string objectname, out int railnumber, out int railposition)
@@ -220,6 +221,7 @@ namespace S22DProftaak.ManagementSystem
                 {
                     if(mg.ValidateNewInput(Convert.ToInt32(TramInsertrtf.Text)))
                     {
+                        Checkrtfnames(Convert.ToInt32(TramInsertrtf.Text));
                         mg.PlaceTrain(Convert.ToInt32(TramInsertrtf.Text), Convert.ToInt32(SpoorInsertrtf.Text), 1);
                         string test = "Rail" + SpoorInsertrtf.Text + "Pos1rtf";
                         foreach(Control c in this.Controls)
