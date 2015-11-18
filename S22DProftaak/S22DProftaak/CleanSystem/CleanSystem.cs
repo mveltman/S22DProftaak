@@ -66,6 +66,7 @@ namespace S22DProftaak.CleanSystem
             }
             return false;
         }
+        
         public bool GetCleanTasks(out List<Action.Action> Cleans)
         {
             Cleans = null;

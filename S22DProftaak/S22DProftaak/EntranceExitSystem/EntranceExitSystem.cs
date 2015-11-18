@@ -12,6 +12,8 @@ namespace S22DProftaak.EntranceExit
 {
     class EntranceExitSystem
     {
+
+        // fields
         private Train _currentTram;// { get; private set; }
         private Database.DatabaseConnection db = new Database.DatabaseConnection();
         private GeneralSystem sys = new GeneralSystem();
@@ -27,88 +29,62 @@ namespace S22DProftaak.EntranceExit
         private RailSection _targetTrack;
         public RailSection TargetTrack { get { return _targetTrack; } }
 
+        // boa constructor
         public EntranceExitSystem()
         {
-            //if (!sys.GetTrainLoggedUser(out _currentTram, out this._error))
-            //{
-            //    // error is written. Must be shown in the form.
-            //}
-            //else
-            //{
-            //    // we know the logged user and the tram used.
-            //}
-            //CurrentTram = //Sys.GetLoggedUser();
+            
         }
         public bool EnterTrain(Train train, RailSection railsection)
         {
-
-            //throw new NotImplementedException();
             return db.EnterTrain(train, railsection, out this._error);
-
-        }
+        } // not used for now
 
         public bool getRails()
         {  
            return db.GetRails(out _rails, out this._error);
-            //throw new NotImplementedException();
-
-        }
+        } // get the rails from the database. not used for now
 
         public bool GetTrams()
         {
-            //throw new NotImplementedException();
-            // fill the Trains list with the database
             return db.GetTrains(out this._trains, out this._error);
-            // return the trams in the out
-        }
+        } // get the trams from the database. Intended for the listbox
 
         public bool ApplyRepairSession(string note)
         {
             return cleansys.CreateClean(_currentTram.TramNumber, note, out _error);
-        }
+        } // use the note given through rich textbox and make a request for an action
 
         public bool ApplyCleanSession(string note)
         {
             return repairsys.CreateRepair(_currentTram.TramNumber, note, out _error);
-        }
-
+        } // use the note given through rich textbox and make a request for an action
         public bool MoveTram()
         {
             bool sht = db.MoveTrain(this._currentTram, sys.GetLoggedUser, out this._error);
-
-            // use this.CurrentTram TODO: movetrain in database class!
-            if (sht) 
-            {
-                return RemoveRequest();
-            }
+            if (sht) return RemoveRequest();
             else return false;
-        }
-
-        public bool UpdateAllTrams()
-        {
-            return db.GetTrains(out this._trains, out this._error);
-        }
+        } // move the tram to intended location from requesting
         public bool AddRequest()
         {
             return db.AddRequest(this._currentTram, out this._error);
-        }
+        }// add a request to requesting in the database
         public bool RemoveRequest()
         {
             return db.RemoveRequest(this._currentTram, out this._error);
-        }
+        } // supposed to remove a request. Might have to be handled in management
         public bool GetRequest()
         {
             return db.GetRequest(this._currentTram, out _targetTrack, out _error);
-        }
+        } // get a request from requesting in database. destination for the tram
 
-        public bool ValidateTrainNumber(int p)
+        public bool ValidateTrainNumber(int tramNumber)
         {
-           return db.GetOneTrainInfo(p, out this._currentTram, out _error);
-        }
+           return db.GetOneTrainInfo(tramNumber, out this._currentTram, out _error);
+        } // get the tram = _currenttram by asking with the number.
 
         public bool HasArrived()
         {
             return db.HasArrived(CurrenTrain, out _error);
-        }
+        } // show the tram has arrived to intended location.
     }
 }
