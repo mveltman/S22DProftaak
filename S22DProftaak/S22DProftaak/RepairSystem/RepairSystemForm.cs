@@ -27,11 +27,11 @@ namespace S22DProftaak
                 {
                     if (pair.InProgress)
                     {
-                        RepairInProgress.Items.Add(pair);
+                        RepairInProgress.Items.Add(( pair.Tram.TramNumber.ToString() + " " + pair.Note.ToString()));
                     }
                     else
                     {
-                        RepairAssignments.Items.Add(pair);
+                        RepairAssignments.Items.Add(( pair.Tram.TramNumber.ToString() + " " + pair.Note.ToString()));
                     }
 
                 }
@@ -87,8 +87,8 @@ namespace S22DProftaak
             {
                 if (RepairAssignments.SelectedItem != null)
                 {
-                    Action.Repair act = (Action.Repair)RepairAssignments.SelectedItem;
-                    RepairDescription.Text = act.Note;
+                    
+                    RepairDescription.Text = RepairAssignments.SelectedItem.ToString().Substring(RepairAssignments.SelectedItem.ToString().IndexOf(" "));
                 }
 
 

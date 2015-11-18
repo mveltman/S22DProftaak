@@ -40,6 +40,7 @@ namespace S22DProftaak.ManagementSystem
                     else
                     {
                         if (ms.AddReserveration(new Reservering(Convert.ToInt32(this.Railnumberrtf.Text), Convert.ToInt32(this.rtfRailPosition.Text), Convert.ToInt32(this.TrainNumberrtf.Text)))) MessageBox.Show("reservering succesvol toegevoegd");
+                        
                     }
                 }
             }

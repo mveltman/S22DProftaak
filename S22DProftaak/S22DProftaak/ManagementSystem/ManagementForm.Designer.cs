@@ -47,6 +47,8 @@
             this.Repairtsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.Exittsdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.TramInfoGbx = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SectieInsertrtf = new System.Windows.Forms.RichTextBox();
             this.RailInfolbl = new System.Windows.Forms.Label();
             this.TrainInfolbl = new System.Windows.Forms.Label();
             this.SpoorInsertrtf = new System.Windows.Forms.RichTextBox();
@@ -288,6 +290,7 @@
             this.ReserveringenGbx = new System.Windows.Forms.GroupBox();
             this.Reserveringenlbx = new System.Windows.Forms.ListBox();
             this.CheckForRequestsTmr = new System.Windows.Forms.Timer(this.components);
+            this.Refreshcontrolstmr = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.TramInfoGbx.SuspendLayout();
             this.ReserveringenGbx.SuspendLayout();
@@ -441,6 +444,8 @@
             // 
             // TramInfoGbx
             // 
+            this.TramInfoGbx.Controls.Add(this.label1);
+            this.TramInfoGbx.Controls.Add(this.SectieInsertrtf);
             this.TramInfoGbx.Controls.Add(this.RailInfolbl);
             this.TramInfoGbx.Controls.Add(this.TrainInfolbl);
             this.TramInfoGbx.Controls.Add(this.SpoorInsertrtf);
@@ -452,10 +457,30 @@
             this.TramInfoGbx.TabStop = false;
             this.TramInfoGbx.Text = "Tram Info";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(77, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Sectie";
+            // 
+            // SectieInsertrtf
+            // 
+            this.SectieInsertrtf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SectieInsertrtf.Location = new System.Drawing.Point(37, 247);
+            this.SectieInsertrtf.Name = "SectieInsertrtf";
+            this.SectieInsertrtf.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.SectieInsertrtf.Size = new System.Drawing.Size(118, 71);
+            this.SectieInsertrtf.TabIndex = 21;
+            this.SectieInsertrtf.Text = "";
+            this.SectieInsertrtf.TextChanged += new System.EventHandler(this.SectieInsertrtf_TextChanged);
+            // 
             // RailInfolbl
             // 
             this.RailInfolbl.AutoSize = true;
-            this.RailInfolbl.Location = new System.Drawing.Point(77, 156);
+            this.RailInfolbl.Location = new System.Drawing.Point(77, 129);
             this.RailInfolbl.Name = "RailInfolbl";
             this.RailInfolbl.Size = new System.Drawing.Size(35, 13);
             this.RailInfolbl.TabIndex = 20;
@@ -473,13 +498,12 @@
             // SpoorInsertrtf
             // 
             this.SpoorInsertrtf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpoorInsertrtf.Location = new System.Drawing.Point(37, 175);
+            this.SpoorInsertrtf.Location = new System.Drawing.Point(37, 145);
             this.SpoorInsertrtf.Name = "SpoorInsertrtf";
             this.SpoorInsertrtf.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.SpoorInsertrtf.Size = new System.Drawing.Size(118, 71);
             this.SpoorInsertrtf.TabIndex = 18;
             this.SpoorInsertrtf.Text = "";
-            this.SpoorInsertrtf.TextChanged += new System.EventHandler(this.SpoorInsertrtf_TextChanged);
             // 
             // TramInsertrtf
             // 
@@ -3313,6 +3337,12 @@
             this.CheckForRequestsTmr.Interval = 2000;
             this.CheckForRequestsTmr.Tick += new System.EventHandler(this.CheckForRequestsTmr_Tick);
             // 
+            // Refreshcontrolstmr
+            // 
+            this.Refreshcontrolstmr.Enabled = true;
+            this.Refreshcontrolstmr.Interval = 10000;
+            this.Refreshcontrolstmr.Tick += new System.EventHandler(this.Refreshcontrolstmr_Tick);
+            // 
             // ManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3829,5 +3859,8 @@
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Repairtsmi;
         private System.Windows.Forms.Timer CheckForRequestsTmr;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox SectieInsertrtf;
+        private System.Windows.Forms.Timer Refreshcontrolstmr;
     }
 }

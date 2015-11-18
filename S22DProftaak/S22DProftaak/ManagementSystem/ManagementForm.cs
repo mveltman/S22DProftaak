@@ -157,7 +157,7 @@ namespace S22DProftaak.ManagementSystem
 
         private void CheckForRequestsTmr_Tick(object sender, EventArgs e)
         {
-            if(mg.Reserveringen.Count > -1)
+            if(mg.Reserveringen.Count > 0)
             {
                 Reserveringenlbx.Items.Clear();
                 foreach (Reservering r in mg.Reserveringen)
@@ -165,7 +165,6 @@ namespace S22DProftaak.ManagementSystem
                     Reserveringenlbx.Items.Add(Convert.ToString(r.TrainNumber));
                 }
             }
-
             mg.CheckRequests();
             //if(mg.CheckArrived())
         }
@@ -195,47 +194,76 @@ namespace S22DProftaak.ManagementSystem
 
         private void Checkrtfnames(int checkablenumber)
         {
-            foreach(Control c in this.Controls)
-            {
-                if (c is RichTextBox)
-                {
-                    if(c.Name.Length > 9)
-                    if(c.Text != "")
+            //foreach (Control c in this.Controls)
+            //{
+            //    if (c is RichTextBox)
+            //    {
+            //        if (c.Name.Length > 9)
+            //            if (c.Text != "")
 
-                    if (Convert.ToInt32(c.Text) == checkablenumber)
-                    {
-                        if(c != selectedbox)
-                        c.Text = "";
-                    }
-                    else c.Text = "";
-                }
-                
-            }
+            //                if (Convert.ToInt32(c.Text) == checkablenumber)
+            //                {
+            //                    if (c != selectedbox)
+            //                        c.Text = "";
+            //                }
+            //                else c.Text = "";
+            //    }
+
+            //}
         }
 
-        private void SpoorInsertrtf_TextChanged(object sender, EventArgs e)
+
+
+        private void SectieInsertrtf_TextChanged(object sender, EventArgs e)
         {
-            if(TramInsertrtf.Text != null)
+             if(TramInsertrtf.Text != "")
             {
-                if(mg.ValidateRailNr(Convert.ToInt32(SpoorInsertrtf.Text)))
+                if (SpoorInsertrtf.Text != "")
                 {
-                    if(mg.ValidateNewInput(Convert.ToInt32(TramInsertrtf.Text)))
+                    if (SectieInsertrtf.Text != "")
                     {
-                        Checkrtfnames(Convert.ToInt32(TramInsertrtf.Text));
-                        mg.PlaceTrain(Convert.ToInt32(TramInsertrtf.Text), Convert.ToInt32(SpoorInsertrtf.Text), 1);
-                        string test = "Rail" + SpoorInsertrtf.Text + "Pos1rtf";
-                        foreach(Control c in this.Controls)
+                        if (mg.ValidateRailNr(Convert.ToInt32(SpoorInsertrtf.Text)))
                         {
-                            if(c.Name == test)
+                            if (mg.ValidateNewInput(Convert.ToInt32(TramInsertrtf.Text)))
                             {
-                                c.Text = TramInsertrtf.Text;
-                                SpoorInsertrtf.Text = "";
-                                TramInsertrtf.Text = "";
+                                if (mg.ValidateRailposition(Convert.ToInt32(SpoorInsertrtf.Text), Convert.ToInt32(SectieInsertrtf.Text)))
+                                    Checkrtfnames(Convert.ToInt32(TramInsertrtf.Text));
+                                mg.PlaceTrain(Convert.ToInt32(TramInsertrtf.Text), Convert.ToInt32(SpoorInsertrtf.Text), Convert.ToInt32(SectieInsertrtf.Text));
+                                string test = "Rail" + SpoorInsertrtf.Text + "Pos"+ SectieInsertrtf.Text +"rtf";
+                                foreach (Control c in this.Controls)
+                                {
+                                    if (c.Name == test)
+                                    {
+                                        c.Text = TramInsertrtf.Text;
+                                        SpoorInsertrtf.Text = "";
+                                        TramInsertrtf.Text = "";
+                                        SectieInsertrtf.Text = "";
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+
+        private void Refreshcontrolstmr_Tick(object sender, EventArgs e)
+        {
+            //int railnumber = -1;
+            //int railposition = -1;
+            //foreach (Train t in mg.GetTrains)
+            //{
+            //    if (mg.GetTrainPosition(t.TramNumber, out railnumber, out railposition))
+            //    {
+            //        foreach (Control c in this.Controls)
+            //        {
+            //            if (c.Name == ("Rail" + railnumber + "Pos" + railposition + "rtf"))
+            //            {
+            //                c.Text = t.TramNumber.ToString();
+            //            }
+            //        }
+            //    }
+            //}
         }
 
     }

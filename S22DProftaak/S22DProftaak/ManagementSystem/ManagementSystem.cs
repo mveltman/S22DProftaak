@@ -18,7 +18,7 @@ namespace S22DProftaak.ManagementSystem
         private List<Train> _Trains = new List<Train>();
         private DatabaseConnection db = new DatabaseConnection();
         private List<RailSection> RailSections = new List<RailSection>();
-        private List<Reservering> _reserveringen = new List<Reservering>();
+        private static List<Reservering> _reserveringen = new List<Reservering>();
         private List<string> _railinfostrings = new List<string>();
         private bool busywithrequest = false;
         private bool _railstatus;
@@ -28,6 +28,7 @@ namespace S22DProftaak.ManagementSystem
 
         public List<string> RailInfoStrings { get { return _railinfostrings; } }
         public List<Reservering> Reserveringen { get { return _reserveringen; } }
+
         public bool RailStatus { get { return _railstatus; } }
         public bool changeBusyWithRequest { get { return busywithrequest; } set { busywithrequest = value; } } 
         public string Error { get { return _error; } }
@@ -82,6 +83,10 @@ namespace S22DProftaak.ManagementSystem
             }
             return false;
         }
+        public bool GetTrainPosition(int trainnumber, out int railnumber, out int railsectie)
+        {
+            return db.GetTrainLocation(trainnumber, out railnumber, out railsectie, out _error);
+        }
         public bool ValidateNewInput(int trainnumber)
         {
             GetdbTrains();
@@ -128,7 +133,7 @@ namespace S22DProftaak.ManagementSystem
         }
         public bool AddReserveration(Reservering r)
         {
-            Reserveringen.Add(r);
+            _reserveringen.Add(r);
             return true;
         }
         public bool PlaceTrain(int tramnumber, int railnumber, int railposition)
