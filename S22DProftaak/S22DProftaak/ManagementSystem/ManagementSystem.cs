@@ -20,7 +20,7 @@ namespace S22DProftaak.ManagementSystem
         private List<RailSection> RailSections = new List<RailSection>();
         private static List<Reservering> _reserveringen = new List<Reservering>();
         private List<string> _railinfostrings = new List<string>();
-        private bool busywithrequest = false;
+        private static bool busywithrequest = false;
         private bool _railstatus;
         private string _error = "";
         private bool _status;
@@ -119,10 +119,14 @@ namespace S22DProftaak.ManagementSystem
             {
                 if (db.CheckForRequests(out _trainnumber, out _error))
                 {
-                    ManagementRequestingForm fm = new ManagementRequestingForm(_trainnumber);
-                    fm.Show();
-                    changeBusyWithRequest = true;
-                    return true;
+                    if (_trainnumber != -1)
+                    {
+                        ManagementRequestingForm fm = new ManagementRequestingForm(_trainnumber);
+                        fm.Show();
+                        changeBusyWithRequest = true;
+                        return true;
+                    }
+                    return false;
                 }
                 else
                 {

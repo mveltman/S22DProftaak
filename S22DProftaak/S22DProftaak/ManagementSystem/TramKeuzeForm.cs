@@ -22,11 +22,11 @@ namespace S22DProftaak.ManagementSystem
         {
             if (mg.ValidateRailNr(Convert.ToInt32(rtfRailNumber.Text)))
             {
-                if (mg.ValidateRailposition(Convert.ToInt32(rtfRailNumber), Convert.ToInt32(rtfRailPosition)))
+                if (mg.ValidateRailposition(Convert.ToInt32(rtfRailNumber.Text), Convert.ToInt32(rtfRailPosition.Text)))
                 {
                     if (mg.ValidateNewInput(Convert.ToInt32(rtfTrainNumber.Text)))
                     { 
-                        mg.PlaceTrain(Convert.ToInt32(rtfTrainNumber.Text), Convert.ToInt32(rtfRailNumber.Text), Convert.ToInt32(rtfRailPosition)); 
+                        mg.PlaceTrain(Convert.ToInt32(rtfTrainNumber.Text), Convert.ToInt32(rtfRailNumber.Text), Convert.ToInt32(rtfRailPosition.Text)); 
                     }
                 }
             }
