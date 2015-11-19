@@ -29,7 +29,7 @@ namespace S22DProftaak
         {
             if (Login(tbLogin.Text, tbPassword.Text))
             {
-                MessageBox.Show("U bent ingelogd als " + sys.GetLoggedUser.UserName + sys.GetLoggedUser.Type.ToString());
+                MessageBox.Show("U bent ingelogd als " + sys.GetLoggedUser.UserName +" | "+ sys.GetLoggedUser.Type.ToString());
                 //throw new NotImplementedException();
                 //open new form, hide this form.
                 UserTypeEnum enm = sys.GetLoggedUser.Type;
