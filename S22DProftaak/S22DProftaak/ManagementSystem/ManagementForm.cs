@@ -22,13 +22,16 @@ namespace S22DProftaak.ManagementSystem
         private RichTextBox selectedbox;
         public ManagementForm()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            tick();
+
         }
         
 
         private void ManagementForm_Load(object sender, EventArgs e)
         {
-
+            Rail12rtf.Text = "";
+            Rail12rtf.Text = "12";
         }
 
 
@@ -194,22 +197,22 @@ namespace S22DProftaak.ManagementSystem
 
         private void Checkrtfnames(int checkablenumber)
         {
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is RichTextBox)
-            //    {
-            //        if (c.Name.Length > 9)
-            //            if (c.Text != "")
+            foreach (Control c in this.Controls)
+            {
+                if (c is RichTextBox)
+                {
+                    if (c.Name.Length > 9)
+                        if (c.Text != "")
 
-            //                if (Convert.ToInt32(c.Text) == checkablenumber)
-            //                {
-            //                    if (c != selectedbox)
-            //                        c.Text = "";
-            //                }
-            //                else c.Text = "";
-            //    }
+                            if (Convert.ToInt32(c.Text) == checkablenumber)
+                            {
+                                if (c != selectedbox)
+                                    c.Text = "";
+                            }
+                            
+                }
 
-            //}
+            }
         }
 
 
@@ -249,21 +252,29 @@ namespace S22DProftaak.ManagementSystem
 
         private void Refreshcontrolstmr_Tick(object sender, EventArgs e)
         {
-            //int railnumber = -1;
-            //int railposition = -1;
-            //foreach (Train t in mg.GetTrains)
-            //{
-            //    if (mg.GetTrainPosition(t.TramNumber, out railnumber, out railposition))
-            //    {
-            //        foreach (Control c in this.Controls)
-            //        {
-            //            if (c.Name == ("Rail" + railnumber + "Pos" + railposition + "rtf"))
-            //            {
-            //                c.Text = t.TramNumber.ToString();
-            //            }
-            //        }
-            //    }
-            //}
+            tick();
+        }
+        private void tick()
+        {
+            int railnumber = -1;
+            int railposition = -1;
+            foreach (Train t in mg.GetTrains)
+            {
+                if (mg.GetTrainPosition(t.TramNumber, out railnumber, out railposition))
+                {
+                    foreach (Control c in this.Controls)
+                    {
+                        if (c.Name == ("Rail" + railnumber + "Pos" + railposition + "rtf"))
+                        {
+                            
+                            c.Text = t.TramNumber.ToString();
+                            Checkrtfnames(t.TramNumber);
+                            Rail12rtf.Text = "";
+                            Rail12rtf.Text = "12";
+                        }
+                    }
+                }
+            }
         }
 
     }

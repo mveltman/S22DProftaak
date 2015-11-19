@@ -2037,6 +2037,7 @@
             this.Rail12rtf.Size = new System.Drawing.Size(60, 40);
             this.Rail12rtf.TabIndex = 137;
             this.Rail12rtf.Text = "12";
+            this.Rail12rtf.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // Rail57Pos2rtf
             // 
