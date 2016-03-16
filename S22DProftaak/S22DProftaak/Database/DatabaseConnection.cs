@@ -14,8 +14,8 @@ namespace S22DProftaak.Database
     {
         private OracleConnection conn;
         private OracleCommand command;
-        private string user = "dbi334041"; //User name of the database
-        private string pw = "EG4DSBe1fC"; // password of the database
+        private string user = ""; //User name of the database
+        private string pw = ""; // password of the database
         private string dataSource = "//192.168.15.50:1521/fhictora";
 
         // boa constructor
@@ -27,8 +27,8 @@ namespace S22DProftaak.Database
         }
         public bool CoupleDB()
         {
-            string user = "dbi334041"; //Dit is de gebruikersnaam
-            string pw = "EG4DSBe1fC"; //Dit is het wachtwoord
+            string user = ""; //Dit is de gebruikersnaam
+            string pw = ""; //Dit is het wachtwoord
             conn.ConnectionString = "User Id=" + user + ";Password=" + pw + ";Data Source=" + dataSource + ";";
             try
             {
